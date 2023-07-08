@@ -1,0 +1,187 @@
+.hero {
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    --primary-color : #0CB509;
+    --primary-color-dark : #0B5301;
+    --white-color : #f8f8f8;
+}
+
+
+.hero .hero--container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.hero .hero--container .hero--content {
+    width: 60%;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hero .hero--container .hero--content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #79d57c;
+}
+
+.hero .hero--container .hero--content p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #54656f;
+    max-width: 90%;
+}
+.hero .hero--container .hero--content .btn {
+    font-family: 'Vazirmatn' , sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.hero .hero--container .hero--content .btn:hover {
+    transform: translateY(-4px);
+    -webkit-transform: translateY(-4px);
+    -moz-transform: translateY(-4px);
+    -ms-transform: translateY(-4px);
+    -o-transform: translateY(-4px);
+}
+
+.hero .hero--container .hero--content .btn.btn--primary {
+    border: 1px solid var(--primary-color);
+    color: var(--white-color);
+}
+
+.hero .hero--container .hero--content .btn.btn--outline {
+    background-color: var(--primary-color);
+}
+
+.hero .hero--container .hero--content .btn.btn--outline:hover {
+    background-color: var(--primary-color-dark);
+    color: var(--white-color);
+}
+
+.hero .hero--container .hero--content .btn.btn--primary:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.hero .hero--container .hero--content .btn.btn--secondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.hero .hero--container .hero--content .btn.btn--secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.hero .hero--container .hero--img {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hero .hero--container .hero--img img {
+    height: 100%;
+    object-fit: contain;
+    width: 31rem;
+}
+
+
+
+
+
+/* ? meduim media query */
+
+@media screen and (max-width : 767px) {
+
+    .hero {
+        background-image: url(/src/assets/4.svg) , url(/src/assets/7.png);
+        background-repeat: no-repeat;
+        background-size: 16rem , 13rem;
+        background-position: right 11%,left 14%;
+    }
+    .hero .hero--container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero .hero--container .hero--content {
+        width: 100%;
+        padding: 0 0.5rem;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+        margin-top: 7rem;
+    }
+
+    .hero .hero--container .hero--btns {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .hero .hero--container .hero--content .btn {
+        font-size: 0.9rem;
+    }
+
+    .hero .hero--container .hero--content h1 {
+        font-size: 2rem;
+    }
+
+    .hero .hero--container .hero--content p {
+        font-size: 1rem;
+    }
+
+    .hero .hero--container .hero--img {
+        display: none;
+    }
+}
+
+/* ? small media query  */
+@media screen and (max-width : 440px) {
+    .hero {
+        background-size: 11rem , 10rem;
+    }
+    .hero .hero--container .hero--content {
+        margin-top: 12rem;
+    }
+}
+
+/* ? very small query */
+@media screena and (max-width : 299px) {
+    .hero {
+        background-size: 9rem , 8rem;
+    }
+
+    .hero .hero--container .hero--content {
+        margin-top: 5rem;
+    }
+    .hero .hero--container .hero--content h1 {
+        font-size: 1.5rem;
+    }
+    .hero .hero--container .hero--content p {
+        font-size: 0.85rem;
+    }
+
+    .hero .hero--container .hero--content .btn {
+        font-size: 0.55rem;
+    }
+}

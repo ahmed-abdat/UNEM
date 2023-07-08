@@ -1,0 +1,66 @@
+header {
+  box-shadow: 0 1px 15px 1px rgba(0,0,0,0.15);
+}
+.header--container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #fff;
+}
+
+.header--container .header--logo {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+  color: #34b34a;
+}
+
+.header--container .header--logo h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.header--container .header--logo img {
+  cursor: pointer;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.header--container .header--icons {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  gap: 0 1.5rem;
+  cursor: pointer;
+}
+
+.header--container .header--icons .icon {
+  padding: 0.4rem;
+}
+
+.header--container .header--icons .icon:first-child {
+  color: #3b5998;
+}
+.header--container .header--icons .icon:last-child {
+  color: #25d366;
+}
+
+/* media query */
+@media screen and (max-width: 768px) {
+  .header--container .header--logo h4 {
+    display: none;
+  }
+  .header--container .header--icons {
+    font-size: 1.6rem;
+  }
+}
