@@ -5,7 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import Home from "./pages/home/home";
+import Home from './pages/Home'
 
 
 function App() {
