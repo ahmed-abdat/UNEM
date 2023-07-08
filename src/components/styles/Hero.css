@@ -115,10 +115,10 @@
 @media screen and (max-width : 767px) {
 
     .hero {
-        background-image: url(/src/assets/4.svg) , url(/src/assets/7.png);
+        background-image:  url(/src/assets/8.png);
         background-repeat: no-repeat;
-        background-size: 16rem , 13rem;
-        background-position: right 11%,left 14%;
+        background-size: 16rem ;
+        background-position: center 15%;
     }
     .hero .hero--container {
         flex-direction: column;
@@ -160,17 +160,18 @@
 /* ? small media query  */
 @media screen and (max-width : 440px) {
     .hero {
-        background-size: 11rem , 10rem;
+        background-size: 14rem;
+        background-position: center 6%;
     }
     .hero .hero--container .hero--content {
-        margin-top: 12rem;
+        margin-top: 13rem;
     }
 }
 
 /* ? very small query */
 @media screena and (max-width : 299px) {
     .hero {
-        background-size: 9rem , 8rem;
+        background-size: 10rem;
     }
 
     .hero .hero--container .hero--content {
