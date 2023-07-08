@@ -6,7 +6,7 @@ export default function Header() {
   // handel whatsapp redirect
   const handelWhatsapp = () => {
     window.open(
-      "https://wa.me/42049074?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85"
+      "https://wa.me/47145117?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85"
     );
   };
   // handel facebook redirect
