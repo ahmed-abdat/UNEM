@@ -1,5 +1,4 @@
-
-import HeroLogo from '../assets/4.svg'
+import HeroImg from '../assets/8.png'
 
 import './styles/Hero.css'
 
@@ -16,7 +15,7 @@ export default function Hero() {
                 </div>
             </div>
             <div className="hero--img">
-                <img src={HeroLogo} alt="hero"/>
+                <img src={HeroImg} alt="hero"/>
             </div>
         </div>
     

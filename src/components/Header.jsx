@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./styles/Header.css";
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
 
+import "./styles/Header.css";
 export default function Header() {
   // handel whatsapp redirect
   const handelWhatsapp = () => {

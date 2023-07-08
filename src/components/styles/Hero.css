@@ -13,15 +13,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
 .hero .hero--container .hero--content {
-    width: 60%;
-    padding: 0 2rem;
+    padding: 0 1.35rem 0 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    min-width: 50%;
+    max-width: 55%;
 }
 
 .hero .hero--container .hero--content h1 {
@@ -30,6 +30,7 @@
     font-weight: 700;
     margin-bottom: 1rem;
     color: #79d57c;
+    max-width: 90%;
 }
 
 .hero .hero--container .hero--content p {
@@ -93,17 +94,15 @@
 }
 
 .hero .hero--container .hero--img {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    flex: 1;
+
 }
 
 .hero .hero--container .hero--img img {
     height: 100%;
     object-fit: contain;
-    width: 31rem;
+    max-width: 30rem;
+    min-width: 15rem;
 }
 
 
@@ -121,11 +120,11 @@
         background-position: center 15%;
     }
     .hero .hero--container {
-        flex-direction: column;
         justify-content: center;
     }
 
     .hero .hero--container .hero--content {
+        min-width: 100%;
         width: 100%;
         padding: 0 0.5rem;
         align-items: center;
@@ -161,10 +160,11 @@
 @media screen and (max-width : 440px) {
     .hero {
         background-size: 16rem;
-        background-position: center 6%;
+        background-position: center 10%;
     }
     .hero .hero--container .hero--content {
         margin-top: 13rem;
+        min-width: 100%;
     }
 }
 
@@ -175,6 +175,7 @@
     }
 
     .hero .hero--container .hero--content {
+        min-width: 100%;
         margin-top: 5rem;
     }
     .hero .hero--container .hero--content h1 {
