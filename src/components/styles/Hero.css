@@ -41,6 +41,10 @@
     color: #54656f;
     max-width: 90%;
 }
+
+.hero .hero--container .hero--content .hero--btns {
+    display: flex;
+}
 .hero .hero--container .hero--content .btn {
     font-family: 'Vazirmatn' , sans-serif;
     font-size: 1rem;
@@ -141,6 +145,7 @@
     }
     .hero .hero--container .hero--content .btn {
         font-size: 0.9rem;
+        padding: 0.8rem 0.7rem;
     }
 
     .hero .hero--container .hero--content h1 {
