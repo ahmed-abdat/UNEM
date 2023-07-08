@@ -160,7 +160,7 @@
 /* ? small media query  */
 @media screen and (max-width : 440px) {
     .hero {
-        background-size: 14rem;
+        background-size: 16rem;
         background-position: center 6%;
     }
     .hero .hero--container .hero--content {
