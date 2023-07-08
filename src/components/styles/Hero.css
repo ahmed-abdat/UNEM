@@ -32,6 +32,7 @@
 }
 
 .hero .hero--container .hero--content p {
+    font-family: 'Vazirmatn' , sans-serif;
     font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: 1rem;
