@@ -9,5 +9,5 @@ export default function CalculationSelect({ handelChange, value }) {
     { value: "LM", label: "LM" },
   ];
 
-  return <Select options={options} onChange={handelChange} value={value} />;
+  return <Select options={options} onChange={handelChange} value={value} isSearchable={false} />;
 }
