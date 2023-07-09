@@ -39,9 +39,12 @@ export default function Calculation() {
   // handel select change
   const handelSelectChange = (selectedOption) => {
     setOption(selectedOption);
+    // reset the input
+    setFparam("");
+    setSparam("");
+    setTparam("");
+    setMG("");
   };
-
-  console.log(option);
 
   return (
     <>
@@ -62,10 +65,13 @@ export default function Calculation() {
               setSparam={setSparam}
               setTparam={setTparam}
               setMG={setMG}
+              Fparam={Fparam}
+              Sparam={Sparam}
+              Tparam={Tparam}
+              MG={MG}
               dir={dir}
             />
-            <button class={`calculate-btn ${dir}`}> {BtnText} </button>
-
+            <button className={`calculate-btn ${dir}`}> {BtnText} </button>
           </div>
         </div>
         <div className="calculation--img d-f">
