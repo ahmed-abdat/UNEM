@@ -149,6 +149,7 @@ export default function Inputes({
       input.function(value);
       // Further process the value as needed
     } else {
+        e.target.blur(); // Blur the input field
       if (!isArabic) {
         toast.info(
           "Veuillez entrer un nombre à deux chiffres compris entre 0 et 20. 😊"
