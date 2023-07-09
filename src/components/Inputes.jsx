@@ -146,20 +146,15 @@ export default function Inputes({
     if (!isNaN(value) && value >= 0 && value <= 20) {
         // Valid input
         if (value.includes(".") && value.split(".")[1].length > 2) {
-          // Blur the input field if the decimal places are more than two
           e.target.blur();
         } 
-        // Further process the input value as needed
         input.function(value)
     } else {
-      e.target.blur(); // Blur the input field
+      e.target.blur(); 
       if (!isArabic) {
-        toast.info(
-          "Veuillez entrer un nombre à deux chiffres compris entre 0 et 20. 😊"
-        );
+        toast.info("Veuillez entrer un nombre à deux chiffres compris entre 0 et 20. 😊");
         return;
       }
-      // Invalid input
       toast.info("من فضلك أدخل رقمًا مؤلفًا من رقمين بين 0 و 20 😊");
     }
   };
