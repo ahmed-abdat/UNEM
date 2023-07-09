@@ -143,13 +143,19 @@ export default function Inputes({
   const handelInput = (e, input) => {
     const { value } = e.target;
 
-    // Check if the input value is a number and within the desired range
     if (value <= 20) {
       // Valid input
       input.function(value);
-      // Further process the value as needed
+      if (value.length === 2) {
+        const nextInput = e.target.nextSibling;
+        console.log(nextInput);
+        if (nextInput) {
+          nextInput.focus();
+        }
+        e.target.blur();
+      }
     } else {
-        e.target.blur(); // Blur the input field
+      e.target.blur(); // Blur the input field
       if (!isArabic) {
         toast.info(
           "Veuillez entrer un nombre à deux chiffres compris entre 0 et 20. 😊"
@@ -167,6 +173,7 @@ export default function Inputes({
         <div className={`input ${dir}`} key={input.id}>
           <label htmlFor={input.id}>{input.label}</label>
           <input
+            itemType="number"
             type="number"
             id={input.id}
             placeholder={input.placeholder}
