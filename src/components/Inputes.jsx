@@ -143,17 +143,14 @@ export default function Inputes({
   const handelInput = (e, input) => {
     const { value } = e.target;
 
-    if (value <= 20) {
-      // Valid input
-      input.function(value);
-      if (value.length === 2) {
-        const nextInput = e.target.nextSibling;
-        console.log(nextInput);
-        if (nextInput) {
-          nextInput.focus();
-        }
-        e.target.blur();
-      }
+    if (!isNaN(value) && value >= 0 && value <= 20) {
+        // Valid input
+        if (value.includes(".") && value.split(".")[1].length > 2) {
+          // Blur the input field if the decimal places are more than two
+          e.target.blur();
+        } 
+        // Further process the input value as needed
+        input.function(value)
     } else {
       e.target.blur(); // Blur the input field
       if (!isArabic) {
