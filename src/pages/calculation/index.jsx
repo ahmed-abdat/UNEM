@@ -39,6 +39,9 @@ export default function Calculation() {
     setMOR(MOR);
   };
 
+  // validate text
+  const validateText  = option.value === "SN" || option.value === "M" ? "Votre moyenne d'orientation est :" : "معدلك التوجيهي هو :"
+
   const BtnText =
     option.value === "SN" || option.value === "M"
       ? "Calculer votre moyen"
@@ -96,7 +99,7 @@ export default function Calculation() {
             </button>
             {
               MOR && (<div className="result">
-              <h3> {MOR} </h3>
+              <h3> {validateText} {MOR} </h3>
             </div>)
             }
           </div>
