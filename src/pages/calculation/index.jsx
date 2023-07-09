@@ -11,6 +11,7 @@ export default function Calculation() {
   const [Sparam, setSparam] = useState("");
   const [Tparam, setTparam] = useState("");
   const [MG, setMG] = useState("");
+  const [MOR, setMOR] = useState("");
   const [option, setOption] = useState({ value: "SN", label: "SN" });
 
   // calcul moyen oriantation
@@ -22,6 +23,20 @@ export default function Calculation() {
         parseFloat(MG)) /
       7;
     return MOR.toFixed(2);
+  };
+
+  const isAnyInputEmpty = () => {
+    // Check if any input field is empty
+    const isEmpty = [Fparam, Sparam, Tparam, MG].some(
+      (input) => input.trim() === ""
+    );
+    return isEmpty;
+  };
+  // handel calcul
+  const handelCalcule = () => {
+    if (Fparam === "" || Sparam === "" || Tparam === "" || MG === "") return;
+    const MOR = CalculMoyenOR_SN(Fparam, Sparam, Tparam, MG);
+    setMOR(MOR);
   };
 
   const BtnText =
@@ -44,6 +59,7 @@ export default function Calculation() {
     setSparam("");
     setTparam("");
     setMG("");
+    setMOR('')
   };
 
   return (
@@ -71,7 +87,18 @@ export default function Calculation() {
               MG={MG}
               dir={dir}
             />
-            <button className={`calculate-btn ${dir}`}> {BtnText} </button>
+            <button
+              disabled={isAnyInputEmpty()}
+              className={`calculate-btn ${dir}`}
+              onClick={handelCalcule}
+            >
+              {BtnText}
+            </button>
+            {
+              MOR && (<div className="result">
+              <h3> {MOR} </h3>
+            </div>)
+            }
           </div>
         </div>
         <div className="calculation--img d-f">
