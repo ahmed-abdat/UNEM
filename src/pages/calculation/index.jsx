@@ -40,7 +40,7 @@ export default function Calculation() {
   };
 
   // validate text
-  const validateText  = option.value === "SN" || option.value === "M" ? "Votre moyenne d'orientation est :" : "معدلك التوجيهي هو :"
+  const validateText  = option.value === "SN" || option.value === "M" ? "Votre moyenne d'orientation :" : "معدلك التوجيهي :"
 
   const BtnText =
     option.value === "SN" || option.value === "M"
