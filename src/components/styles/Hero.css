@@ -25,7 +25,7 @@
 }
 
 .hero .hero--container .hero--content h1 {
-    font-family: 'Tajawal' , sans-serif;
+    /* font-family: 'Tajawal' , sans-serif; */
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -38,7 +38,7 @@
     font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: 1rem;
-    color: #54656f;
+    color: #545454;
     max-width: 90%;
 }
 
