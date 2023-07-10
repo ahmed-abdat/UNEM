@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
-
+import Menu from './Menu'
 import "./styles/Header.css";
-export default function Header() {
+export default function Header( { links , shouldShow = true}) {
   // handel whatsapp redirect
   const handelWhatsapp = () => {
     window.open(
@@ -30,6 +30,7 @@ export default function Header() {
           </div>
         </div>
       </div>
+      { shouldShow && <Menu links={links} />}
     </header>
   );
 }

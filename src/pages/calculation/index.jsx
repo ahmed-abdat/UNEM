@@ -65,9 +65,14 @@ export default function Calculation() {
     setMOR('')
   };
 
+  // links contents
+  const linksContents = [
+    { content : "حساب المعدل" , url : '/calculation'}
+  ]
+
   return (
     <>
-      <Header />
+      <Header links={linksContents}/>
       <section className="calculation">
         <div className={`calculation--form`}>
           <div className="container">

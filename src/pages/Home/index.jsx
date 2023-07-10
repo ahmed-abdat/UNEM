@@ -4,10 +4,9 @@ import About from "../../components/About";
 
 
 export default function home() {
-    console.log("home");
   return (
     <main>
-        <Header />
+        <Header shouldShow={false} />
         <Hero />
         <About />
     </main>

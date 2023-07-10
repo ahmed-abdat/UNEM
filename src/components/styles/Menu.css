@@ -1,0 +1,37 @@
+header .menu {
+    background: #25d366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    min-height: 4rem;
+    padding: 10px 16px;
+    gap: 0 0.5rem;
+}
+
+header .menu .grather {
+    font-size: 1.2rem;
+    padding-right: 0.5rem;
+}
+header .menu .grather svg {
+    height: 1rem;
+}
+
+header .menu .link {
+    display: flex;
+    align-items: center;
+    gap: 0 0.2rem;
+}
+
+header .menu .link .icon {
+    font-size: 1.6rem;
+}
+
+header .menu .link .content {
+    font-family: 'Vazirmatn', 'Tajawal', 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+

@@ -115,7 +115,7 @@
 
 /* ? meduim media query */
 
-@media screen and (max-width : 767px) {
+@media screen and (max-width : 850px) {
 
     .hero {
         background-image:  url(/src/assets/8.png);
@@ -134,7 +134,7 @@
         align-items: center;
         text-align: center;
         gap: 0.5rem;
-        margin-top: 7rem;
+        margin-top: 12rem;
     }
 
     .hero .hero--container .hero--btns {
