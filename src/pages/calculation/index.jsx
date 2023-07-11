@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "../../components/Header";
 import CalculationSelect from "../../components/CalculationSelect";
 import CalculationLogo from "../../assets/4.svg";
+import Footer from "../../components/Footer";
 import Inputes from "../../components/Inputes";
 import "./calculation.css";
 
@@ -12,7 +13,9 @@ export default function Calculation() {
   const [Tparam, setTparam] = useState("");
   const [MG, setMG] = useState("");
   const [MOR, setMOR] = useState("");
-  const [option, setOption] = useState({ value: "SN", label: "SN" });
+  const [option, setOption] = useState({ value: "العلوم الطبيعية", label: "العلوم الطبيعية" });
+
+
 
   // calcul moyen oriantation
   const CalculMoyenOR_SN = (Fparam, Sparam, Tparam, MG) => {
@@ -72,7 +75,8 @@ export default function Calculation() {
 
   return (
     <>
-      <Header links={linksContents}/>
+    <Header picture={'/01.png'} />
+    
       <section className="calculation">
         <div className={`calculation--form`}>
           <div className="container">
@@ -113,6 +117,7 @@ export default function Calculation() {
           <img src={CalculationLogo} alt="calculation img" />
         </div>
       </section>
+      <Footer />
     </>
   );
 }

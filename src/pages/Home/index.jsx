@@ -21,7 +21,7 @@ export default function home() {
   const options = [
     {
       content : 'حساب المعدل التوجيهي',
-      url : '/average'
+      url : '/calculation'
     },
     {
       content: "نتايج الإمتحانات",
