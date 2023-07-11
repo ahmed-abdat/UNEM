@@ -32,8 +32,8 @@ export default function home() {
       url: "/revision"
     },
     {
-      content : ' المجموعات الواتسابية (باكولوريا)',
-      url : '/group'
+      content : ' المجموعات الواتسابية (باكولوريا) ',
+      url : '/whatsapp'
     },
     // {
     //   content : 'الإنتساب',
