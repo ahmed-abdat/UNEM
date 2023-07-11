@@ -1,19 +1,15 @@
 import { Link } from "react-router-dom"
-
+import './styles/PageElements.css'
 export default function PageElements({ options }) {
     console.log(options.map(el => el.content));
   return (
     <section className="options">
-        <h1>hello word </h1>
-      {
-        options?.map(option => {
-            <div className="option--container" key={option.url}>
-                <div className="circle"></div>
-                {/* <Link to={option.url} ><h3>{option.content}</h3></Link> */}
-                <h4>hello</h4>
+        {options.map(el => <div className="option" key={el.url} >
+            <div className="cercle" ></div>
+            <div className="option--content" >
+                <Link to={el.url} ><h3>{el.content}</h3></Link>
             </div>
-        })
-      }
+        </div>)}
     </section>
   )
 }

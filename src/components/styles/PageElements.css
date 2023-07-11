@@ -1,0 +1,36 @@
+.options {
+  padding: 2rem 0.5rem;
+  min-height: 68dvh;
+  background-color: #ebebeb;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 4rem;
+}
+
+.options .option {
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-weight: 400;
+  /* font-size: 1rem; */
+  background: #fff;
+  border-radius: 10px;
+}
+
+.options .option .cercle {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  background: linear-gradient(272deg, #186a02, #26a306);
+  height: 100%;
+  width: 20px;
+  border-radius: 8px;
+
+}
+.options .option h3 {
+  padding-right: 1rem;
+  color: #358359;
+  font-size: 15.5px;
+}

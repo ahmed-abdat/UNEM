@@ -29,10 +29,10 @@ export default function home() {
     }, 
     {
       content: "مراجع و دروس",
-      url: "/cours"
+      url: "/revision"
     },
     {
-      content : '(باكولوريا) المجموعات الواتسابية',
+      content : ' المجموعات الواتسابية (باكولوريا)',
       url : '/group'
     },
     // {

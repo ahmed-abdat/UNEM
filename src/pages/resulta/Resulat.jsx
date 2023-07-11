@@ -37,7 +37,7 @@ const options = [
       <section className="resula">
         <PageElements options={options} />
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

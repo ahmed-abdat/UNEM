@@ -5,14 +5,15 @@ import {
   Navigate,
 } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import SpinerLoader from "./components/SpinerLoader";
+// import SpinerLoader from "./components/SpinerLoader";
 import Loading from "./components/Loading";
-import CheckValid from "./components/CheckValid";
 import Resulta from "./pages/resulta/Resulat";
-// import NextPage from "./pages/nextPage/NextPage";
+import Revision from './pages/revision/Revision'
 
 const Home = lazy(() => import('./pages/Home'))
 const Calculation = lazy(() => import("./pages/calculation"));
+// const Resulat = lazy(() => import('./pages/resulta/Resulat'))
+// const Revision = lazy(() => import('./pages/revision/Revision'))
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/calculation" element={<Calculation />} />
           <Route path="/check" element={<Loading />} />
           <Route path='/resulta' element={<Resulta />} />
+          <Route path='/revision' element={<Revision />} />
         </Routes>
       </Suspense>
     </Router>
