@@ -22,6 +22,7 @@ header {
 }
 
 .header--container .header--logo h4 {
+  font-family: 'Vazirmatn' , 'Tajawal' , 'Cairo' , sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
 }

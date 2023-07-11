@@ -40,7 +40,7 @@ export default function Calculation() {
   };
 
   // validate text
-  const validateText  = option.value === "SN" || option.value === "M" ? "Votre moyenne d'orientation :" : "معدلك التوجيهي :"
+  const validateText  = "معدلك التوجيهي :"
 
   const BtnText =
     option.value === "SN" || option.value === "M"
@@ -67,7 +67,7 @@ export default function Calculation() {
 
   // links contents
   const linksContents = [
-    { content : "حساب المعدل" , url : '/calculation'}
+    { content : "حساب المعدل التوجيهي" , url : '/calculation'}
   ]
 
   return (
@@ -76,7 +76,7 @@ export default function Calculation() {
       <section className="calculation">
         <div className={`calculation--form`}>
           <div className="container">
-            <div className={`select ${dir}`}>
+            <div className={`select`}>
               <h3> {SelectTitle} </h3>
               <CalculationSelect
                 handelChange={handelSelectChange}
@@ -97,7 +97,7 @@ export default function Calculation() {
             />
             <button
               disabled={isAnyInputEmpty()}
-              className={`calculate-btn ${dir}`}
+              className={`calculate-btn`}
               onClick={handelCalcule}
             >
               {BtnText}

@@ -1,0 +1,135 @@
+.main {
+  background: linear-gradient(268deg, #1e9100, #258e09);
+  color: #f9f9f9;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 6rem;
+  margin-bottom: 3rem;
+}
+
+.home header {
+  position: relative;
+}
+
+.home .main .contact-icons {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #778773, #0886fc);
+  width: 80%;
+  height: 40px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.home header .img img {
+  max-height: 12rem;
+  width: 100%;
+}
+
+.home header .logo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home header .logo img {
+  width: 9rem;
+  height: 9rem;
+  object-fit: contain;
+}
+
+/* home option */
+
+.home .home--option {
+  padding: 1rem 1.3rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.home .home--option .option-content {
+  padding: 0.7rem;
+  border: 1.5px solid #fff;
+  border-radius: 10px;
+}
+
+.home .option-content h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+
+
+.main .info {
+    margin-top: 3rem;
+    padding-inline: 1.1rem;
+}
+
+.main .info h3 {
+    font-weight: 300;
+    color: #f8f8f8;
+    text-align: center;
+}
+
+.main .contanct {
+    margin: auto;
+    margin-top: 2rem;
+    padding-inline: 5rem;
+    position: relative;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.main .contanct::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+    background-color: white;
+}
+
+.main .contanct .contact--icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* flex-direction: column; */
+    gap: 1rem;
+    font-size: 1.8rem;
+}
+
+
+/* footer */
+.main--footer {
+  padding-inline: 1.3rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.main--footer .main--footer--content {
+  margin-bottom: 2rem;
+}
+
+.main--footer h3 {
+  font-weight: 400;
+  color: #1e9100;
+  text-align: center;
+}
+
+.main--footer footer {
+    padding-inline: 10rem;
+    /* max-height: 5rem; */
+    margin: auto;
+  max-width: 70%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background : linear-gradient(34deg, #1e9100, #35ce0b);
+}

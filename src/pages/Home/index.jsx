@@ -1,14 +1,110 @@
-import Header from "../../components/Header";
-import Hero from "../../components/Hero";
-import About from "../../components/About";
 
+import HomeOption from "../../components/HomeOption";
+import Img from '../../assets/texture.png'
+import { BsFacebook, BsWhatsapp } from "react-icons/bs";
+import "./home.css";
 
 export default function home() {
+
+    // handel whatsapp redirect
+    const handelWhatsapp = () => {
+      window.open(
+        "https://wa.me/47145117?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85"
+      );
+    };
+    // handel facebook redirect
+    const handelFacebook = () => {
+      window.open("https://www.facebook.com/unem.mr/");
+    };
+  
+
+  const options = [
+    {
+      content : 'حساب المعدل التوجيهي',
+      url : '/average'
+    },
+    {
+      content: "نتايج الإمتحانات",
+      url: "/resulta"
+    }, 
+    {
+      content: "مراجع و دروس",
+      url: "/cours"
+    },
+    {
+      content : '(باكولوريا) المجموعات الواتسابية',
+      url : '/group'
+    },
+    // {
+    //   content : 'الإنتساب',
+    //   url : '/inscri'
+    // },
+    {
+      content : 'مؤسسات التعليم العالي',
+      url : '/university'
+    },
+    // {
+    //   content : 'الخدمات الجامعية',
+    //   url : '/service'
+    // }
+    ,{
+      content : 'جداول الحصص',
+      url : '/table'
+    }
+    , {
+      content : 'الأقسام و الفروع',
+      url : '/departement'
+    }
+    , {
+      content : 'التسجيل عن بعد',
+      url : '/remote'
+    }
+
+  ]
+
+
   return (
-    <main>
-        <Header shouldShow={false} />
-        <Hero />
-        <About />
+    <main className="home">
+      <section className="main">
+      <header>
+        <div className="img">
+          <img src={Img} alt="" />
+        </div>
+        <div className="logo">
+          <img src="/unem.png" alt="logo"  />
+        </div>
+      </header>
+      <HomeOption options={options}/>
+      <div className="info">
+      <h3>أكبر نقابة طلابية موريتانية تأسست 13 مايو سنة 2000 م</h3>
+      </div>
+      <div className="contanct">
+      <p>للتواصل CONTACT</p>
+      <div className="contact--icons">
+      <div className="icon" onClick={handelFacebook}>
+            <BsFacebook />
+          </div>
+          <div className="icon" onClick={handelWhatsapp}>
+            <BsWhatsapp />
+          </div>
+      </div>
+
+      </div>
+      </section>
+      {/* <section className="main--footer">
+        <div className="main--footer--content">
+
+
+        </div>
+        <footer>
+          <span className="bar"></span>
+          <div className="footer--content">
+          </div>
+          <div className="footer--icons">
+     
+          </div>
+        </footer>
+      </section> */}
     </main>
   )
 }

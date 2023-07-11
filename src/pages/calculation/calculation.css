@@ -3,21 +3,7 @@
   align-items: center;
   height: calc(100dvh - 80px);
   overflow: hidden;
-  background-image: linear-gradient(
-    to left top,
-    #11c707,
-    #12c407,
-    #14c106,
-    #15bf06,
-    #16bc06,
-    #27c019,
-    #33c526,
-    #3dc930,
-    #51d644,
-    #64e457,
-    #75f169,
-    #86ff7b
-  );
+  background: linear-gradient(268deg, #1e9100, #258e09);
   color: #f9f9f9;
 }
 

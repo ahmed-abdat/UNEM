@@ -13,124 +13,126 @@ export default function Inputes({
   MG,
   dir,
 }) {
+
+
   // is arabic
   const isArabic = option.value === "SN" || option.value === "M" ? false : true;
   // place Horlders
   const placeHolders = {
-    SN: [
+    'العلوم الطبيعية' : [
       {
-        placeholder: "Votre note de Science ici",
+        placeholder: "أدخل نتيجة العلوم ",
         id: "Fparam",
-        label: "note de Science",
+        label: "نتيجة العلوم",
         function: setFparam,
         value: Fparam,
       },
       {
-        placeholder: "Votre note de Physique ici",
+        placeholder: "أدخل نتيجة الفيزياء ",
         id: "Sparam",
-        label: "note de Physique",
+        label: "نتيجة الفيزياء",
         function: setSparam,
         value: Sparam,
       },
       {
-        placeholder: "Votre note de Math ici",
+        placeholder: "أدخل نتيجة الرياضيات ",
         id: "Tparam",
-        label: "note de Math",
+        label: "نتيجة الرياضيات",
         function: setTparam,
         value: Tparam,
       },
       {
-        placeholder: "Votre moyen genral ici",
+        placeholder: "أدخل المعدل العام ",
         id: "MG",
-        label: "moyen genral",
+        label: "المعدل العام",
         function: setMG,
         value: MG,
       },
     ],
-    M: [
+    "الرياضيات": [
       {
-        placeholder: "Votre note de Math ici",
+        placeholder: "أدخل نتيجة الرياضيات ",
         id: "Fparam",
-        label: "note de Math",
+        label: "نتيجة الرياضيات",
         function: setFparam,
         value: Fparam,
       },
       {
-        placeholder: "Votre note de Physique ici",
+        placeholder: "أدخل نتيجة الفيزياء ",
         id: "Sparam",
-        label: "note de Physique",
+        label: "نتيجة الفيزياء",
         function: setSparam,
         value: Sparam,
       },
       {
-        placeholder: "Votre note de Science ici",
+        placeholder: "أدخل نتيجة العلوم ",
         id: "Tparam",
-        label: "note de Science",
+        label: "نتيجة العلوم",
         function: setTparam,
         value: Tparam,
       },
       {
-        placeholder: "Votre moyen genral ici",
+        placeholder: "أدخل المعدل العام",
         id: "MG",
-        label: "moyen genral",
+        label: "المعدل العام",
         function: setMG,
         value: MG,
       },
     ],
-    LO: [
+    "الإداب الأصلية": [
       {
-        placeholder: "نتيجة التشريع هنا",
+        placeholder: "نتيجة التشريع",
         id: "Fparam",
         label: "نتيجة التشريع",
         function: setFparam,
         value: Fparam,
       },
       {
-        placeholder: "نتيجة اللغة العربية هنا",
+        placeholder: "نتيجة اللغة العربية",
         id: "Sparam",
         label: "نتيجة اللغة العربية",
         function: setSparam,
         value: Sparam,
       },
       {
-        placeholder: "نتيجة الفكر الإسلامي هنا",
+        placeholder: "نتيجة الفكر الإسلامي",
         id: "Tparam",
         label: "نتيجة الفكر الإسلامي",
         function: setTparam,
         value: Tparam,
       },
       {
-        placeholder: "نتيجة المعدل العام هنا",
+        placeholder: "نتيجة المعدل العام",
         id: "MG",
         label: "نتيجة المعدل العام",
         function: setMG,
         value: MG,
       },
     ],
-    LM: [
+    "الآداب العصرية": [
       {
-        placeholder: "نتيجة اللغة العربية هنا",
+        placeholder: "نتيجة اللغة العربية",
         id: "Fparam",
         label: "نتيجة اللغة العربية",
         function: setFparam,
         value: Fparam,
       },
       {
-        placeholder: "نتيجة الفلسفة هنا",
+        placeholder: "نتيجة الفلسفة",
         id: "Sparam",
         label: "نتيجة الفلسفة",
         function: setSparam,
         value: Sparam,
       },
       {
-        placeholder: "نتيجة اللغة الفرنسية هنا",
+        placeholder: "نتيجة اللغة الفرنسية",
         id: "Tparam",
         label: "نتيجة اللغة الفرنسية",
         function: setTparam,
         value: Tparam,
       },
       {
-        placeholder: "نتيجة المعدل العام هنا",
+        placeholder: "نتيجة المعدل العام",
         id: "MG",
         label: "نتيجة المعدل العام",
         function: setMG,
@@ -138,6 +140,8 @@ export default function Inputes({
       },
     ],
   };
+
+
 
   //   handel input
   const handelInput = (e, input) => {
@@ -161,7 +165,7 @@ export default function Inputes({
 
   return (
     <div className="inputs">
-      {placeHolders[option.value].map((input) => (
+      {placeHolders[option.value]?.map((input) => (
         <div className={`input ${dir}`} key={input.id}>
           <label htmlFor={input.id}>{input.label}</label>
           <input

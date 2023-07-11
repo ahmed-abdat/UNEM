@@ -11,6 +11,8 @@ export default function Hero() {
                 <h1>تعرف على مؤسسات التعليم العالي وإحسب معدلك التوجيهي</h1>
                 <p>الخدمة مقدمة من طرف الخلية الإعلامية بالاتحاد الوطني لطلبة موريتانيا UNEM لتتعرف على مؤسسات التعليم العالي والبحث العلمي ولحساب معدلك التوجيهي</p>
                 <div className="hero--btns"> 
+                    
+                    
                     <button className="btn btn--primary btn--outline">تعرف على المؤسسات</button>
                     <Link to='/calculation'><button className="btn btn--secondary"> حساب المعدل التوجيهي </button></Link>
                 </div>
