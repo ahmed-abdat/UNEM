@@ -10,7 +10,7 @@ export default function Resulta() {
       url: "/revision-fst",
     },
     {
-      content: "كلية العلوم القانون و الإقتصادية",
+      content: "كلية العلوم القانونية و الإقتصادية",
       url: "/revision-fsje",
     },
     {

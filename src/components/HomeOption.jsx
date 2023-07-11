@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 
 export default function HomeOption({ options  }) {
 
-  console.log(options);
   return (
     <section className="home--option">
       {

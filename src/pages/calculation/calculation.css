@@ -1,14 +1,13 @@
 .calculation {
   display: flex;
   align-items: center;
-  height: calc(100dvh - 80px);
-  overflow: hidden;
+  height: 100%;
   background: #ebebeb;
   color: #444;
   flex-direction: column;
-  padding-top: 1rem;
+  padding-block: 1rem;
   padding-inline: 0.5rem;
-  max-height: 76dvh;
+  max-height: 80dvh;
 }
 
 /* calculation form */
@@ -147,7 +146,7 @@ input[type="number"]::-webkit-inner-spin-button {
 @media screen and (max-width: 590px) {
     .calculation {
       flex-direction: column;
-      padding-top: 2rem;
+      padding-block: 2rem;
       padding-inline: 0.5rem;
     }
     .calculation--img {
