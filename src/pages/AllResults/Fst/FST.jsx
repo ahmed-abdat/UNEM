@@ -7,7 +7,8 @@ export default function FST() {
     <>
       <Header picture={'/03.png'} />
       <section className="fst">
-        <iframe src='http://resultats.una.mr/' width="100%" height="100%" allowFullScreen={true} />
+      <iframe src="https://drive.google.com/embeddedfolderview?id=17IdOq6c-90NuSqUJh3enxARpqAaSAbfh#grid" ></iframe>
+
       </section>
       <Footer />
     </>

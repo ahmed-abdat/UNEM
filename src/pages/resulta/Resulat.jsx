@@ -1,6 +1,7 @@
 import Header from '../../components/Header'
 import PageElements from '../../components/PageElements';
 import Footer from '../../components/Footer';
+import PageResulta from '../../components/PageResulta';
 
 export default function Resulta() {
 
@@ -8,27 +9,26 @@ export default function Resulta() {
 const options = [
   {
     content : 'كلية العلوم و التقنيات' ,
-    url : '/fst',
-    
+    url : 'http://resultats.una.mr/FST/',
   },
   {
     content : 'كلية العلوم القانونية و الإقتصادية' ,
-    url : '/fsje'
+    url : 'http://resultats.una.mr/FSJE'
   }, {
     content : 'كلية الآداب و العلوم الإنسانية',
-    url : '/fslh'
+    url : 'http://resultats.una.mr/FLSH'
   },
   {
     content : 'المعهد العالي للمحاسبة و إدارة المؤسسات' , 
-    url : '/iscae'
+    url : 'http://www.iscae.mr/resultats'
   },
   {
     content : 'المعهد العالي للدراسات و البحوث الإسلامية' ,
-    url : '/iseri'
+    url : 'https://www.iseri.mr/'
   }, 
   {
     content : 'المعهد الجامعي المهني',
-    url : '/iup'
+    url : 'http://resultats.una.mr/IUP/'
   }
 ]
 
@@ -36,7 +36,7 @@ const options = [
     <>
     <Header picture={'/02.png'} />
       <section className="resula">
-        <PageElements options={options} />
+        <PageResulta options={options} />
       </section>
       <Footer />
     </>
