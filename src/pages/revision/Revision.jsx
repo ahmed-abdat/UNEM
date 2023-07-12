@@ -38,7 +38,7 @@ export default function Resulta() {
       url: "/fm",
     },
     {
-      content: "جامعة العلوم الإسلامية يالعيون",
+      content: "جامعة العلوم الإسلامية بالعيون",
       url: "/usi",
     },
     {

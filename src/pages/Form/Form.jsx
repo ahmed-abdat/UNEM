@@ -8,7 +8,7 @@ export default function FST() {
 
   return (
     <>
-      <Header picture={"/06.png"} />
+      <Header picture={"/fac/13.png"} />
       <section className="fst">
       <iframe src="https://www.tewjih.com/rescnb-2022XCdkjfioog562.php" ></iframe>
       </section>

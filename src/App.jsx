@@ -17,13 +17,12 @@ import Remote from "./pages/Remote/Remote";
 
 // All result
 import Fst from "./pages/AllResults/Fst/FST";
+import Fsje from './pages/AllResults/FSJE/FSJE'
 
 const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
 const RemoteIframe = lazy(() => import('./pages/Remote/RemoteIframe'))
 const Form = lazy(() => import('./pages/Form/Form'))
-// const Resulat = lazy(() => import('./pages/resulta/Resulat'))
-// const Revision = lazy(() => import('./pages/revision/Revision'))
 
 function App() {
   return (
@@ -40,7 +39,12 @@ function App() {
           <Route path="/branches" element={<Branchers />} />
           <Route path="/schedule" element={<Schedules />} />
           <Route path="/remote" element={<Remote />} />
+
+          {/* revision  */}
           <Route path="/revision-fst" element={<Fst />} />
+          <Route path="/revision-fsje" element={<Fsje />} />
+
+
           <Route path="/remote-fm" element={<RemoteIframe />} />
           <Route path="/form" element={<Form />} />
         </Routes>

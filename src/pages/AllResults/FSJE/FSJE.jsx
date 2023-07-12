@@ -1,6 +1,6 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import "../fst.css";
+import "../Fst.css";
 import { useState } from "react";
 
 export default function FST() {
@@ -19,7 +19,7 @@ export default function FST() {
   ];
   return (
     <>
-      <Header picture={"/fac/02.png"} />
+      <Header picture={"/fac/11.png"} />
       <section className="speciality">
         {specialiter.map((item) => (
           <div className="speciality-item" key={item.id}>

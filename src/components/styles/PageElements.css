@@ -9,6 +9,7 @@
 }
 
 .options .option {
+  cursor: pointer;
   overflow: hidden;
   position: relative;
   padding: 0.5rem 1rem;

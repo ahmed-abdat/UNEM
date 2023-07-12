@@ -16,7 +16,7 @@
 }
 
 .speciality {
-  direction: rtl;
+  direction: ltr;
   grid-gap: 0.5rem;
   display: grid;
   gap: 0.5rem;
@@ -38,6 +38,7 @@
   color: #f8f8f8;
   border-radius: 6px;
   text-align: center;
+  box-shadow: 0 6px 9px 1px rgba(0,0,0,0.26);
 }
 
 
