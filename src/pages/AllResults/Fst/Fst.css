@@ -16,6 +16,7 @@
 }
 
 .speciality {
+  direction: rtl;
   grid-gap: 0.5rem;
   display: grid;
   gap: 0.5rem;

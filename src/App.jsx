@@ -21,6 +21,7 @@ import Fst from "./pages/AllResults/Fst/FST";
 const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
 const RemoteIframe = lazy(() => import('./pages/Remote/RemoteIframe'))
+const Form = lazy(() => import('./pages/Form/Form'))
 // const Resulat = lazy(() => import('./pages/resulta/Resulat'))
 // const Revision = lazy(() => import('./pages/revision/Revision'))
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/remote" element={<Remote />} />
           <Route path="/revision-fst" element={<Fst />} />
           <Route path="/remote-fm" element={<RemoteIframe />} />
+          <Route path="/form" element={<Form />} />
         </Routes>
       </Suspense>
     </Router>
