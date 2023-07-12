@@ -2,16 +2,18 @@
     min-height: 60dvh;
     margin-top: 1rem;
     padding-inline: 0.5rem;
-    overflow:auto;
+    overflow-x: hidden;
+    overflow-y:auto;
 }
 
 
 .fst iframe {
-    overflow: auto;
     min-height: 60dvh;
     height: 100%;
     width: 100%;
     /* border-radius: 10px; */
+    overflow-x: hidden;
+    overflow-y:auto;
     border: none;
     outline: none;
 }
