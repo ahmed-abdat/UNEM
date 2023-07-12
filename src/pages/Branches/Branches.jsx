@@ -43,15 +43,15 @@ export default function Resulta() {
     },
     {
       content: "المعهد العالي للتعليم التكنلوجي بروصو",
-      url: "https://wa.me/36199323?",
+      url: "https://wa.me/37709100?",
     },
     {
       content: "المعهد العالي المهني للغات و الترجمة و الترجمة الفورية",
-      url: "/branche-translate",
+      url: "https://wa.me/26528299?",
     },
     {
       content: "المدرسة الوطنية العليا لعلوم الصحة",
-      url: "/branche-enss",
+      url: "https://wa.me/26676762?",
     },
   ];
 
