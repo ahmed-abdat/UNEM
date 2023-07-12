@@ -45,10 +45,7 @@ export default function Calculation() {
   // validate text
   const validateText  = "معدلك التوجيهي :"
 
-  const BtnText =
-    option.value === "SN" || option.value === "M"
-      ? "Calculer votre moyen"
-      : "حساب معدلك";
+
 
   const SelectTitle =
     option.value === "SN" || option.value === "M"
@@ -104,7 +101,7 @@ export default function Calculation() {
               className={`calculate-btn`}
               onClick={handelCalcule}
             >
-              {BtnText}
+              حساب المعدل
             </button>
             {
               MOR && (<div className="result">

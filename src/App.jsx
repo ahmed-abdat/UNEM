@@ -14,11 +14,13 @@ import Institutions from "./pages/Institutions/Institutions";
 import Branchers from "./pages/Branches/Branches";
 import Schedules from "./pages/Schedules/Schedules";
 import Remote from "./pages/Remote/Remote";
+
 // All result
 import Fst from "./pages/AllResults/Fst/FST";
 
 const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
+const RemoteIframe = lazy(() => import('./pages/Remote/RemoteIframe'))
 // const Resulat = lazy(() => import('./pages/resulta/Resulat'))
 // const Revision = lazy(() => import('./pages/revision/Revision'))
 
@@ -38,6 +40,7 @@ function App() {
           <Route path="/schedule" element={<Schedules />} />
           <Route path="/remote" element={<Remote />} />
           <Route path="/revision-fst" element={<Fst />} />
+          <Route path="/remote-fm" element={<RemoteIframe />} />
         </Routes>
       </Suspense>
     </Router>
