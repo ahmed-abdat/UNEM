@@ -7,51 +7,51 @@ export default function Resulta() {
   const options = [
     {
       content: "كلية العلوم و التقنيات",
-      url: "/revision-fst",
+      url: "/shedule-fst",
     },
     {
       content: "كلية العلوم القانونية و الإقتصادية",
-      url: "/branche-fsje",
+      url: "/shedule-fsje",
     },
     {
         content : 'كلية العلوم القانونية و الإقتصادية (الملحق 2)' ,
-        url : '/branche-fsje2'
+        url : '/shedule-fsje2'
     },
     {
       content: "كلية الآداب و العلوم الإنسانية",
-      url: "/branche-fslh",
+      url: "/shedule-fslh",
     },
     {
       content: "المعهد العالي للمحاسبة و إدارة المؤسسات",
-      url: "/branche-iscae",
+      url: "/shedule-iscae",
     },
     {
       content: "المعهد العالي للدراسات و البحوث الإسلامية",
-      url: "/branche-iseri",
+      url: "/shedule-iseri",
     },
     {
       content: "المعهد الجامعي المهني",
-      url: "/branche-iup",
+      url: "/shedule-iup",
     },
     {
       content: "كلية الطب و الصيدلة",
-      url: "/branche-fm",
+      url: "/shedule-fm",
     },
     {
       content: "جامعة العلوم الإسلامية يالعيون",
-      url: "/branche-usi",
+      url: "/shedule-usi",
     },
     {
       content: "المعهد العالي للتعليم التكنلوجي بروصو",
-      url: "/branche-roso",
+      url: "/shedule-roso",
     },
     {
       content: "المعهد العالي المهني للغات و الترجمة و الترجمة الفورية",
-      url: "/branche-translate",
+      url: "/shedule-translate",
     },
     {
       content: "المدرسة الوطنية العليا لعلوم الصحة",
-      url: "/branche-enss",
+      url: "/shedule-enss",
     },
   ];
 

@@ -74,7 +74,7 @@ export default function home() {
         </div>
         <div className="contanct">
           <div className="layout"></div>
-          <p>للتواصل CONTACT</p>
+          <p className="content">للتواصل CONTACT</p>
           <div className="contact--icons">
             <div className="icon" onClick={handelFacebook}>
               <BsFacebook />

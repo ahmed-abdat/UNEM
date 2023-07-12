@@ -103,7 +103,7 @@
   z-index: 0;
 }
 
-.main .contact p {
+ .content {
   position: absolute;
   left: 50%;
   top: 20px;
