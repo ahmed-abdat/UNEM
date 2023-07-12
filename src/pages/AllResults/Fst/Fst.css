@@ -1,19 +1,17 @@
 .fst {
-    max-width: 100%;
-    min-height: 65dvh;
-    overflow: auto;
-    border: none;
-    outline: none;
-    border-radius: 10px;
+    min-height: 60dvh;
     margin-top: 1rem;
     padding-inline: 0.5rem;
+    overflow:auto;
 }
 
 
 .fst iframe {
     overflow: auto;
-    min-height: 65dvh;
-    border-radius: 10px;
+    min-height: 60dvh;
+    height: 100%;
+    width: 100%;
+    /* border-radius: 10px; */
     border: none;
     outline: none;
 }
