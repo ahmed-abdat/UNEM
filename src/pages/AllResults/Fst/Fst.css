@@ -1,6 +1,7 @@
 .fst {
     max-width: 100%;
     min-height: 65dvh;
+    overflow: auto;
     border: none;
     outline: none;
     border-radius: 10px;
@@ -10,6 +11,7 @@
 
 
 .fst iframe {
+    overflow: auto;
     min-height: 65dvh;
     border-radius: 10px;
     border: none;
