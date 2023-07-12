@@ -1,60 +1,55 @@
 .fst {
-    min-height: 60dvh;
-    margin-top: 1rem;
-    padding-inline: 0.5rem;
-    overflow-x: hidden;
-    overflow-y:auto;
+  min-height: 60dvh;
+  margin-top: 1rem;
+  padding-inline: 0.5rem;
+  overflow: hidden;
 }
-
 
 .fst iframe {
-    min-height: 60dvh;
-    height: 100%;
-    width: 100%;
-    /* border-radius: 10px; */
-    overflow-x: hidden;
-    overflow-y:auto;
-    border: none;
-    outline: none;
+  min-height: 60dvh;
+  height: 100%;
+  width: 100%;
+  /* border-radius: 10px; */
+  overflow: hidden;
+  border: none;
+  outline: none;
 }
 
-
 .fst::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  
-  .fst::-webkit-scrollbar-track {
-    background-color: #f6f6f6;
-  }
-  
-  .fst::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
+  width: 6px;
+  height: 6px;
+}
 
+.fst::-webkit-scrollbar-track {
+  background-color: #f6f6f6;
+}
 
-  iframe::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  
-  iframe::-webkit-scrollbar-track {
-    background-color: #f6f6f6;
-  }
-  
-  iframe::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
+.fst::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: #f6f6f6;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
+iframe::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+iframe::-webkit-scrollbar-track {
+  background-color: #f6f6f6;
+}
+
+iframe::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f6f6f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
