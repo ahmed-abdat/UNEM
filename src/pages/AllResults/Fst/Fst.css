@@ -3,6 +3,7 @@
     min-height: 65dvh;
     /* overflow: hidden; */
     border: none;
+    outline: none;
     border-radius: 10px;
     margin-top: 1rem;
     padding-inline: 0.5rem;
@@ -12,4 +13,6 @@
 .fst iframe {
     min-height: 65dvh;
     border-radius: 10px;
+    border: none;
+    outline: none;
 }
