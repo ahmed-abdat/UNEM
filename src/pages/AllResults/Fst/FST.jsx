@@ -1,21 +1,38 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import "./Fst.css";
+import { useState } from "react";
 
 export default function FST() {
-  const specialiter = [{ name: "BG" }, { name: "PC" }, { name: "MPI" } , { name: "BG" }, { name: "PC" }, { name: "MPI" } , { name: "BG" }, { name: "PC" }, { name: "MPI" }];
+  const [choosenSpeciality, setChoosenSpeciality] = useState("17IdOq6c-90NuSqUJh3enxARpqAaSAbfh");
+
+  const handelChoosenSpeciality = (speciality) => {
+    setChoosenSpeciality((prev) => {
+      return speciality;
+    });
+  };
+
+  const specialiter = [
+    { name: "BG", id: "17IdOq6c-90NuSqUJh3enxARpqAaSAbfh" },
+    { name: "PC", id: "17LQAoxbF3cGJgmTLP_uAcnLZAXeCdjz" },
+    { name: "MPI", id: "17QchjyP0r9NMklrkZp1HRoaVrgpRiwuo" },
+  ];
   return (
     <>
       <Header picture={"/03.png"} />
       <section className="speciality">
         {specialiter.map((item) => (
-          <div className="speciality-item" key={item.name}>
-            <h3>{item.name}</h3>
+          <div className="speciality-item" key={item.id}>
+            <h3 onClick={() => handelChoosenSpeciality(item.id)}>
+              {item.name}
+            </h3>
           </div>
         ))}
       </section>
       <section className="fst">
-        <iframe src="https://drive.google.com/embeddedfolderview?id=17IdOq6c-90NuSqUJh3enxARpqAaSAbfh&resourcekey=RESOURCE-KEY"></iframe>
+        <iframe
+          src={`https://drive.google.com/embeddedfolderview?id=${choosenSpeciality}&resourcekey=RESOURCE-KEY`}
+        ></iframe>
       </section>
       <Footer />
     </>
