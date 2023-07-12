@@ -15,9 +15,27 @@ import Branchers from "./pages/Branches/Branches";
 import Schedules from "./pages/Schedules/Schedules";
 import Remote from "./pages/Remote/Remote";
 
+import NoteFound from "./components/NoteFound";
+
 // All result
 import Fst from "./pages/AllResults/Fst/FST";
 import Fsje from './pages/AllResults/FSJE/FSJE'
+import Fslh from './pages/AllResults/FSLH/Fslh'
+import Iscae from './pages/AllResults/Iscae/Iscae'
+import Iseri from './pages/AllResults/Iseri/Iseri'
+import Uip from './pages/AllResults/Uip/Uip'
+import Fm from './pages/AllResults/Fm/Fm'
+import Usi from './pages/AllResults/Usi/Usi'
+import Roso from './pages/AllResults/Roso/Roso'
+import Translate from './pages/AllResults/Translate/Translate'
+import Enss from './pages/AllResults/Enss/Enss'
+
+// All Institutions
+import FstInstitution from "./pages/AllInstitution/Fst/Fst";
+import FsjhInstitution from "./pages/AllInstitution/Fsje/Fsjh";
+import FslhInstitution from "./pages/AllInstitution/Fslh/Fslh";
+import IscaeInstitution from "./pages/AllInstitution/Iscae/Iscae";
+import UipInstitution from "./pages/AllInstitution/Uip/Uip";
 
 const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
@@ -43,10 +61,30 @@ function App() {
           {/* revision  */}
           <Route path="/revision-fst" element={<Fst />} />
           <Route path="/revision-fsje" element={<Fsje />} />
+          <Route path="/revision-fslh" element={<Fslh />} />
+          <Route path="/revision-iscae" element={<Iscae />} />
+          <Route path="/revision-iseri" element={<Iseri />} />
+          <Route path="/revision-iup" element={<Uip />} />
+          <Route path="/fm" element={<Fm />} />
+          <Route path="/usi" element={<Usi />} />
+          <Route path="/roso" element={<Roso />} />
+          <Route path="/translate" element={<Translate />} />
+          <Route path="/enss" element={<Enss />} />
+
+          {/* Institutions */}
+          <Route path="/institutions-fst" element={<FstInstitution />} />
+          <Route path="/institutions-fsje" element={<FsjhInstitution />} />
+          <Route path="/institutions-fslh" element={<FslhInstitution />} />
+          <Route path="/institutions-iscae" element={<IscaeInstitution />} />
+          <Route path="/institutions-uip" element={<UipInstitution />} />
 
 
           <Route path="/remote-fm" element={<RemoteIframe />} />
           <Route path="/form" element={<Form />} />
+
+          {/* note found */}
+          <Route path="*" element={<NoteFound />} />
+
         </Routes>
       </Suspense>
     </Router>

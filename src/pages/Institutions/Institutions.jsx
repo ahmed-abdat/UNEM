@@ -31,7 +31,7 @@ export default function Institutions() {
     },
     {
       content: "المعهد الجامعي المهني",
-      url: "/institutions-revision-iup",
+      url: "/institutions-uip",
     },
     {
       content: "كلية الطب و الصيدلة",
