@@ -16,23 +16,29 @@
 }
 
 .speciality {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  padding: 0.5rem;
+  grid-gap: 0.5rem;
+  display: grid;
   gap: 0.5rem;
+  grid-auto-columns: 26%;
+  grid-auto-flow: column;
+  grid-template-rows: -webkit-min-content;
+  grid-template-rows: min-content;
   overflow-x: auto;
-      overscroll-behavior-inline: contain;
-    scroll-padding-left: 0.7rem;
-    scroll-snap-type: inline mandatory;
-        overflow-x: auto;
+  padding: 1rem;
+  overscroll-behavior-inline: contain;
+  scroll-padding-left: 0.5rem;
+  scroll-snap-type: inline mandatory;
 }
 
 .speciality .speciality-item {
-      scroll-snap-align: start;
-      position: relative;
+  scroll-snap-align: start;
   padding: 0.4rem 1.5rem;
   background: #179652;
   color: #f8f8f8;
   border-radius: 6px;
+  text-align: center;
+}
+
+.speciality .speciality-item:active {
+  background-color: #fff;
 }
