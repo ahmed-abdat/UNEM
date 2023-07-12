@@ -7,7 +7,7 @@ export default function FST() {
     <>
       <Header picture={'/03.png'} />
       <section className="fst">
-        <iframe src="http://resultats.una.mr/FST" width="100%" height="100%" />
+        <iframe src="https://chat.openai.com/" width="100%" height="100%" />
       </section>
       <Footer />
     </>
