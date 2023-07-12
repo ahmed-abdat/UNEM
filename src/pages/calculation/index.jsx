@@ -65,10 +65,7 @@ export default function Calculation() {
     setMOR('')
   };
 
-  // links contents
-  const linksContents = [
-    { content : "حساب المعدل التوجيهي" , url : '/calculation'}
-  ]
+
 
   return (
     <>

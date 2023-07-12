@@ -7,7 +7,7 @@ export default function FST() {
     <>
       <Header picture={'/07.png'} />
       <section className="fst">
-      <iframe src="https://unem.vercel.app/" ></iframe>
+      <iframe src="https://inscription.fmpos.una.mr/" ></iframe>
       </section>
       <Footer />
     </>
