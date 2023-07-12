@@ -7,43 +7,43 @@ export default function Resulta() {
   const options = [
     {
       content: "كلية العلوم و التقنيات",
-      url: "/revision-fst",
+      url: "https://wa.me/27245347?text=''",
     },
     {
       content: "كلية العلوم القانونية و الإقتصادية",
-      url: "/branche-fsje",
+      url: "https://wa.me/26031381?text=''",
     },
     {
         content : 'كلية العلوم القانونية و الإقتصادية (الملحق 2)' ,
-        url : '/branche-fsje2'
+        url : "https://wa.me/49876770?text=''"
     },
     {
       content: "كلية الآداب و العلوم الإنسانية",
-      url: "/branche-fslh",
+      url: "https://wa.me/26490223?text=''",
     },
     {
       content: "المعهد العالي للمحاسبة و إدارة المؤسسات",
-      url: "/branche-iscae",
+      url: "https://wa.me/48572025?text=''",
     },
     {
       content: "المعهد العالي للدراسات و البحوث الإسلامية",
-      url: "/branche-iseri",
+      url: "https://wa.me/33300307?text=''",
     },
     {
       content: "المعهد الجامعي المهني",
-      url: "/branche-iup",
+      url: "https://wa.me/49652477?text=''",
     },
     {
       content: "كلية الطب و الصيدلة",
-      url: "/branche-fm",
+      url: "https://wa.me/47401121?text=''",
     },
     {
       content: "جامعة العلوم الإسلامية يالعيون",
-      url: "/branche-usi",
+      url: "https://wa.me/36199323?text=''",
     },
     {
       content: "المعهد العالي للتعليم التكنلوجي بروصو",
-      url: "/branche-roso",
+      url: "https://wa.me/36199323?text=''",
     },
     {
       content: "المعهد العالي المهني للغات و الترجمة و الترجمة الفورية",

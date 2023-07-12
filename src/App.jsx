@@ -37,7 +37,7 @@ function App() {
           <Route path="/branches" element={<Branchers />} />
           <Route path="/schedule" element={<Schedules />} />
           <Route path="/remote" element={<Remote />} />
-          <Route path="/fst" element={<Fst />} />
+          <Route path="/revision-fst" element={<Fst />} />
         </Routes>
       </Suspense>
     </Router>

@@ -9,7 +9,7 @@ export default function home() {
     // handel whatsapp redirect
     const handelWhatsapp = () => {
       window.open(
-        "https://wa.me/47145117?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85"
+        "https://wa.me/36199323?text=''"
       );
     };
     // handel facebook redirect
