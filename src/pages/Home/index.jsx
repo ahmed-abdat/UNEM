@@ -41,7 +41,7 @@ export default function home() {
     // },
     {
       content : 'مؤسسات التعليم العالي',
-      url : '/university'
+      url : '/institutions'
     },
     // {
     //   content : 'الخدمات الجامعية',
@@ -49,11 +49,11 @@ export default function home() {
     // }
     ,{
       content : 'جداول الحصص',
-      url : '/table'
+      url : '/schedule'
     }
     , {
       content : 'الأقسام و الفروع',
-      url : '/departement'
+      url : '/branches'
     }
     , {
       content : 'التسجيل عن بعد',

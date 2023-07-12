@@ -2,20 +2,16 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { db } from "../../config/firebase";
-import { collection, getDocs } from "firebase/firestore";
 import "./Whatsapp.css";
 import data from "../../data/bac.json";
-import { useEffect, useState } from "react";
-import { query } from "firebase/database";
+import { useState } from "react";
+
 
 export default function Whatsapp() {
   const [isValid, setIsValid] = useState(false);
   const [numBac, setNumBac] = useState("");
   const [yearBorn, setYearBorn] = useState("");
   const [student, setStudent] = useState("");
-  const [validYear, setValidYear] = useState(2000);
-  const [allExistingStd , setAllExistingStd] = useState(null)
 
   const handelValideStudent = (e) => {
     e.preventDefault();
@@ -47,48 +43,28 @@ export default function Whatsapp() {
 
   const handelValideYearnBorn = (e) => {
     e.preventDefault();
-    const validYear = student.DateNaissance.slice(-4)
-
-
-   
+    const validYear = student.DateNaissance.slice(-4);
 
     if (validYear === yearBorn) {
-      console.log(student);
-         // handel whatsapp redirect
+      const whtspUrl = {
+        SN: "https://chat.whatsapp.com/LvTH7hxFAfF4nmVDozWCVp",
+        M: "https://chat.whatsapp.com/KFwkj9xNM5mLlkIisqlMra",
+        LO: "https://chat.whatsapp.com/E66wEjpS8gm3ZXDfqPTQUr",
+        LM: "https://chat.whatsapp.com/CVlHmIUkkNvFC6eJExfLHl",
+        T: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
+      };
 
-      window.open(
-        "https://chat.whatsapp.com/FLUaAmyD1TwLl0VS4LPjzn"
-      );
-    
+      window.open(whtspUrl[student.Série]);
+
       return;
     }
     toast.error("يبدو بأن سنة الميلاد غير صحيحة");
   };
 
-  // // get all docs from firebase
-  // const getAllDocs = async () => {
-  //   try {
-  //     // const q = query(collection(db, "students"));
-  //     const docsRef = collection(db, "students");
-  //     const querySnapshot = await getDocs(docsRef);
-  //     let allStds = []
-  //     querySnapshot.forEach((doc) => {
-  //       allStds.push({...doc.data() , id : doc.id})
-  //       // doc.data() is never undefined for query doc snapshots
-  //     });
-  //     setAllExistingStd(allStds)
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getAllDocs();
-  // }, []);
 
   return (
     <>
-      <Header picture={"/05.png"} />
+      <Header picture={"/04.jpeg"} />
       <section className="whatsapp">
         <form className="form">
           <p>أدخل رقم الباكلوريا للإنضمام إلى المجموعة الخاصة بشعبتك</p>
