@@ -11,9 +11,18 @@ export default function home() {
 
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000);
+    // show the intro only for the user that visit the website for the first time
+    const isVisited = localStorage.getItem("isVisited");
+    if (!isVisited) {
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 2000);
+      localStorage.setItem("isVisited", true)
+    } 
+
+    setIsLoading(false)
+    
+    ;
   }, [])
 
 
