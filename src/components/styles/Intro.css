@@ -9,10 +9,24 @@
 }
 
 .intro img{
-    background-color: #077139;
     max-height: 10rem;
     object-fit: contain;
+    animation: fade 1.5s linear infinite;
+    -webkit-animation: fade 1.5s linear infinite;
 }
+
+@keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
 
 .intro .intro-text {
     padding-inline: 2rem;
