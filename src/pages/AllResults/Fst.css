@@ -32,13 +32,22 @@
 }
 
 .speciality .speciality-item {
+  cursor: pointer;
   scroll-snap-align: start;
   padding: 0.4rem 1.5rem;
-  background: #179652;
-  color: #f8f8f8;
+  background: #f8f8f8;
+  color: #179652;
   border-radius: 6px;
   text-align: center;
   box-shadow: 0 6px 9px 1px rgba(0,0,0,0.26);
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
 }
 
-
+.speciality .speciality-item.active {
+  background: #179652;
+  color: #f8f8f8;
+}

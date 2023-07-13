@@ -6,7 +6,7 @@ export default function Resulta() {
   // options
   const options = [
     {
-      content: "كلية الطب و الصيدلة",
+      content: "كلية الطب و الصيدلة وطب الأسنان",
       url: "/remote-fm",
     },
   ];

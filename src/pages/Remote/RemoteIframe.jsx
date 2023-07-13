@@ -5,7 +5,7 @@ import './RemoteIframe.css'
 export default function FST() {
   return (
     <>
-      <Header picture={'/07.png'} />
+      <Header picture={'/fac/06.png'} />
       <section className="fst">
       <iframe src="https://inscription.fmpos.una.mr/" ></iframe>
       </section>
