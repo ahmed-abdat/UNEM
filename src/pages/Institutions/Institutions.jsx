@@ -38,7 +38,7 @@ export default function Institutions() {
       url: "/institutions-fm",
     },
     {
-      content: "جامعة العلوم الإسلامية يالعيون",
+      content: "جامعة العلوم الإسلامية بالعيون",
       url: "/institutions-usi",
     },
     {
