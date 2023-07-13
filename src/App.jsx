@@ -22,15 +22,15 @@ import Intro from "./components/Intro";
 // All revision archive
 const Fst = lazy(() => import("./pages/AllResults/Fst/FST"));
 const Fsje = lazy(() => import("./pages/AllResults/FSJE/FSJE"));
-// const Fslh = lazy(() => import("./pages/AllResults/FSLH/Fslh"));
-// const Iscae = lazy(() => import("./pages/AllResults/Iscae/Iscae"));
-// const Iseri = lazy(() => import("./pages/AllResults/Iseri/Iseri"));
-// const Uip = lazy(() => import("./pages/AllResults/Uip/Uip"));
-// const Fm = lazy(() => import("./pages/AllResults/Fm/Fm"));
-// const Usi = lazy(() => import("./pages/AllResults/Usi/Usi"));
-// const Roso = lazy(() => import("./pages/AllResults/Roso/Roso"));
-// const Translate = lazy(() => import("./pages/AllResults/Translate/Translate"));
-// const Enss = lazy(() => import("./pages/AllResults/Enss/Enss"));
+const Fslh = lazy(() => import("./pages/AllResults/FSLH/Fslh"));
+const Iscae = lazy(() => import("./pages/AllResults/Iscae/Iscae"));
+const Iseri = lazy(() => import("./pages/AllResults/Iseri/Iseri"));
+const Uip = lazy(() => import("./pages/AllResults/Uip/Uip"));
+const Fm = lazy(() => import("./pages/AllResults/Fm/Fm"));
+const Usi = lazy(() => import("./pages/AllResults/Usi/Usi"));
+const Roso = lazy(() => import("./pages/AllResults/Roso/Roso"));
+const Translate = lazy(() => import("./pages/AllResults/Translate/Translate"));
+const Enss = lazy(() => import("./pages/AllResults/Enss/Enss"));
 
 // All Institutions
 import FstInstitution from './pages/AllInstitution/Fst/Fst';
@@ -67,7 +67,7 @@ function App() {
           {/* all revision archive */}
           <Route path="/revision-fst" element={<Fst />} />
           <Route path="/revision-fsje" element={<Fsje />} />
-          {/* <Route path="/revision-fslh" element={<Fslh />} />
+          <Route path="/revision-fslh" element={<Fslh />} />
           <Route path="/revision-iscae" element={<Iscae />} />
           <Route path="/revision-iseri" element={<Iseri />} />
           <Route path="/revision-iup" element={<Uip />} />
@@ -75,7 +75,7 @@ function App() {
           <Route path="/usi" element={<Usi />} />
           <Route path="/roso" element={<Roso />} />
           <Route path="/translate" element={<Translate />} />
-          <Route path="/enss" element={<Enss />} /> */}
+          <Route path="/enss" element={<Enss />} />
 
           {/* Institutions */}
           <Route path="/institutions-fst" element={<FstInstitution />} />
