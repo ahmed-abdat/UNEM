@@ -4,7 +4,17 @@ import "../Fst.css";
 import { useState } from "react";
 
 export default function FST() {
-  const [choosenSpeciality, setChoosenSpeciality] = useState("17IdOq6c-90NuSqUJh3enxARpqAaSAbfh");
+
+  const specialiter = [
+    { name: "BG", id: "17IdOq6c-90NuSqUJh3enxARpqAaSAbfh" },
+    { name: "PC", id: "17LQAoxbF3cGJgmTLP_uAcnLZAXeCdjz-" },
+    { name: "MPI", id: "17QchjyP0r9NMklrkZp1HRoaVrgpRiwuo" },
+  ];
+
+
+  const [choosenSpeciality, setChoosenSpeciality] = useState(specialiter[0].id);
+
+  // const [currentSpeciality , SetCurrentSpeciality] = useState(specialiter[0].id)
 
   const handelChoosenSpeciality = (speciality) => {
     setChoosenSpeciality((prev) => {
@@ -12,17 +22,13 @@ export default function FST() {
     });
   };
 
-  const specialiter = [
-    { name: "BG", id: "17IdOq6c-90NuSqUJh3enxARpqAaSAbfh" },
-    { name: "PC", id: "17LQAoxbF3cGJgmTLP_uAcnLZAXeCdjz-" },
-    { name: "MPI", id: "17QchjyP0r9NMklrkZp1HRoaVrgpRiwuo" },
-  ];
+ 
   return (
     <>
       <Header picture={"/fac/02.png"} />
       <section className="speciality">
         {specialiter.map((item) => (
-          <div className="speciality-item" key={item.id}>
+          <div className={`speciality-item ${choosenSpeciality === item.id ? 'active' : ''}`} key={item.id}>
             <h3 onClick={() => handelChoosenSpeciality(item.id)}>
               {item.name}
             </h3>

@@ -14,19 +14,21 @@ export default function FST() {
 
   const [choosenSpeciality, setChoosenSpeciality] = useState(specialiter[0].id);
 
+  // const [currentSpeciality , SetCurrentSpeciality] = useState(specialiter[0].id)
+
   const handelChoosenSpeciality = (speciality) => {
     setChoosenSpeciality((prev) => {
       return speciality;
     });
   };
 
-
+ 
   return (
     <>
       <Header picture={"/fac/11.jpg"} />
       <section className="speciality">
         {specialiter.map((item) => (
-          <div className="speciality-item" key={item.id}>
+          <div className={`speciality-item ${choosenSpeciality === item.id ? 'active' : ''}`} key={item.id}>
             <h3 onClick={() => handelChoosenSpeciality(item.id)}>
               {item.name}
             </h3>
