@@ -3,7 +3,9 @@ import { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
 import NoteFound from "./components/NoteFound";
 
-const Home = lazy(() => import("./pages/Home"));
+import Home from "./pages/Home";
+
+// const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
 const Resulta = lazy(() => import("./pages/resulta/Resulat"));
 const Revision = lazy(() => import("./pages/revision/Revision"));
@@ -91,6 +93,9 @@ function App() {
 
           <Route path="/remote-fm" element={<RemoteIframe />} />
           <Route path="/form" element={<Form />} />
+
+          {/* intro */}
+          <Route path="/intro" element={<Intro />} />
 
           {/* note found */}
           <Route path="*" element={<NoteFound />} />

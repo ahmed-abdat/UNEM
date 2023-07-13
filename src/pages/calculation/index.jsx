@@ -112,9 +112,9 @@ export default function Calculation() {
             }
           </div>
         </div>
-        <div className="calculation--img d-f">
-          <img src={CalculationLogo} alt="calculation img" />
-        </div>
+        {/* <div className="calculation--img d-f">
+          <img src={calcul} alt="calculation img" />
+        </div> */}
       </section>
       <Footer />
     </>
