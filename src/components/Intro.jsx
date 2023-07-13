@@ -2,7 +2,7 @@ export default function Intro() {
   return (
     <section className="intro">
       <div className="intro-img">
-        <img src="/fac2/09.jpg" alt="fst" />
+        <img src="/unem.png" alt="logo" />
       </div>
       <div className="intro-text">
         <h1>الإتحاد الوطني لطلبة موريتانيا</h1>
