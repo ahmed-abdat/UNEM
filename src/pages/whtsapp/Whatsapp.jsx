@@ -25,7 +25,7 @@ export default function Whatsapp() {
       return;
     }
 
-    toast.info("للأسف يشترط في دخول المجموعة أن تكون ناجحا !");
+    toast.info("للأسف لايمكنكم الدخول, نتمنى لكم حظا أوفر في القادم")
   };
 
   const handleNumBacChange = (e) => {
@@ -58,7 +58,7 @@ export default function Whatsapp() {
 
       return;
     }
-    toast.error("يبدو بأن سنة الميلاد غير صحيحة");
+    toast.error(" عذرا يرجى التأكد من سنة الميلاد");
   };
 
 
@@ -67,7 +67,13 @@ export default function Whatsapp() {
       <Header picture={"/04.jpeg"} />
       <section className="whatsapp">
         <form className="form">
-          <p>أدخل رقم الباكلوريا للانضمام إلى المجموعة الخاصة بشعبتك</p>
+        {
+          isValid ? (
+            <p> أهلا  بكم لتأكيد الدخول أضيفو سنة الميلاد  </p>
+          ) : (
+            <p> للانضمام إلى المجموعة الخاصة بشعبتكم يرجى إدخال رقم الباكلوريا</p>
+          )
+        }
           <div className="inputs">
             {!isValid && (
               <div className="input">
