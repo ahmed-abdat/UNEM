@@ -16,7 +16,7 @@ export default function home() {
     if (!isVisited) {
       setTimeout(() => {
         setIsLoading(false)
-      }, 2000);
+      }, 3000);
       localStorage.setItem("isVisited", true)
     } 
 
