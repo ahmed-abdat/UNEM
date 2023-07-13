@@ -7,7 +7,7 @@ export default function FST() {
 
   const specialiter = [
     { name: "Droit", id: "13TBDylnzMs78QlEV98YivkupPQE91_Ko" },
-    { name: "Economie", id: "1ZqkKgqJu-oPY-a4su2q51YrhGvBotn6D" },
+    { name: "Economie", id: "1OO6y47-bmxcyTJQjDecm9pFFNPF2l7o9" },
     { name: "Professionnelle", id: "1jgaqVTUHa6wMGU7eU9UTCdgQVMCsCqm4" },
   ];
 

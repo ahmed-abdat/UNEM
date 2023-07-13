@@ -7,51 +7,51 @@ export default function Resulta() {
   const options = [
     {
       content: "كلية العلوم و التقنيات",
-      url: "https://wa.me/27245347?",
+      url: "https://wa.me/27245347",
     },
     {
-      content: "كلية العلوم القانونية و الإقتصادية",
-      url: "https://wa.me/26031381?",
+      content: "كلية العلوم القانونية و الاقتصادية",
+      url: "https://wa.me/26031381",
     },
     {
         content : 'كلية العلوم القانونية و الإقتصادية (الملحق 2)' ,
-        url : "https://wa.me/49876770?"
+        url : "https://wa.me/49876770"
     },
     {
       content: "كلية الآداب و العلوم الإنسانية",
-      url: "https://wa.me/26490223?",
+      url: "https://wa.me/26490223",
     },
     {
       content: "المعهد العالي للمحاسبة و إدارة المؤسسات",
-      url: "https://wa.me/48572025?",
+      url: "https://wa.me/48572025",
     },
     {
       content: "المعهد العالي للدراسات و البحوث الإسلامية",
-      url: "https://wa.me/33300307?",
+      url: "https://wa.me/33300307",
     },
     {
       content: "المعهد الجامعي المهني",
-      url: "https://wa.me/49652477?",
+      url: "https://wa.me/49652477",
     },
     {
       content: "كلية الطب و الصيدلة",
-      url: "https://wa.me/47401121?",
+      url: "https://wa.me/47401121",
     },
     {
       content: "جامعة العلوم الإسلامية يالعيون",
-      url: "https://wa.me/49637971?",
+      url: "https://wa.me/49637971",
     },
     {
       content: "المعهد العالي للتعليم التكنلوجي بروصو",
-      url: "https://wa.me/37709100?",
+      url: "https://wa.me/37709100",
     },
     {
       content: "المعهد العالي المهني للغات و الترجمة و الترجمة الفورية",
-      url: "https://wa.me/26528299?",
+      url: "https://wa.me/26528299",
     },
     {
       content: "المدرسة الوطنية العليا لعلوم الصحة",
-      url: "https://wa.me/26676762?",
+      url: "https://wa.me/26676762",
     },
   ];
 
