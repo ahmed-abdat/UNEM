@@ -4,7 +4,15 @@ import "../Fst.css";
 import { useState } from "react";
 
 export default function FST() {
-  const [choosenSpeciality, setChoosenSpeciality] = useState("17IdOq6c-90NuSqUJh3enxARpqAaSAbfh");
+
+  const specialiter = [
+    { name: "Droit", id: "13TBDylnzMs78QlEV98YivkupPQE91_Ko" },
+    { name: "Economie", id: "1ZqkKgqJu-oPY-a4su2q51YrhGvBotn6D" },
+    { name: "Professionnelle", id: "1jgaqVTUHa6wMGU7eU9UTCdgQVMCsCqm4" },
+  ];
+
+
+  const [choosenSpeciality, setChoosenSpeciality] = useState(specialiter[0].id);
 
   const handelChoosenSpeciality = (speciality) => {
     setChoosenSpeciality((prev) => {
@@ -12,14 +20,10 @@ export default function FST() {
     });
   };
 
-  const specialiter = [
-    { name: "Droit", id: "10r0wWfT3Od9YZZUpxrS6X9FvMnd1eF6y" },
-    { name: "Economie", id: "1ZqkKgqJu-oPY-a4su2q51YrhGvBotn6D" },
-    { name: "Professionnelle", id: "1jgaqVTUHa6wMGU7eU9UTCdgQVMCsCqm4" },
-  ];
+
   return (
     <>
-      <Header picture={"/fac/11.png"} />
+      <Header picture={"/fac/11.jpg"} />
       <section className="speciality">
         {specialiter.map((item) => (
           <div className="speciality-item" key={item.id}>

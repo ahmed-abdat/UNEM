@@ -41,6 +41,7 @@ import FmInstitution from './pages/AllInstitution/Fm/Fm'
 import TranslateInstitution from './pages/AllInstitution/Translate/Translate'
 import RosoInstitution from './pages/AllInstitution/Roso/Roso'
 import UsiInstitution from './pages/AllInstitution/Usi/Usi'
+import EnessInstitution from './pages/AllInstitution/Eness/Eness'
 
 const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
 const Form = lazy(() => import("./pages/Form/Form"));
@@ -85,6 +86,7 @@ function App() {
           <Route path="/institutions-translate" element={<TranslateInstitution />} />
           <Route path="/institutions-roso" element={<RosoInstitution />} />
           <Route path="/institutions-usi" element={<UsiInstitution />} />
+          <Route path="/institutions-enss" element={<EnessInstitution />} /> 
           
 
           <Route path="/remote-fm" element={<RemoteIframe />} />
