@@ -40,6 +40,12 @@ export default function Calculation() {
     if (Fparam === "" || Sparam === "" || Tparam === "" || MG === "") return;
     const MOR = CalculMoyenOR_SN(Fparam, Sparam, Tparam, MG);
     setMOR(MOR);
+
+      // Scroll to the bottom of the page
+  window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: 'smooth',
+  });
   };
 
   // validate text

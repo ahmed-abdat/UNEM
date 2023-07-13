@@ -1,46 +1,40 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-// import SpinerLoader from "./components/SpinerLoader";
 import Loading from "./components/Loading";
-import Resulta from "./pages/resulta/Resulat";
-import Revision from "./pages/revision/Revision";
-import Whatsapp from "./pages/whtsapp/Whatsapp";
-import Institutions from "./pages/Institutions/Institutions";
-import Branchers from "./pages/Branches/Branches";
-import Schedules from "./pages/Schedules/Schedules";
-import Remote from "./pages/Remote/Remote";
-
 import NoteFound from "./components/NoteFound";
-
-// All result
-import Fst from "./pages/AllResults/Fst/FST";
-import Fsje from './pages/AllResults/FSJE/FSJE'
-import Fslh from './pages/AllResults/FSLH/Fslh'
-import Iscae from './pages/AllResults/Iscae/Iscae'
-import Iseri from './pages/AllResults/Iseri/Iseri'
-import Uip from './pages/AllResults/Uip/Uip'
-import Fm from './pages/AllResults/Fm/Fm'
-import Usi from './pages/AllResults/Usi/Usi'
-import Roso from './pages/AllResults/Roso/Roso'
-import Translate from './pages/AllResults/Translate/Translate'
-import Enss from './pages/AllResults/Enss/Enss'
-
-// All Institutions
-import FstInstitution from "./pages/AllInstitution/Fst/Fst";
-import FsjhInstitution from "./pages/AllInstitution/Fsje/Fsjh";
-import FslhInstitution from "./pages/AllInstitution/Fslh/Fslh";
-import IscaeInstitution from "./pages/AllInstitution/Iscae/Iscae";
-import UipInstitution from "./pages/AllInstitution/Uip/Uip";
 
 const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
-const RemoteIframe = lazy(() => import('./pages/Remote/RemoteIframe'))
-const Form = lazy(() => import('./pages/Form/Form'))
+const Resulta = lazy(() => import("./pages/resulta/Resulat"));
+const Revision = lazy(() => import("./pages/revision/Revision"));
+const Whatsapp = lazy(() => import("./pages/whtsapp/Whatsapp"));
+const Institutions = lazy(() => import("./pages/Institutions/Institutions"));
+const Branches = lazy(() => import("./pages/Branches/Branches"));
+const Schedules = lazy(() => import("./pages/Schedules/Schedules"));
+const Remote = lazy(() => import("./pages/Remote/Remote"));
+
+// All result
+const Fst = lazy(() => import("./pages/AllResults/Fst/FST"));
+const Fsje = lazy(() => import("./pages/AllResults/FSJE/FSJE"));
+const Fslh = lazy(() => import("./pages/AllResults/FSLH/Fslh"));
+const Iscae = lazy(() => import("./pages/AllResults/Iscae/Iscae"));
+const Iseri = lazy(() => import("./pages/AllResults/Iseri/Iseri"));
+const Uip = lazy(() => import("./pages/AllResults/Uip/Uip"));
+const Fm = lazy(() => import("./pages/AllResults/Fm/Fm"));
+const Usi = lazy(() => import("./pages/AllResults/Usi/Usi"));
+const Roso = lazy(() => import("./pages/AllResults/Roso/Roso"));
+const Translate = lazy(() => import("./pages/AllResults/Translate/Translate"));
+const Enss = lazy(() => import("./pages/AllResults/Enss/Enss"));
+
+// All Institutions
+const FstInstitution = lazy(() => import("./pages/AllInstitution/Fst/Fst"));
+const FsjhInstitution = lazy(() => import("./pages/AllInstitution/Fsje/Fsjh"));
+const FslhInstitution = lazy(() => import("./pages/AllInstitution/Fslh/Fslh"));
+const IscaeInstitution = lazy(() => import("./pages/AllInstitution/Iscae/Iscae"));
+const UipInstitution = lazy(() => import("./pages/AllInstitution/Uip/Uip"));
+
+const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
+const Form = lazy(() => import("./pages/Form/Form"));
 
 function App() {
   return (
@@ -54,11 +48,11 @@ function App() {
           <Route path="/revision" element={<Revision />} />
           <Route path="/whatsapp" element={<Whatsapp />} />
           <Route path="/institutions" element={<Institutions />} />
-          <Route path="/branches" element={<Branchers />} />
+          <Route path="/branches" element={<Branches />} />
           <Route path="/schedule" element={<Schedules />} />
           <Route path="/remote" element={<Remote />} />
 
-          {/* revision  */}
+          {/* revision */}
           <Route path="/revision-fst" element={<Fst />} />
           <Route path="/revision-fsje" element={<Fsje />} />
           <Route path="/revision-fslh" element={<Fslh />} />
@@ -78,13 +72,11 @@ function App() {
           <Route path="/institutions-iscae" element={<IscaeInstitution />} />
           <Route path="/institutions-uip" element={<UipInstitution />} />
 
-
           <Route path="/remote-fm" element={<RemoteIframe />} />
           <Route path="/form" element={<Form />} />
 
           {/* note found */}
           <Route path="*" element={<NoteFound />} />
-
         </Routes>
       </Suspense>
     </Router>
