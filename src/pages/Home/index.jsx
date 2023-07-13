@@ -13,7 +13,7 @@ export default function home() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
-    }, 3000);
+    }, 2000);
   }, [])
 
 
@@ -87,7 +87,7 @@ export default function home() {
         </header>
         <HomeOption options={options} />
         <div className="info">
-          <h3>أكبر نقابة طلابية موريتانية تأسست 13 مايو سنة 2000 م</h3>
+          <h3>أكبر نقابة طلابية موريتانية تأسست 13 مايو 2000 م</h3>
         </div>
         <div className="contanct">
           <div className="layout"></div>

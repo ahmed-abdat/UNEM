@@ -9,6 +9,7 @@
 }
 
 .intro img{
+    background-color: #077139;
     max-height: 10rem;
     object-fit: contain;
 }
