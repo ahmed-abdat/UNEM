@@ -13,6 +13,10 @@ const Branches = lazy(() => import("./pages/Branches/Branches"));
 const Schedules = lazy(() => import("./pages/Schedules/Schedules"));
 const Remote = lazy(() => import("./pages/Remote/Remote"));
 
+
+// intro 
+import Intro from "./components/Intro";
+
 // All result
 const Fst = lazy(() => import("./pages/AllResults/Fst/FST"));
 const Fsje = lazy(() => import("./pages/AllResults/FSJE/FSJE"));

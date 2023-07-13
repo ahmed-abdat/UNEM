@@ -13,8 +13,8 @@ export default function FST() {
   };
 
   const specialiter = [
-    { name: "BG", id: "17IdOq6c-90NuSqUJh3enxARpqAaSAbfh" },
-    { name: "PC", id: "17LQAoxbF3cGJgmTLP_uAcnLZAXeCdjz-" },
+    { name: "Droit", id: "10r0wWfT3Od9YZZUpxrS6X9FvMnd1eF6y" },
+    { name: "Economie", id: "1ZqkKgqJu-oPY-a4su2q51YrhGvBotn6D" },
     { name: "MPI", id: "17QchjyP0r9NMklrkZp1HRoaVrgpRiwuo" },
   ];
   return (

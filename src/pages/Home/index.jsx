@@ -1,9 +1,22 @@
 import HomeOption from "../../components/HomeOption";
 import Img from "../../assets/texture.png";
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
+import Intro from "../../components/Intro";
 import "./home.css";
+import { useEffect, useState } from "react";
 
 export default function home() {
+
+  const [isLoading , setIsLoading] = useState(true)
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 4000);
+  }, [])
+
+
   // handel whatsapp redirect
   const handelWhatsapp = () => {
     window.open("https://wa.me/36199323?text=''");
@@ -59,7 +72,11 @@ export default function home() {
 
   return (
     <main className="home">
-      <section className="main">
+      {
+        isLoading ? (
+          <Intro />
+        ) : (
+          <section className="main">
         <header>
           <div className="img">
             <img src={Img} alt="" />
@@ -85,6 +102,8 @@ export default function home() {
           </div>
         </div>
       </section>
+        )
+      }
     </main>
   );
 }

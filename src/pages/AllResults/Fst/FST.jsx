@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function FST() {
 
   const specialiter = [
-    { name: "BG", id: "1c1jVZ2RWwEg5T3VubJl5PG6DfDBEz54H" },
+    { name: "BG", id: "17IdOq6c-90NuSqUJh3enxARpqAaSAbfh" },
     { name: "PC", id: "17LQAoxbF3cGJgmTLP_uAcnLZAXeCdjz-" },
     { name: "MPI", id: "17QchjyP0r9NMklrkZp1HRoaVrgpRiwuo" },
   ];
