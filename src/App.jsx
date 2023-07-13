@@ -35,6 +35,7 @@ import UipInstitution from "./pages/AllInstitution/Uip/Uip";
 import IseriInstitution from "./pages/AllInstitution/Iseri/Iseri";
 import FmInstitution from './pages/AllInstitution/Fm/Fm'
 import TranslateInstitution from './pages/AllInstitution/Translate/Translate'
+import RosoInstitution from './pages/AllInstitution/Roso/Roso'
 import UsiInstitution from './pages/AllInstitution/Usi/Usi'
 
 const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
@@ -78,6 +79,7 @@ function App() {
           <Route path="/institutions-iseri" element={<IseriInstitution />} />
           <Route path="/institutions-fm" element={<FmInstitution />} />
           <Route path="/institutions-translate" element={<TranslateInstitution />} />
+          <Route path="/institutions-roso" element={<RosoInstitution />} />
           <Route path="/institutions-usi" element={<UsiInstitution />} />
           
 
