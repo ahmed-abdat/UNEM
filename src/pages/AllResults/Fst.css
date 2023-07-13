@@ -20,7 +20,7 @@
   grid-gap: 0.5rem;
   display: grid;
   gap: 0.5rem;
-  grid-auto-columns: 26%;
+  grid-auto-columns: 40%;
   grid-auto-flow: column;
   grid-template-rows: -webkit-min-content;
   grid-template-rows: min-content;
@@ -34,7 +34,7 @@
 .speciality .speciality-item {
   cursor: pointer;
   scroll-snap-align: start;
-  padding: 0.4rem 1.5rem;
+  padding: 0.4rem 0;
   background: #f8f8f8;
   color: #179652;
   border-radius: 6px;
