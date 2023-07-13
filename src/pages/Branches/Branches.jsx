@@ -15,7 +15,7 @@ export default function Resulta() {
     },
     {
         content : 'كلية العلوم القانونية و الإقتصادية (الملحق 2)' ,
-        url : "https://wa.me/49876770"
+        url : "https://wa.me/44078988"
     },
     {
       content: "كلية الآداب و العلوم الإنسانية",
@@ -27,7 +27,7 @@ export default function Resulta() {
     },
     {
       content: "المعهد العالي للدراسات و البحوث الإسلامية",
-      url: "https://wa.me/33300307",
+      url: "https://wa.me/41658286",
     },
     {
       content: "المعهد الجامعي المهني",
@@ -35,7 +35,7 @@ export default function Resulta() {
     },
     {
       content: "كلية الطب و الصيدلة",
-      url: "https://wa.me/47401121",
+      url: "https://wa.me/20107901",
     },
     {
       content: "جامعة العلوم الإسلامية يالعيون",
