@@ -52,10 +52,7 @@ export default function Calculation() {
 
 
 
-  const SelectTitle =
-    option.value === "SN" || option.value === "M"
-      ? "Choisissez votre spécialité :"
-      : "إختر شعبتك";
+  const SelectTitle = "اختر شعبتك";
 
   const dir = option.value === "SN" || option.value === "M" ? "dir-fr" : "";
 

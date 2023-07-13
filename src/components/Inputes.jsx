@@ -79,7 +79,7 @@ export default function Inputes({
         value: MG,
       },
     ],
-    "الإداب الأصلية": [
+    "الآداب الأصلية": [
       {
         placeholder: "نتيجة التشريع",
         id: "Fparam",

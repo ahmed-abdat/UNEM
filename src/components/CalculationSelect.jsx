@@ -5,7 +5,7 @@ export default function CalculationSelect({ handelChange, value }) {
   const options = [
     { value: "العلوم الطبيعية", label: "العلوم الطبيعية" },
     { value: "الرياضيات", label: "الرياضيات" },
-    { value: "الإداب الأصلية", label: "الإداب الأصلية" },
+    { value: "الآداب الأصلية", label: "الآداب الأصلية" },
     { value: "الآداب العصرية", label: "الآداب العصرية" },
   ];
 

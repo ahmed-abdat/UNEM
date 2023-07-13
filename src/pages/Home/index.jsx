@@ -41,7 +41,7 @@ export default function home() {
       url: "/calculation",
     },
     {
-      content: "نتايج الإمتحانات",
+      content: "نتائج الامتحانات",
       url: "/resulta",
     },
     {
@@ -49,7 +49,7 @@ export default function home() {
       url: "/revision",
     },
     {
-      content: " المجموعات الواتسابية (باكولوريا) ",
+      content: " المجموعات الواتسابية (باكلوريا) ",
       url: "/whatsapp",
     },
     {
