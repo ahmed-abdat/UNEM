@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "../../components/Header";
 import CalculationSelect from "../../components/CalculationSelect";
-import CalculationLogo from "../../assets/4.svg";
 import Footer from "../../components/Footer";
 import Inputes from "../../components/Inputes";
 import "./calculation.css";
