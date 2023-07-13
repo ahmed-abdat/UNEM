@@ -10,7 +10,7 @@ export default function home() {
   const [isLoading , setIsLoading] = useState(true)
 
 
-  useEffect(() => {
+  useEffect(() => { 
     setIsLoading(true)
     setTimeout(() => {
       setIsLoading(false)
@@ -68,6 +68,10 @@ export default function home() {
     },
     {
       content: "التسجيل عن بعد",
+      url: "/remote",
+    },
+    {
+      content: " عن الاتحاد",
       url: "/remote",
     },
   ];
