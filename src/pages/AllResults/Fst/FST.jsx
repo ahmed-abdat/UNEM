@@ -1,6 +1,6 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import "../fst.css";
+import "../Fst.css";
 import { useState } from "react";
 
 export default function FST() {
