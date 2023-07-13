@@ -67,7 +67,7 @@ export default function Whatsapp() {
       <Header picture={"/04.jpeg"} />
       <section className="whatsapp">
         <form className="form">
-          <p>أدخل رقم الباكلوريا للإنضمام إلى المجموعة الخاصة بشعبتك</p>
+          <p>أدخل رقم الباكلوريا للانضمام إلى المجموعة الخاصة بشعبتك</p>
           <div className="inputs">
             {!isValid && (
               <div className="input">

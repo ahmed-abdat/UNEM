@@ -12,7 +12,7 @@ const options = [
     url : 'http://resultats.una.mr/FST/',
   },
   {
-    content : 'كلية العلوم القانونية و الإقتصادية' ,
+    content : 'كلية العلوم القانونية و الاقتصادية' ,
     url : 'http://resultats.una.mr/FSJE'
   }, {
     content : 'كلية الآداب و العلوم الإنسانية',

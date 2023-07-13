@@ -10,7 +10,7 @@ export default function Institutions() {
       url: "/institutions-fst",
     },
     {
-      content: "كلية العلوم القانونية و الإقتصادية",
+      content: "كلية العلوم القانونية و الاقتصادية",
       url: "/institutions-fsje",
     },
     {
@@ -38,7 +38,7 @@ export default function Institutions() {
       url: "/institutions-fm",
     },
     {
-      content: "جامعة العلوم الإسلامية بالعيون",
+      content: "جامعة العلوم الإسلامية بلعيون",
       url: "/institutions-usi",
     },
     {
