@@ -27,11 +27,15 @@ const Translate = lazy(() => import("./pages/AllResults/Translate/Translate"));
 const Enss = lazy(() => import("./pages/AllResults/Enss/Enss"));
 
 // All Institutions
-const FstInstitution = lazy(() => import("./pages/AllInstitution/Fst/Fst"));
-const FsjhInstitution = lazy(() => import("./pages/AllInstitution/Fsje/Fsjh"));
-const FslhInstitution = lazy(() => import("./pages/AllInstitution/Fslh/Fslh"));
-const IscaeInstitution = lazy(() => import("./pages/AllInstitution/Iscae/Iscae"));
-const UipInstitution = lazy(() => import("./pages/AllInstitution/Uip/Uip"));
+import FstInstitution from './pages/AllInstitution/Fst/Fst';
+import FsjhInstitution from "./pages/AllInstitution/Fsje/Fsjh";
+import FslhInstitution from "./pages/AllInstitution/Fslh/Fslh";
+import IscaeInstitution from "./pages/AllInstitution/Iscae/Iscae";
+import UipInstitution from "./pages/AllInstitution/Uip/Uip";
+import IseriInstitution from "./pages/AllInstitution/Iseri/Iseri";
+import FmInstitution from './pages/AllInstitution/Fm/Fm'
+import TranslateInstitution from './pages/AllInstitution/Translate/Translate'
+import UsiInstitution from './pages/AllInstitution/Usi/Usi'
 
 const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
 const Form = lazy(() => import("./pages/Form/Form"));
@@ -71,6 +75,11 @@ function App() {
           <Route path="/institutions-fslh" element={<FslhInstitution />} />
           <Route path="/institutions-iscae" element={<IscaeInstitution />} />
           <Route path="/institutions-uip" element={<UipInstitution />} />
+          <Route path="/institutions-iseri" element={<IseriInstitution />} />
+          <Route path="/institutions-fm" element={<FmInstitution />} />
+          <Route path="/institutions-translate" element={<TranslateInstitution />} />
+          <Route path="/institutions-usi" element={<UsiInstitution />} />
+          
 
           <Route path="/remote-fm" element={<RemoteIframe />} />
           <Route path="/form" element={<Form />} />

@@ -34,7 +34,7 @@ export default function Institutions() {
       url: "/institutions-uip",
     },
     {
-      content: "كلية الطب و الصيدلة",
+      content: "كلية الطب و الصيدلة و طب الأسنان",
       url: "/institutions-fm",
     },
     {
