@@ -25,7 +25,7 @@ export default function FST() {
  
   return (
     <>
-      <Header picture={"/fac/02.png"} />
+      <Header picture={"/fac/01.png"} />
       <section className="speciality">
         {specialiter.map((item) => (
           <div className={`speciality-item ${choosenSpeciality === item.id ? 'active' : ''}`} key={item.id}>
