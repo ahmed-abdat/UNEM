@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
 import data from "../../data/bac.json";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 
 export default function Whatsapp() {
@@ -12,6 +12,9 @@ export default function Whatsapp() {
   const [numBac, setNumBac] = useState("");
   const [yearBorn, setYearBorn] = useState("");
   const [student, setStudent] = useState("");
+
+  const numBacRef = useRef(null)
+  const yearBornRef = useRef(null)
 
   const handelValideStudent = (e) => {
     e.preventDefault();
@@ -24,7 +27,7 @@ export default function Whatsapp() {
       setNumBac("");
       return;
     }
-
+    numBacRef.current.blur()
     toast.info("للأسف لايمكنكم الدخول, نتمنى لكم حظا أوفر في القادم");
   };
 
@@ -58,6 +61,7 @@ export default function Whatsapp() {
 
       return;
     }
+    yearBornRef.current.blur()
     toast.error(" عذرا يرجى التأكد من سنة الميلاد");
   };
 
@@ -81,6 +85,8 @@ export default function Whatsapp() {
                 <input
                   type="number"
                   value={numBac}
+                  ref={numBacRef}
+                  onKeyDown={(e) => e.key === 'Enter' && handelValideStudent(e)}
                   onChange={handleNumBacChange}
                   placeholder="أدخل رقم الباكلوريا"
                 />
@@ -92,6 +98,8 @@ export default function Whatsapp() {
                 <input
                   type="number"
                   value={yearBorn}
+                  ref={yearBornRef}
+                  onKeyDown={(e) => e.key === 'Enter' && handelValideYearnBorn(e)}
                   onChange={handelYearBorn}
                   placeholder="أدخل سنة الميلاد"
                 />
