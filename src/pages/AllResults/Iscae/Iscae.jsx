@@ -6,9 +6,14 @@ import { useState } from "react";
 export default function FST() {
 
   const specialiter = [
-    { name: "BG", id: "17IdOq6c-90NuSqUJh3enxARpqAaSAbfh" },
-    { name: "PC", id: "17LQAoxbF3cGJgmTLP_uAcnLZAXeCdjz-" },
-    { name: "MPI", id: "17QchjyP0r9NMklrkZp1HRoaVrgpRiwuo" },
+    { name: "GRH", id: "1o02xWde7CMPV2ghUczAecha-Flq79pQo" },
+    { name: "IG", id: "1GIcbp2gXSgw2mQN5WzWzz6gZ8GFM-c5F" },
+    { name: "TCM", id: "1Oa2RwhnL9ngdCQFgs2UPp9Xaww7mv_x5" },
+    { name: "SAE", id: "1_boN__SeP5325VJRKhzU9HzFxKgYYJ1y" },
+    { name: "RIT", id: "1WC9xF4crqhVdOlqXfTVa13FbIYQh_PtZ" },
+    { name: "FC", id: "1ieNZP8e4z_H9Lx6oLF3d9TN9jnrW5T1j" },
+    { name: "DI", id: "1L8FeIA7iwdNlX_tI4RcBEVf8B77sQwkI" },
+    { name: "BA", id: "1ad5V0wcrGeCqKz4ZJwsa_yRiHIu5CHED" },
   ];
 
 
@@ -21,6 +26,11 @@ export default function FST() {
       return speciality;
     });
   };
+
+  const style = {
+    direction: "rtl",
+    gridAutoColumns : "58%",
+  }
 
  
   return (

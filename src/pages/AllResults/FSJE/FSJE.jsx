@@ -6,9 +6,11 @@ import { useState } from "react";
 export default function FST() {
 
   const specialiter = [
-    { name: "Droit", id: "13TBDylnzMs78QlEV98YivkupPQE91_Ko" },
+    { name: "Droit", id: "1Lb7YDMylIugnKeWTyyfZnz_58fhiF1L3" },
     { name: "Economie", id: "1OO6y47-bmxcyTJQjDecm9pFFNPF2l7o9" },
-    { name: "Professionnelle", id: "1jgaqVTUHa6wMGU7eU9UTCdgQVMCsCqm4" },
+    { name : 'GRH' , id : "15fYV9qKNnLY52Sa9lS_2kSX-kJ5XLSoQ"},
+    { name : 'FC' , id : "1hupwo_zxW5PmctDPhaaTcvJ6_GSTAvlK"} ,
+    { name : "BA" , id : "1u1t73iSXtoBdRHWsKi4U8zo9xfsoT7s8"} ,
   ];
 
 
@@ -21,6 +23,11 @@ export default function FST() {
       return speciality;
     });
   };
+
+  const style = {
+    direction: "rtl",
+    gridAutoColumns : "58%",
+  }
 
  
   return (
