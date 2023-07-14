@@ -20,9 +20,9 @@ export default function Whatsapp() {
     console.log(data[0].NODOSS)
     const isValid = data.find((student) => student.NODOSS == +numBac);
     setStudent(isValid)
-    console.log(isValid)
 
-    if(isValid?.Moyenne >= 10){
+
+    if(isValid?.MOYBAC >= 10){
         toast.success('تهانينا ')
         return;
     }
@@ -68,6 +68,17 @@ export default function Whatsapp() {
               </button>
             </div>     
         </form>
+        {
+          student && (
+            <>
+          <section className="info">
+          <h1> الإسم : {student?.NOMPL} </h1>
+            <h2> المعدل : {student.MOYBAC.toFixed(2)}</h2>
+            <h3> القرار : {student.Decision}</h3>
+          </section>
+            </>
+          )
+        }
 {/* 
         {
           student && (

@@ -71,3 +71,10 @@
     cursor: pointer;
   }
   
+
+  .info {
+    padding-inline: 0.5rem;
+    margin-top: 2rem;
+    text-align: center;
+    color: #077038;
+  }
