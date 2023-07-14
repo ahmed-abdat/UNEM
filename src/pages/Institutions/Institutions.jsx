@@ -42,8 +42,16 @@ export default function Institutions() {
       url: "/institutions-fm",
     },
     {
-      content: "جامعة العلوم الإسلامية بلعيون",
-      url: "/institutions-usi",
+      content: "كلية أصول الدين بجامعة العلوم الإسلامية",
+      url: "/institutions-usi-1",
+    },
+    {
+      content: "كلية الشريعة بجامعة العلوم الإسلامية",
+      url: "/institutions-usi-2",
+    },
+    {
+      content: "كلية اللغة العربية والعلوم الإنسانية بلعيون  ",
+      url: "/institutions-usi-3",
     },
     {
       content: "المعهد العالي للتعليم التكنلوجي بروصو",
