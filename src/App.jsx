@@ -33,6 +33,7 @@ const Usi = lazy(() => import("./pages/AllResults/Usi/Usi"));
 const Roso = lazy(() => import("./pages/AllResults/Roso/Roso"));
 const Translate = lazy(() => import("./pages/AllResults/Translate/Translate"));
 const Enss = lazy(() => import("./pages/AllResults/Enss/Enss"));
+const Supnum = lazy(() => import("./pages/AllResults/Supnum/Supnum"));
 
 // All Institutions
 import FstInstitution from './pages/AllInstitution/Fst/Fst';
@@ -46,6 +47,8 @@ import TranslateInstitution from './pages/AllInstitution/Translate/Translate'
 import RosoInstitution from './pages/AllInstitution/Roso/Roso'
 import UsiInstitution from './pages/AllInstitution/Usi/Usi'
 import EnessInstitution from './pages/AllInstitution/Eness/Eness'
+import SupnumInstitution from './pages/AllInstitution/Supnum/Supnum'
+
 
 const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
 const Form = lazy(() => import("./pages/Form/Form"));
@@ -79,6 +82,7 @@ function App() {
           <Route path="/roso" element={<Roso />} />
           <Route path="/translate" element={<Translate />} />
           <Route path="/enss" element={<Enss />} />
+          {/* <Route path="/supnum" element={<Supnum />} /> */}
 
           {/* Institutions */}
           <Route path="/institutions-fst" element={<FstInstitution />} />
@@ -92,6 +96,7 @@ function App() {
           <Route path="/institutions-roso" element={<RosoInstitution />} />
           <Route path="/institutions-usi" element={<UsiInstitution />} />
           <Route path="/institutions-enss" element={<EnessInstitution />} /> 
+          {/* <Route path="/institutions-supnum" element={<SupnumInstitution />} /> */}
           
 
           <Route path="/remote-fm" element={<RemoteIframe />} />
