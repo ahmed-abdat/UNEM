@@ -17,7 +17,7 @@ export default function Whatsapp() {
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    console.log(data[0].NODOSS)
+  
     const isValid = data.find((student) => student.NODOSS == +numBac);
     setStudent(isValid)
 
@@ -45,6 +45,7 @@ export default function Whatsapp() {
     <>
       <Header picture={"/04.jpeg"} />
       <section className="whatsapp">
+        <section className="bac">نتائج الباكلوريا</section>
         <form className="form">
             <p>أدخل رقم الباكلوريا </p>
           <div className="inputs">
