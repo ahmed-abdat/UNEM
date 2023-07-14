@@ -15,7 +15,7 @@ export default function Resulta() {
     },
     {
         content : 'كلية العلوم القانونية و الإقتصادية (الملحق 2)' ,
-        url : "https://wa.me/44078988"
+        url : "https://wa.me/+22244078988"
     },
     {
       content: "كلية الآداب و العلوم الإنسانية",
