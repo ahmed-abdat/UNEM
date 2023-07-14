@@ -25,10 +25,14 @@ export default function Institutions() {
       content: "المعهد العالي للدراسات و البحوث الإسلامية",
       url: "/institutions-iseri",
     },
-    // {
-    //   content: "المعهد العالي للرقمنة",
-    //   url: "/institutions-supnum",
-    // },
+    {
+      content: "المعهد العالي للرقمنة",
+      url: "/institutions-supnum",
+    },
+    {
+      content: "المعهد العالي للغة لإنجليزية",
+      url: "/institutions-anglais",
+    },
     {
       content: "المعهد الجامعي المهني",
       url: "/institutions-uip",

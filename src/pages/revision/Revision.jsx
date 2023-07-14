@@ -25,13 +25,17 @@ export default function Resulta() {
       content: "المعهد العالي للدراسات و البحوث الإسلامية",
       url: "/revision-iseri",
     },
-    // {
-    //   content: "المعهد العالي للرقمنة",
-    //   url: "/supnum",
-    // },
+    {
+      content: "المعهد العالي للرقمنة",
+      url: "/supnum",
+    },
     {
       content: "المعهد الجامعي المهني",
       url: "/revision-iup",
+    },
+    {
+      content: "المعهد العالي للغة لإنجليزية",
+      url: "/revision-anglais",
     },
     {
       content: "كلية الطب و الصيدلة و طب الأسنان",

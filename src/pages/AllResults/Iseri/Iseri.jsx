@@ -6,8 +6,8 @@ import { useState } from "react";
 export default function FST() {
 
   const specialiter = [
-    { name: "العربية", id: "1S7z_isXoTWgTczw9r9C4Up1d6qL_qot2" },
-    { name: "الشريعة", id: "1E8qe26WXZ3cDy4k6govjPlFZYMZW-qvL" },
+    { name: "مسلك اللغة العربية", id: "1S7z_isXoTWgTczw9r9C4Up1d6qL_qot2" },
+    { name: "مسلك الدراسات الإسلامية", id: "1E8qe26WXZ3cDy4k6govjPlFZYMZW-qvL" },
   ];
 
 
@@ -23,7 +23,7 @@ export default function FST() {
 
   const style = {
     direction: "rtl",
-    gridAutoColumns : "unset",
+    gridAutoColumns : "62%",
   }
 
  
