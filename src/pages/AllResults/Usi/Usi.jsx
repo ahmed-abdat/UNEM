@@ -6,9 +6,9 @@ import { useState } from "react";
 export default function FST() {
 
   const specialiter = [
-    { name: "BG", id: "17IdOq6c-90NuSqUJh3enxARpqAaSAbfh" },
-    { name: "PC", id: "17LQAoxbF3cGJgmTLP_uAcnLZAXeCdjz-" },
-    { name: "MPI", id: "17QchjyP0r9NMklrkZp1HRoaVrgpRiwuo" },
+    { name: "كلية للغة العربية", id: "1ujyhGNKOpYKs3oUvANjYFIFMrCRU_Mx6" },
+    { name: "كلية الشريعة", id: "1BTlz5hJbV3muT6vmzbdbO-cPHpBykBID" },
+    { name: "كلية أصول الدين", id: "1LXvtvHoAqt5MW6QUx2-fTP_suW8UD7hR" },
   ];
 
 
@@ -22,11 +22,16 @@ export default function FST() {
     });
   };
 
+  const style = {
+    direction: "rtl",
+    gridAutoColumns : "58%",
+  }
+
  
   return (
     <>
       <Header picture={"/fac/07.png"} />
-      <section className="speciality">
+      <section className="speciality" style={style}>
         {specialiter.map((item) => (
           <div className={`speciality-item ${choosenSpeciality === item.id ? 'active' : ''}`} key={item.id}>
             <h3 onClick={() => handelChoosenSpeciality(item.id)}>

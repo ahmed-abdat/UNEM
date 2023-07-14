@@ -19,6 +19,8 @@ const Remote = lazy(() => import("./pages/Remote/Remote"));
 // intro 
 import Intro from "./components/Intro";
 
+const About = lazy(() => import("./pages/AllInstitution/About/About"));
+
 // All revision archive
 const Fst = lazy(() => import("./pages/AllResults/Fst/FST"));
 const Fsje = lazy(() => import("./pages/AllResults/FSJE/FSJE"));
@@ -63,6 +65,7 @@ function App() {
           <Route path="/branches" element={<Branches />} />
           <Route path="/schedule" element={<Schedules />} />
           <Route path="/remote" element={<Remote />} />
+          <Route path="/about" element={<About />} />
 
           {/* all revision archive */}
           <Route path="/revision-fst" element={<Fst />} />

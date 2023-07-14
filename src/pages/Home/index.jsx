@@ -72,7 +72,7 @@ export default function home() {
     },
     {
       content: " عن الاتحاد",
-      url: "/remote",
+      url: "/about",
     },
   ];
 
