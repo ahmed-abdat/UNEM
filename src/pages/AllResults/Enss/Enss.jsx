@@ -24,7 +24,7 @@ export default function FST() {
   
   const style = {
     direction: "rtl",
-    // gridAutoColumns : "58%",
+    gridAutoColumns : "unset",
   }
 
  
