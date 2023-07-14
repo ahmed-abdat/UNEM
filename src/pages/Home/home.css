@@ -164,3 +164,15 @@
   border-top-right-radius: 10px;
   background : linear-gradient(34deg, #1e9100, #35ce0b);
 }
+
+
+
+/* media query */
+
+@media screen and (min-width : 767px) {
+  .home--option , .home header {
+    max-width: 70%;
+    /* justify-content: center; */
+    margin-inline: auto;
+  }
+}
