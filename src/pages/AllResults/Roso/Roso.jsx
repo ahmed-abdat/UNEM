@@ -7,8 +7,8 @@ export default function FST() {
 
   const specialiter = [
     { name: "L1", id: "166Kb6SqWlHyv5G8Tuzn5vehF9czb0wz6" },
-    { name: "L2", id: "" },
-    // { name: "L3", id: "" },
+    { name: "L2", id: "167AEFLuYSQfSbheIM1-RXviL1GGPP2G4" },
+    { name: "L3", id: "1697fBGl5Yr2GQTiRC5rVMI_n2I5cQO_D" },
   ];
 
 
