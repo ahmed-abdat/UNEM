@@ -8,13 +8,10 @@ import { useRef, useState } from "react";
 
 
 export default function Whatsapp() {
-  const [isValid, setIsValid] = useState(false);
   const [numBac, setNumBac] = useState("");
-  const [yearBorn, setYearBorn] = useState("");
-  const [student, setStudent] = useState("");
 
   const numBacRef = useRef(null)
-  const yearBornRef = useRef(null)
+
 
   const handelValideStudent = (e) => {
     e.preventDefault();
@@ -64,7 +61,7 @@ export default function Whatsapp() {
           </div>
             <div className="btn">
               <button
-                disabled={numBac.length !== 5}
+                disabled={numBac.length !== 4}
                 onClick={handelValideStudent}
               >
                 إنضمام
