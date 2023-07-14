@@ -49,7 +49,10 @@ import IseriInstitution from "./pages/AllInstitution/Iseri/Iseri";
 import FmInstitution from './pages/AllInstitution/Fm/Fm'
 import TranslateInstitution from './pages/AllInstitution/Translate/Translate'
 import RosoInstitution from './pages/AllInstitution/Roso/Roso'
-import UsiInstitution from './pages/AllInstitution/Usi/Usi'
+import Usi1Institution from './pages/AllInstitution/Usi-1/Usi-1'
+import Usi2Institution from './pages/AllInstitution/Usi-2/Usi-2'
+import Usi3Institution from './pages/AllInstitution/Usi-3/Usi-3'
+
 import EnessInstitution from './pages/AllInstitution/Eness/Eness'
 import AnglaisInstitution from './pages/AllInstitution/Anglais/Anglais'
 import SupnumInstitution from './pages/AllInstitution/Supnum/Supnum'
@@ -103,7 +106,9 @@ function App() {
           <Route path="/institutions-fm" element={<FmInstitution />} />
           <Route path="/institutions-translate" element={<TranslateInstitution />} />
           <Route path="/institutions-roso" element={<RosoInstitution />} />
-          <Route path="/institutions-usi" element={<UsiInstitution />} />
+          <Route path="/institutions-usi-1" element={<Usi1Institution />} />
+          <Route path="/institutions-usi-2" element={<Usi2Institution />} />
+          <Route path="/institutions-usi-3" element={<Usi3Institution />} />
           <Route path="/institutions-enss" element={<EnessInstitution />} /> 
           <Route path="/institutions-anglais" element={<AnglaisInstitution />} />
           <Route path="/institutions-supnum" element={<SupnumInstitution />} />
