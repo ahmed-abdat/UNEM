@@ -19,12 +19,17 @@ export default function Whatsapp() {
   const handelValideStudent = (e) => {
     e.preventDefault();
     const isValid = data.find((student) => student.NumBac === +numBac);
+    
     if (isValid) {
-      setIsValid(true);
-      setStudent(isValid);
-      console.log(isValid.DateNaissance);
-      toast.success("هنيئا لكم النجاح ");
-      setNumBac("");
+      const whtspUrl = {
+        SN: "https://chat.whatsapp.com/LvTH7hxFAfF4nmVDozWCVp",
+        M: "https://chat.whatsapp.com/KFwkj9xNM5mLlkIisqlMra",
+        LO: "https://chat.whatsapp.com/E66wEjpS8gm3ZXDfqPTQUr",
+        LM: "https://chat.whatsapp.com/CVlHmIUkkNvFC6eJExfLHl",
+        T: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
+      };
+
+      window.open(whtspUrl[isValid.Série])
       return;
     }
     numBacRef.current.blur()
@@ -37,49 +42,14 @@ export default function Whatsapp() {
     setNumBac(numBacValue);
   };
 
-  const handelYearBorn = (e) => {
-    const { value } = e.target;
-    let yearBornValue = value.slice(0, 4); // Restrict to 4 digits
-    // yearBornValue = yearBornValue.replace(/[^1-2]/g, '');
-    setYearBorn(yearBornValue);
-  };
-
-  const handelValideYearnBorn = (e) => {
-    e.preventDefault();
-    const validYear = student.DateNaissance.slice(-4);
-
-    if (validYear === yearBorn) {
-      const whtspUrl = {
-        SN: "https://chat.whatsapp.com/LvTH7hxFAfF4nmVDozWCVp",
-        M: "https://chat.whatsapp.com/KFwkj9xNM5mLlkIisqlMra",
-        LO: "https://chat.whatsapp.com/E66wEjpS8gm3ZXDfqPTQUr",
-        LM: "https://chat.whatsapp.com/CVlHmIUkkNvFC6eJExfLHl",
-        T: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
-      };
-
-      window.open(whtspUrl[student.Série]);
-
-      return;
-    }
-    yearBornRef.current.blur()
-    toast.error(" عذرا يرجى التأكد من سنة الميلاد");
-  };
-
-
+ 
   return (
     <>
       <Header picture={"/04.jpeg"} />
       <section className="whatsapp">
         <form className="form">
-        {
-          isValid ? (
-            <p> أهلا  بكم لتأكيد الدخول أضيفو سنة الميلاد  </p>
-          ) : (
             <p> للانضمام إلى المجموعة الخاصة بشعبتكم يرجى إدخال رقم الباكلوريا</p>
-          )
-        }
           <div className="inputs">
-            {!isValid && (
               <div className="input">
                 <label htmlFor="#numBac"> رقم الباكلوريا</label>
                 <input
@@ -91,40 +61,15 @@ export default function Whatsapp() {
                   placeholder="أدخل رقم الباكلوريا"
                 />
               </div>
-            )}
-            {isValid && (
-              <div className="input">
-                <label htmlFor="#numBac"> سنة الميلاد </label>
-                <input
-                  type="number"
-                  value={yearBorn}
-                  ref={yearBornRef}
-                  onKeyDown={(e) => e.key === 'Enter' && handelValideYearnBorn(e)}
-                  onChange={handelYearBorn}
-                  placeholder="أدخل سنة الميلاد"
-                />
-              </div>
-            )}
           </div>
-          {!isValid ? (
             <div className="btn">
               <button
                 disabled={numBac.length !== 5}
                 onClick={handelValideStudent}
               >
-                تأكيد
-              </button>
-            </div>
-          ) : (
-            <div className="btn">
-              <button
-                disabled={yearBorn.length !== 4}
-                onClick={handelValideYearnBorn}
-              >
                 إنضمام
               </button>
-            </div>
-          )}
+            </div>     
         </form>
       </section>
       <ToastContainer
