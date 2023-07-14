@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function FST() {
 
   const specialiter = [
-    { name: "جذع مشترك", id: "1-0H0PBvbaE1tpnCYLssu9UZiqu-_6AiC" },
+    { name: "الإتصال الدولي", id: "1V6VwhPVpDFM194eOIv5Kod4hQldD725-" },
   ];
 
 
