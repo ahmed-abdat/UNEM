@@ -31,7 +31,7 @@ export default function Resulta() {
     },
     {
       content: "المعهد الجامعي المهني",
-      url: "https://wa.me/49652477",
+      url: "https://wa.me/+22249652477",
     },
     {
       content: "كلية الطب و الصيدلة",
