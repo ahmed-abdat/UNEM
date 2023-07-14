@@ -59,7 +59,7 @@ export default function Whatsapp() {
                 disabled={numBac.length !== 4}
                 onClick={handelValideStudent}
               >
-                إنضمام
+                تأكيد 
               </button>
             </div>     
         </form>
