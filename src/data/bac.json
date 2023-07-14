@@ -4687,7 +4687,8 @@
  {
   "Série": "SN",
   "NumBac": 6915,
-  "DateNaissance": "10\/28\/1999"
+  "DateNaissance": "10\/28\/1999",
+  "moyenGeneral" : 10
  },
  {
   "Série": "SN",

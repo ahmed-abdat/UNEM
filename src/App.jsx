@@ -16,6 +16,9 @@ const Schedules = lazy(() => import("./pages/Schedules/Schedules"));
 const Remote = lazy(() => import("./pages/Remote/Remote"));
 
 
+import Bac from './pages/Bac/Bac'
+
+
 // intro 
 import Intro from "./components/Intro";
 
@@ -52,6 +55,8 @@ import AnglaisInstitution from './pages/AllInstitution/Anglais/Anglais'
 import SupnumInstitution from './pages/AllInstitution/Supnum/Supnum'
 
 
+
+
 const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
 const Form = lazy(() => import("./pages/Form/Form"));
 
@@ -71,6 +76,7 @@ function App() {
           <Route path="/schedule" element={<Schedules />} />
           <Route path="/remote" element={<Remote />} />
           <Route path="/about" element={<About />} />
+          <Route path="/bac2023" element={<Bac />} />
 
           {/* all revision archive */}
           <Route path="/revision-fst" element={<Fst />} />

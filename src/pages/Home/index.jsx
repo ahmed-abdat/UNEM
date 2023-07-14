@@ -30,6 +30,10 @@ export default function home() {
 
   const options = [
     {
+      content : ' نتائج الباكولوريا 2023',
+      url : '/bac2023'
+    },
+    {
       content: "حساب المعدل التوجيهي",
       url: "/calculation",
     },
