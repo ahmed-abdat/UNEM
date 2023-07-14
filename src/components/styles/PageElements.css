@@ -35,3 +35,14 @@
   color: #358359;
   font-size: 15.5px;
 }
+
+
+
+/* media query */
+
+@media screen and (min-width : 768px) {
+  .options {
+    max-width: 70%;
+    margin-inline: auto;
+  }
+}
