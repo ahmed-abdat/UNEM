@@ -15,7 +15,7 @@ export default function Whatsapp() {
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = data.find((student) => student.NumBac === +numBac);
+    const isValid = data.find((student) => student.NODOSS == +numBac);
     
     if (isValid) {
       const whtspUrl = {
@@ -26,7 +26,7 @@ export default function Whatsapp() {
         T: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
       };
 
-      window.open(whtspUrl[isValid.Série])
+      window.open(whtspUrl[isValid.SERIE])
       return;
     }
     numBacRef.current.blur()

@@ -10,13 +10,17 @@ import { useRef, useState } from "react";
 
 export default function Whatsapp() {
   const [numBac, setNumBac] = useState("");
+  const [student , setStudent] = useState(null)
 
   const numBacRef = useRef(null)
 
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = data.find((student) => student.NumBac === +numBac);
+    console.log(data[0].NODOSS)
+    const isValid = data.find((student) => student.NODOSS == +numBac);
+    setStudent(isValid)
+    console.log(isValid)
 
     if(isValid?.Moyenne >= 10){
         toast.success('تهانينا ')
@@ -33,6 +37,8 @@ export default function Whatsapp() {
     const numBacValue = inputValue.slice(0, 6); // Restrict to 5 digits
     setNumBac(numBacValue);
   };
+
+  console.log(student)
 
  
   return (
@@ -62,6 +68,16 @@ export default function Whatsapp() {
               </button>
             </div>     
         </form>
+{/* 
+        {
+          student && (
+            // <h1> الإسم : {student?.NOMPL} </h1>
+
+        // <h2> المعدل : {student?.MOYBAC} </h2>
+
+        // <h3> القرار : {student?.Decision} </h3>
+          )
+        } */}
       </section>
       <ToastContainer
         position="top-center"
