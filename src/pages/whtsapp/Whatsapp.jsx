@@ -20,12 +20,12 @@ export default function Whatsapp() {
       setIsValid(true);
       setStudent(isValid);
       console.log(isValid.DateNaissance);
-      toast.success("تم التأكد");
+      toast.success("هنيئا لكم النجاح ");
       setNumBac("");
       return;
     }
 
-    toast.info("للأسف لايمكنكم الدخول, نتمنى لكم حظا أوفر في القادم")
+    toast.info("للأسف لايمكنكم الدخول, نتمنى لكم حظا أوفر في القادم");
   };
 
   const handleNumBacChange = (e) => {
