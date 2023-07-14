@@ -18,7 +18,7 @@ export default function Whatsapp() {
     e.preventDefault();
     const isValid = data.find((student) => student.NumBac === +numBac);
 
-    if(isValid?.moyenGeneral >= 10){
+    if(isValid?.Moyenne >= 10){
         toast.success('تهانينا ')
         return;
     }
