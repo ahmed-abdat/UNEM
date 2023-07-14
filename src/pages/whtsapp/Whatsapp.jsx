@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
-import data from "../../data/bac.json";
+import data from "../../data/ba.json";
 import { useRef, useState } from "react";
 
 
