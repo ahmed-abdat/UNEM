@@ -28,6 +28,11 @@ export default function home() {
     window.open("https://www.facebook.com/unem.mr/");
   };
 
+  // handel whatsapp redirect
+  const handelAhmedWhtspp = () => {
+    window.open("https://wa.me/+22242049074?text=");
+  };
+
   const options = [
     {
       content : ' نتائج الباكولوريا 2023',
@@ -110,6 +115,9 @@ export default function home() {
               <BsWhatsapp />
             </div>
           </div>
+        </div>
+        <div className="footer-name" onClick={handelAhmedWhtspp}>
+          <p>Made by @Ahmed Abdat</p>
         </div>
       </section>
         )

@@ -140,6 +140,17 @@
   cursor: pointer;
 }
 
+.footer-name p {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: #ebebeb;
+}
+
+
 /* footer */
 .main--footer {
   padding-inline: 1.3rem;
