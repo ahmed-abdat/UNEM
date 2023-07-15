@@ -28,8 +28,7 @@ export default function Whatsapp() {
     }
 
 
-    numBacRef.current.blur()
-    toast.info(" نتمنى لكم حظا أوفر في القادم");
+
   };
 
   const handleNumBacChange = (e) => {
