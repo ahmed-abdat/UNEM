@@ -23,7 +23,7 @@ export default function Whatsapp() {
         M: "https://chat.whatsapp.com/KFwkj9xNM5mLlkIisqlMra",
         LO: "https://chat.whatsapp.com/E66wEjpS8gm3ZXDfqPTQUr",
         LM: "https://chat.whatsapp.com/CVlHmIUkkNvFC6eJExfLHl",
-        T: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
+        TM: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
       };
 
       window.open(whtspUrl[isValid.SERIE])
