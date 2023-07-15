@@ -74,6 +74,7 @@ export default function Whatsapp() {
           <section className="info">
           <h1> الاسم : {student?.NOMPL} </h1>
             <h2> المعدل : {student.MOYBAC.toFixed(2)}</h2>
+          <h3> الشعبة : {student.SERIE}</h3>
             <h3> القرار : {student.Decision}</h3>
           </section>
             </>
