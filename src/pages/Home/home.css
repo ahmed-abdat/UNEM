@@ -136,7 +136,9 @@
     font-size: 1.8rem;
 }
 
-
+.icon  {
+  cursor: pointer;
+}
 
 /* footer */
 .main--footer {
