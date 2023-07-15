@@ -22,10 +22,12 @@ export default function Whatsapp() {
     setStudent(isValid)
 
 
-    if(isValid?.MOYBAC >= 10){
+    if(isValid?.MOYBAC >= 8){
         toast.success('تهانينا ')
         return;
     }
+    numBacRef.current.blur()
+    toast.info(" نتمنى لكم حظا أوفر في القادم");
 
 
 
@@ -37,7 +39,7 @@ export default function Whatsapp() {
     setNumBac(numBacValue);
   };
 
-  console.log(student)
+
 
  
   return (
