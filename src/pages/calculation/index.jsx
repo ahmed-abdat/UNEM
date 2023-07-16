@@ -4,8 +4,13 @@ import CalculationSelect from "../../components/CalculationSelect";
 import Footer from "../../components/Footer";
 import Inputes from "../../components/Inputes";
 import "./calculation.css";
+import ReactGA from 'react-ga';
+
 
 export default function Calculation() {
+  const trackingId = "G-HT85B06T97"
+  ReactGA.initialize(trackingId);
+  ReactGA.pageview(window.location.pathname);
   // state
   const [Fparam, setFparam] = useState("");
   const [Sparam, setSparam] = useState("");
