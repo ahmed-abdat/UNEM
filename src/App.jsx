@@ -5,9 +5,9 @@ import NoteFound from "./components/NoteFound";
 
 import ReactGA from 'react-ga';
 
-const trackingId = "UA-277802662-1"
+const trackingId = "G-HT85B06T97"
 ReactGA.initialize(trackingId);
-ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.pageview(window.location.pathname);
 
 import Home from "./pages/Home";
 // const Home = lazy(() => import("./pages/Home"));
