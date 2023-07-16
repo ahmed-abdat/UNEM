@@ -4,16 +4,22 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Bac.css";
 import data from "../../data/bac.json";
+import ReactGA from 'react-ga';
+
 
 import { useRef, useState } from "react";
 
 
 export default function Whatsapp() {
+  const trackingId = "G-HT85B06T97"
+  ReactGA.initialize(trackingId);
+  ReactGA.pageview(window.location.pathname);
+  
   const [numBac, setNumBac] = useState("");
   const [student , setStudent] = useState(null)
-
+  
   const numBacRef = useRef(null)
-
+  
 
   const handelValideStudent = (e) => {
     e.preventDefault();

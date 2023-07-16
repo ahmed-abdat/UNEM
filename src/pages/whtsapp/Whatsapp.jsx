@@ -5,9 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
 import data from "../../data/ba.json";
 import { useRef, useState } from "react";
+import ReactGA from 'react-ga';
+
 
 
 export default function Whatsapp() {
+  const trackingId = "G-HT85B06T97"
+  ReactGA.initialize(trackingId);
+  ReactGA.pageview(window.location.pathname);
   const [numBac, setNumBac] = useState("");
 
   const numBacRef = useRef(null)
