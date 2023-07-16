@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Loading from "./components/Loading";
 import NoteFound from "./components/NoteFound";
 
@@ -7,7 +7,10 @@ import ReactGA from 'react-ga';
 
 const trackingId = "G-HT85B06T97"
 ReactGA.initialize(trackingId);
-ReactGA.pageview(window.location.pathname);
+
+useEffect(() => {
+  ReactGA.pageview(window.location.pathname);
+}, [window.location.pathname]);
 
 import Home from "./pages/Home";
 // const Home = lazy(() => import("./pages/Home"));
