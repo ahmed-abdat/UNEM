@@ -3,8 +3,13 @@ import { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
 import NoteFound from "./components/NoteFound";
 
-import Home from "./pages/Home";
+import ReactGA from 'react-ga';
 
+const trackingId = "UA-277802662-1"
+ReactGA.initialize(trackingId);
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+import Home from "./pages/Home";
 // const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
 const Resulta = lazy(() => import("./pages/resulta/Resulat"));
