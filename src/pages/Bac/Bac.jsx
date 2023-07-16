@@ -50,9 +50,9 @@ export default function Whatsapp() {
  
   return (
     <>
-      <Header picture={"/08.jpeg"} />
+      <Header picture={"/08.jpg"} />
       <section className="whatsapp">
-        <section className="bac">نتائج الباكلوريا</section>
+        {/* <section className="bac">نتائج الباكلوريا</section> */}
         <form className="form">
             <p>أدخل رقم الباكلوريا </p>
           <div className="inputs">
