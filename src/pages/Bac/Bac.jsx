@@ -50,7 +50,7 @@ export default function Whatsapp() {
  
   return (
     <>
-      <Header picture={"/04.jpeg"} />
+      <Header picture={"/08.jpeg"} />
       <section className="whatsapp">
         <section className="bac">نتائج الباكلوريا</section>
         <form className="form">
