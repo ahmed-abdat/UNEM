@@ -43,24 +43,24 @@ export default function home() {
       url: "/calculation",
     },
     {
-      content: "نتائج الامتحانات",
-      url: "/resulta",
-    },
-    {
-      content: "مراجع و دروس",
-      url: "/revision",
+      content: "الإستمارة و التوجيه",
+      url: "/form",
     },
     {
       content: " المجموعات الواتسابية (باكلوريا) ",
       url: "/whatsapp",
     },
     {
-      content: "الإستمارة و التوجيه",
-      url: "/form",
-    },
-    {
       content: "مؤسسات التعليم العالي",
       url: "/institutions",
+    },
+    {
+      content: "نتائج الامتحانات",
+      url: "/resulta",
+    },
+    {
+      content: "مراجع و دروس",
+      url: "/revision",
     },
     ,
     // {
