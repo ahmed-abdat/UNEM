@@ -21,7 +21,7 @@ export default function home() {
 
   // handel whatsapp redirect
   const handelWhatsapp = () => {
-    window.open("https://wa.me/36199323?text=");
+    window.open("https://wa.me/+22236199323?text=");
   };
   // handel facebook redirect
   const handelFacebook = () => {
