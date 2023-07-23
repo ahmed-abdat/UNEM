@@ -10,7 +10,7 @@ export default function FST() {
     <>
       <Header picture={"/fac/13.png"} />
       <section className="fst">
-      <iframe src="https://www.tewjih.com/rescnb-2022XCdkjfioog562.php" ></iframe>
+      <iframe src="https://tewjih.com" ></iframe>
       </section>
       <Footer />
     </>
