@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Bac.css";
-import data from "../../data/bac.json";
+import data from "../../data/BAC2023.json";
 import ReactGA from 'react-ga';
 
 
