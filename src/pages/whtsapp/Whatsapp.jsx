@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
 import data from "../../data/ba.json";
+import Sesion from '../../data/resilta-sesion.json'
 import { useRef, useState } from "react";
 import ReactGA from 'react-ga';
 
@@ -20,11 +21,11 @@ export default function Whatsapp() {
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = data.find((student) => student.NODOSS == numBac);
+    const isValid = data.find((student) => student.NODOSS == numBac) || Sesion.find(student => student.NODOSS == numBac);
     
     if (isValid) {
       const whtspUrl = {
-        SN: "https://chat.whatsapp.com/Dl69zUF93U8El2HJevLFGs",
+        SN: "https://chat.whatsapp.com/EPulNgll2GuJFsyoDyo3c7",
         M: "https://chat.whatsapp.com/KFwkj9xNM5mLlkIisqlMra",
         LO: "https://chat.whatsapp.com/E66wEjpS8gm3ZXDfqPTQUr",
         LM: "https://chat.whatsapp.com/CVlHmIUkkNvFC6eJExfLHl",
@@ -66,7 +67,7 @@ export default function Whatsapp() {
           </div>
             <div className="btn">
               <button
-                disabled={numBac.length !== 4}
+
                 onClick={handelValideStudent}
               >
                 إنضمام
