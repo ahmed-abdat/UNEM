@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
 import data from "../../data/ba.json";
-import Sesion from '../../data/resilta-sesion.json'
+import Sesion from '../../data/SessionBac.json'
 import { useRef, useState } from "react";
 import ReactGA from 'react-ga';
 
