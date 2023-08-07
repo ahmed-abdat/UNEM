@@ -25,7 +25,7 @@ export default function Whatsapp() {
     
     if (isValid) {
       const whtspUrl = {
-        SN: "https://chat.whatsapp.com/EPulNgll2GuJFsyoDyo3c7",
+        SN: "https://chat.whatsapp.com/ItJtE08IIwg8lSTrqOjf8e",
         M: "https://chat.whatsapp.com/KFwkj9xNM5mLlkIisqlMra",
         LO: "https://chat.whatsapp.com/E66wEjpS8gm3ZXDfqPTQUr",
         LM: "https://chat.whatsapp.com/CVlHmIUkkNvFC6eJExfLHl",
