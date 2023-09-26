@@ -6,10 +6,10 @@ import { useState } from "react";
 export default function FST() {
 
   const specialiter = [
-    { name: "Reseaux", id: "1l71nabcsQCsYzFcdCM0gd6ae_WdDj-Vj" },
-    { name: "Management", id: "1gJNnhNDxD_Kz1LosvWNqcpH415h_UZb0" },
-    { name: "MAEF", id: "1fJerDd_OGoW9d3GoGCtBu6SDlMU8ibWl" },
-    { name: "LGTR", id: "1RJiLWE6Sw_3DRxrbkFT2Are9hCQlqhVe" },
+    { name: "Reseaux", id: "1-R13GptNs1G4zMwLyFPZ23GZ1JrL3tax" },
+    { name: "Management", id: "1-N13qeIyiobU_GXHOpTopHlk1JB_Y3dj" },
+    { name: "MAEF", id: "1-SGXuTPAkyZiaeCAADBhfLSWKhrE5eJu" },
+    { name: "LGTR", id: "10HgrslRRUYlN61hyuz6EhwyEyUyrKzHA" },
   ];
 
 

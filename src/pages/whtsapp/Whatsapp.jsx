@@ -32,12 +32,18 @@ export default function Whatsapp() {
         TM: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
       };
 
+
       window.open(whtspUrl[isValid.SERIE])
       return;
     }
+
     numBacRef.current.blur()
     toast.info("للأسف لايمكنكم الدخول, نتمنى لكم حظا أوفر في القادم");
   };
+
+  
+  
+  
 
   const handleNumBacChange = (e) => {
     const inputValue = e.target.value;
