@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
 import data from "../../data/BAC2023VALID.json";
-import Sesion from '../../data/SessionBac.json'
 import { useRef, useState } from "react";
 
 export default function Whatsapp() {
@@ -13,7 +12,7 @@ export default function Whatsapp() {
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = data.find((student) => student.NODOSS === numBac) || Sesion.find(student => student.NODOSS === numBac);
+    const isValid = data.find((student) => student.NODOSS === numBac) ;
     
     if (isValid) {
       const whtspUrl = {
