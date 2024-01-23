@@ -7,7 +7,7 @@ export default function NextPage({ picture   }) {
     return (
       <main className="next-page">
           <header className="nex-page--header">
-              <LazyLoadImage src={picture} alt='header' placeholderSrc={picture} width={`100%`} />
+              <img src={picture} alt='header' width={`100%`} />
           </header>
   
          

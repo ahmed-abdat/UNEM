@@ -14,7 +14,7 @@ export default function Header() {
   }
 
   return (
-    <header>
+    <header className="poste-header">
       <div className="left-side">
         <LazyLoadImage
           className="logo"

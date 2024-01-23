@@ -1,7 +1,7 @@
 import HomeOption from "../../components/HomeOption";
-import Header_BG from "../../assets/texture.png";
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
 import "./home.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function home() {
   // handel whatsapp redirect
@@ -73,12 +73,12 @@ export default function home() {
   return (
     <main className="home">
       <section className="main">
-        <header>
+        <header className="main-header">
           <div className="img">
-            <img src={Header_BG} alt="background" />
+            <LazyLoadImage src={'/texture.png'} alt="background" />
           </div>
           <div className="logo">
-            <img src="/unem.png" alt="logo" />
+            <LazyLoadImage src="/unem.png" alt="logo" />
           </div>
         </header>
         <HomeOption options={options} />

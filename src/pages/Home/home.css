@@ -6,7 +6,7 @@
   padding-bottom: 12rem;
 }
 
-.home header {
+.home .main-header {
   position: relative;
 }
 
@@ -24,12 +24,13 @@
   -o-transform: translateX(-50%);
 }
 
-.home header .img img {
+.home .main-header .img img {
   max-height: 12rem;
   width: 100%;
+  object-fit: fill;
 }
 
-.home header .logo {
+.home .main-header .logo {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -39,7 +40,7 @@
   -o-transform: translate(-50%, -50%);
 }
 
-.home header .logo img {
+.home .main-header .logo img {
   width: 9rem;
   height: 9rem;
   object-fit: contain;
@@ -184,7 +185,7 @@
 /* media query */
 
 @media screen and (min-width : 767px) {
-  .home--option , .home header {
+  .home--option , .home .main-header {
     max-width: 70%;
     /* justify-content: center; */
     margin-inline: auto;

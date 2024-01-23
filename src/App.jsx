@@ -3,8 +3,10 @@ import { lazy, Suspense } from "react";
 // import NoteFound from "./components/NoteFound";
 const NoteFound = lazy(() => import("./components/NoteFound"));
 
+import Home from "./pages/Home";
+
 // Lazy-loaded pages
-const Home = lazy(() => import("./pages/Home"));
+// const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
 const Resulta = lazy(() => import("./pages/resulta/Resulat"));
 const Revision = lazy(() => import("./pages/revision/Revision"));
