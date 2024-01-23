@@ -1,12 +1,278 @@
-.nex-page--header {
-    background: #ebebeb;
-}
-.nex-page--header img {
-    max-height: 17rem;
-    margin: auto;
-    display: flex;
-    /* margin-bottom: 4rem; */
-    width: 94%;
-    object-fit: contain;
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white-color-light);
+  padding:1rem;
+  padding-right: 0.5rem;
 }
 
+
+header.close {
+    width: 100%;
+    align-items: center;
+}
+
+
+header h2 {
+  font-family: 'Arial', 'Tajawal', sans-serif;
+}
+
+
+
+
+
+header img {
+  max-width: 100%;
+  width: 3rem;
+}
+
+/* ? left side */
+
+
+/* ? right side */
+
+.right-side img {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+/* ? right - side */
+
+header .right-side  {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+}
+
+header .right-side .add {
+  font-size: 1.4rem;
+  display: flex;
+  background: var(--primary-color);
+  padding: 0.75rem;
+  border-radius: 50%;
+  color: var(--gray-color);
+  cursor: pointer;
+  transition: var(--tr-03);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  -webkit-transition: var(--tr-03);
+  -moz-transition: var(--tr-03);
+  -ms-transition: var(--tr-03);
+  -o-transition: var(--tr-03);
+
+}
+
+
+.right-side  .add:hover {
+  background-color: var(--primary-hover);
+}
+
+.left-side {
+  display: flex;
+  
+}
+
+.left-side > img {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.left-side img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.left-side > img:hover {
+  opacity: 0.8;
+}
+
+.left-side > img:focus,
+.left-side > img:active {
+  transform: scale(0.85);
+  -webkit-transform: scale(0.85);
+  -moz-transform: scale(0.85);
+  -ms-transform: scale(0.85);
+  -o-transform: scale(0.85);
+}
+
+/* ? popup */
+
+.popup {
+  z-index: 9;
+  font-family: "Arial", sans-serif;
+  color: var(--text-color);
+  position: absolute;
+  min-width: 330px;
+  right: 10px;
+  top: 70px;
+  background: #fff;
+  padding: 1rem 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0px -3px 6px -2px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.popup .title {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.popup .title img {
+  cursor: pointer;
+  width: 2.5rem;
+  object-fit: cover;
+  height: 2.5rem;
+}
+
+.popup .title h3 {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.popup span,
+.popup h3 {
+  font-family: "Roboto", sans-serif;
+}
+
+.popup div svg {
+  width: 2rem;
+  color: #1323d4;
+}
+
+.popup .logout p {
+  margin-bottom: 0;
+}
+
+.popup div {
+  padding-block: 0.7rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.7rem;
+}
+
+.popup div {
+  display: flex;
+  align-items: center;
+  gap: 0 0.7rem;
+}
+
+.popup button {
+  cursor: pointer;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 0.8rem;
+  outline: none;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  transition: background 0.3s;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+}
+
+.popup button:hover {
+  background-color: rgb(221, 16, 16);
+}
+
+.popup button:focus , 
+.popup button:active {
+  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  -o-transform: scale(0.95);
+}
+
+.right-side .logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  font-size: 1.3rem;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+  text-align: center;
+  color: var(--gray-color);
+  transition: var(--tr-03);
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -webkit-transition: var(--tr-03);
+  -moz-transition: var(--tr-03);
+  -ms-transition: var(--tr-03);
+  -o-transition: var(--tr-03);
+}
+
+.right-side .logout:hover {
+  background-color: rgb(221, 16, 16);
+}
+
+.right-side .add:focus,
+.right-side .add:active,
+.right-side .logout:focus,
+.right-side .logout:active
+{
+  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  -o-transform: scale(0.95);
+}
+
+.right-side .logout:focus svg,
+.right-side .logout:active svg
+{
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.right-side .logout svg {
+  width: 1.5rem;
+}
+/* ? meu icon */
+ 
+.left-side {
+    color: var(--primary-color);
+}

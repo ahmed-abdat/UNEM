@@ -1,11 +1,11 @@
-import Header from '../../components/Header'
+import HeaderImg from '../../components/HeaderImg'
 import Footer from '../../components/Footer';
 import './RemoteIframe.css'
 
 export default function FST() {
   return (
     <>
-      <Header picture={'/fac/06.png'} />
+      <HeaderImg picture={'/fac/06.png'} />
       <section className="fst">
       <iframe src="https://inscription.fmpos.una.mr/" ></iframe>
       </section>

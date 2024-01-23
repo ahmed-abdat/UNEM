@@ -1,4 +1,4 @@
-import Header from "../../components/Header";
+import HeaderImg from "../../components/HeaderImg";
 import Footer from "../../components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,22 +6,14 @@ import "./Whatsapp.css";
 import data from "../../data/BAC2023VALID.json";
 import Sesion from '../../data/SessionBac.json'
 import { useRef, useState } from "react";
-import ReactGA from 'react-ga';
-
-
 
 export default function Whatsapp() {
-  const trackingId = "G-HT85B06T97"
-  ReactGA.initialize(trackingId);
-  ReactGA.pageview(window.location.pathname);
   const [numBac, setNumBac] = useState("");
-
   const numBacRef = useRef(null)
-
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = data.find((student) => student.NODOSS == numBac) || Sesion.find(student => student.NODOSS == numBac);
+    const isValid = data.find((student) => student.NODOSS === numBac) || Sesion.find(student => student.NODOSS === numBac);
     
     if (isValid) {
       const whtspUrl = {
@@ -32,7 +24,6 @@ export default function Whatsapp() {
         TM: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
       };
 
-
       window.open(whtspUrl[isValid.SERIE])
       return;
     }
@@ -41,44 +32,34 @@ export default function Whatsapp() {
     toast.info("للأسف لايمكنكم الدخول, نتمنى لكم حظا أوفر في القادم");
   };
 
-  
-  
-  
-
   const handleNumBacChange = (e) => {
     const inputValue = e.target.value;
     const numBacValue = inputValue.slice(0, 5); // Restrict to 5 digits
     setNumBac(numBacValue);
   };
 
- 
   return (
     <>
-      <Header picture={"/04.jpeg"} />
+      <HeaderImg picture={"/04.jpeg"} />
       <section className="whatsapp">
         <form className="form">
-            <p> للانضمام إلى المجموعة الخاصة بشعبتكم يرجى إدخال رقم الباكلوريا</p>
+          <p> للانضمام إلى المجموعة الخاصة بشعبتكم يرجى إدخال رقم الباكلوريا</p>
           <div className="inputs">
-              <div className="input">
-                <label htmlFor="#numBac"> رقم الباكلوريا</label>
-                <input
-                  type="number"
-                  value={numBac}
-                  ref={numBacRef}
-                  onKeyDown={(e) => e.key === 'Enter' && handelValideStudent(e)}
-                  onChange={handleNumBacChange}
-                  placeholder="أدخل رقم الباكلوريا"
-                />
-              </div>
+            <div className="input">
+              <label htmlFor="#numBac"> رقم الباكلوريا</label>
+              <input
+                type="number"
+                value={numBac}
+                ref={numBacRef}
+                onKeyDown={(e) => e.key === 'Enter' && handelValideStudent(e)}
+                onChange={handleNumBacChange}
+                placeholder="أدخل رقم الباكلوريا"
+              />
+            </div>
           </div>
-            <div className="btn">
-              <button
-
-                onClick={handelValideStudent}
-              >
-                إنضمام
-              </button>
-            </div>     
+          <div className="btn">
+            <button onClick={handelValideStudent}>إنضمام</button>
+          </div>     
         </form>
       </section>
       <ToastContainer

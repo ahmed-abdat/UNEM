@@ -1,4 +1,4 @@
-import Header from '../../components/Header'
+import HeaderImg from '../../components/HeaderImg'
 import PageElements from '../../components/PageElements';
 import Footer from '../../components/Footer';
 import PageResulta from '../../components/PageResulta';
@@ -34,7 +34,7 @@ const options = [
 
   return (
     <>
-    <Header picture={'/02.png'} />
+    <HeaderImg picture={'/02.png'} />
       <section className="resula">
         <PageResulta options={options} />
       </section>

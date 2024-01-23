@@ -1,0 +1,12 @@
+/* .nex-page--header {
+    background: #ebebeb;
+} */
+.nex-page--header img {
+    max-height: 17rem;
+    margin: auto;
+    display: flex;
+    /* margin-bottom: 4rem; */
+    width: 94%;
+    object-fit: contain;
+}
+

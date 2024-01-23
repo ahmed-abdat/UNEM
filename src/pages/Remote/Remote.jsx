@@ -1,4 +1,4 @@
-import Header from "../../components/Header";
+import HeaderImg from "../../components/HeaderImg";
 import PageElements from "../../components/PageElements";
 import Footer from "../../components/Footer";
 
@@ -13,7 +13,7 @@ export default function Resulta() {
 
   return (
     <>
-      <Header picture={"/fac/12.png"} />
+      <HeaderImg picture={"/fac/12.png"} />
       <section className="resula">
         <PageElements options={options} />
       </section>

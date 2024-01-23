@@ -1,15 +1,31 @@
+import "./styles/Header.css";
+import Share from './Share'
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useNavigate } from "react-router-dom";
+
+export default function Header() {
+
+  const navigate  = useNavigate();
 
 
-import './styles/Header.css'
-
-export default function NextPage({ picture   }) {
-    return (
-      <main className="next-page">
-          <header className="nex-page--header">
-              <img src={picture} alt='header' />
-          </header>
-  
-         
-      </main>
-    )
+  const goToHome = () => {
+    console.log("go to home");
+    navigate("/");
   }
+
+  return (
+    <header>
+      <div className="left-side">
+        <LazyLoadImage
+          className="logo"
+          src="/unem.png"
+          alt="unem logo"
+          onClick={goToHome}
+        />
+      </div>
+      <div className="right-side">
+        <Share />
+      </div>
+    </header>
+  );
+}

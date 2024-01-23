@@ -1,0 +1,51 @@
+.card-skelton {
+    width: 355px;
+    box-shadow: 0 0 15px 0px rgba(0,0,0,0.18);
+    max-width: 400px;
+    border-radius: 9px;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5rem;
+    padding-bottom: 0.8rem;
+    background-color: #fff;
+    max-height: 75dvh;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -ms-border-radius: 9px;
+    -o-border-radius: 9px;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-head .card-title {
+  width: 100%;
+}
+
+.share span {
+  display: flex;
+    align-items: center;
+    gap: 0 0.6rem;
+}
+
+
+
+.skelton-discription {
+ padding-block: 0.5rem;
+}
+
+.skelton_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 0.5rem;
+  }

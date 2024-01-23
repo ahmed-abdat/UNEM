@@ -1,7 +1,7 @@
 .options {
   padding: 2rem 0.5rem;
   min-height: 68dvh;
-  background-color: #ebebeb;
+  /* background-color: #ebebeb; */
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -9,6 +9,7 @@
 }
 
 .options .option {
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
   cursor: pointer;
   overflow: hidden;
   position: relative;

@@ -1,0 +1,20 @@
+.institutions-img {
+    width: 100%;
+    min-height: 95dvh;
+    height: 100%;
+    max-height: 120dvh;
+    overflow: hidden;
+}
+
+
+.institutions-img img {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+@media screen and (min-width : 768px) {
+    .institutions-img img {
+     max-height: 100dvh;
+     width: 100%;
+    }
+ }
