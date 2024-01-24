@@ -6,7 +6,16 @@
 /* Vazirmatn */
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600&display=swap');
+/* Aj jazira */
+@font-face {
+  font-family: 'Al Jazeera';
+  src: url('./assets//font/Aljazeera.ttf');
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url('./assets//font/alfont_com.ttf');
+}
+
 
 /* ? css variabele */
 :root {
@@ -15,8 +24,7 @@
   --white-color-light: #f6f5ff;
   --icon-color : #54656f;
   --icon-color-light : #bbc5cb;
-  --main-bgc : #ebebeb;
-  /* --white-color-light : #f8f8f8; */
+  --main-bgc : #f8f8f8;
   --text-color : #325871;
   --text-color-light : #3b4a54;
   --primary-color: #26a306;
@@ -39,7 +47,6 @@
 }
 
 body {
-  direction: rtl;
   font-family: 'Changa', sans-serif;
   background-color: var(--main-bgc);
   /* background-image: linear-gradient(180deg,var(--app-background),var(--app-background-deeper)); */
@@ -69,7 +76,7 @@ a {
 }
 
 ::selection {
-  background-color: var(--whatsapp-color);
+  background-color: var(--primary-color);
   color : var(--white-color-light);
 
 }

@@ -1,12 +1,9 @@
 import "./styles/cards.css";
-import moment from "moment";
-import "moment/locale/ar-sa";
 import {
   query,
   collection,
   orderBy,
   limit,
-  onSnapshot,
   getDocs,
   startAfter,
 } from "firebase/firestore";
@@ -16,6 +13,7 @@ import { useEffect, useState } from "react";
 import CardSkelton from "./CardSkelton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useInView } from "react-intersection-observer";
+import { showTime } from "../utils/showTime";
 import SharePoste from "./SharePoste";
 import { LiaLessThanSolid } from "react-icons/lia";
 
@@ -36,23 +34,28 @@ function CardsConatainer() {
   }, []);
 
   const fetchPostes = async () => {
-    const q = query(
-      collection(db, "postes"),
-      orderBy("createdAt", "desc"),
-      limit(10)
-    );
-    const unsubscribe = onSnapshot(q, (snapshot) => {
+    try {
+      const q = query(
+        collection(db, "postes"),
+        orderBy("createdAt", "desc"),
+        limit(10)
+      );
+      const snapshot = await getDocs(q);
       let postes = [];
       snapshot.forEach((doc) => {
         postes.push({ id: doc.id, ...doc.data() });
       });
+
+      if (postes.length === 0) return;
+
       const lastVisible = snapshot.docs[snapshot.docs.length - 1];
       setLastePoste(lastVisible);
       setPostes(postes);
       setIsLoading(false);
-    });
-
-    return () => unsubscribe();
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -90,147 +93,57 @@ function CardsConatainer() {
     }
   };
 
-  moment.locale("ar_SA");
-  moment.updateLocale("ar_SA", {
-    relativeTime: {
-      future: "في %s",
-      past: "منذ %s",
-      s: "ثوان",
-      ss: "%d ثانية",
-      m: "دقيقة",
-      mm: "%d دقائق",
-      h: "ساعة",
-      hh: "%d ساعات",
-      d: "يوم",
-      dd: "%d أيام",
-      M: "شهر",
-      MM: "%d أشهر",
-      y: "سنة",
-      yy: "%d سنوات",
-    },
-  });
-
-  const showTime = (date) => {
-    const now = moment();
-    const time = date.seconds * 1000;
-    const momentTime = moment(time);
-    const houreAndMinitFormate = momentTime.format("hh:mm");
-    const monthAndDayFormat = momentTime.format("MM/DD");
-    const yearFormat = momentTime.format("YYYY");
-    return currentDate(
-      momentTime,
-      houreAndMinitFormate,
-      now,
-      monthAndDayFormat,
-      yearFormat
-    );
-  };
-
-  const currentDate = (
-    momentTime,
-    houreAndMinitFormate,
-    now,
-    monthAndDayFormat,
-    yearFormat
-  ) => {
-    const AmPm = `${momentTime.format("a") === "am" ? "ص" : "م"}`;
-    if (momentTime.isSame(now, "day")) {
-      return `اليوم الساعة ${houreAndMinitFormate} ${AmPm}`;
-    } else if (momentTime.isSame(now.clone().subtract(1, "day"), "day")) {
-      return `أمس الساعة ${houreAndMinitFormate} ${AmPm}`;
-    } else if (
-      momentTime.isSame(now, "month") &&
-      momentTime.isSame(now, "year")
-    ) {
-      return `${monthName(
-        monthAndDayFormat
-      )} الساعة ${houreAndMinitFormate} ${AmPm}`;
-    } else {
-      return `${monthName(
-        monthAndDayFormat
-      )} ${yearFormat} الساعة ${houreAndMinitFormate} ${AmPm}`;
-    }
-  };
-
-  const monthName = (months) => {
-    const month = months.slice(0, 2);
-    const day = months.slice(3, 5);
-    switch (month) {
-      case "01":
-        return `${day} يناير`;
-      case "02":
-        return `${day} فبراير`;
-      case "03":
-        return `${day} مارس`;
-      case "04":
-        return `${day} أبريل`;
-      case "05":
-        return `${day} مايو`;
-      case "06":
-        return `${day} يونيو`;
-      case "07":
-        return `${day} يوليو`;
-      case "08":
-        return `${day} أغسطس`;
-      case "09":
-        return `${day} سبتمبر`;
-      case "10":
-        return `${day} أكتوبر`;
-      case "11":
-        return `${day} نوفمبر`;
-      case "12":
-        return `${day} ديسمبر`;
-      default:
-        return months;
-    }
-  };
-
   return (
-      <section className={`d-f cards`}>
-        {/* <CardSkelton count={2} /> */}
-        {isLoading ? (
-          <CardSkelton count={8} />
-        ) : (
-          postes.map((card, index) => {
-            return (
-              <div className="card" key={`${card.id}-${index}`}>
-                <LazyLoadImage
-                  src={card.images[0]?.url}
-                  alt={card.title}
-                  effect="blur"
-                  className="card-img"
-                  placeholderSrc="/image_loaders.gif"
-                  width={`100%`}
-                  height={220}
-                  style={{ borderRadius: "9px" , overflow: "hidden"}}
-                />
-                <div className={`card_discription`}>
-                  <div className="card-head">
-                    <LazyLoadImage
-                      width={40}
-                      height={40}
-                      effect="blur"
-                      src="/unem.png"
-                      placeholderSrc={"/image_loaders.gif"}
-                      alt="logo"
-                    />
-                    <div className="card_logo_title">
-                      <p>الاتحاد الوطني لطلبة موريتانيا</p>
+    <section className={`d-f cards`}>
+      <CardSkelton count={2} />
+      {isLoading ? (
+        <CardSkelton count={8} />
+      ) : (
+        postes.map((card, index) => {
+          return (
+            <div
+              className="card"
+              key={`${card.id}-${index}`}
+              onClick={() => navigate(`poste/${card.id}`)}
+            >
+              <LazyLoadImage
+                src={card.images[0]?.url}
+                alt={card.title}
+                effect="blur"
+                className="card-img"
+                placeholderSrc="/image_loaders.gif"
+                width={`100%`}
+                height={220}
+                style={{ borderRadius: "9px", overflow: "hidden" }}
+              />
+              <div className={`card_discription`}>
+                <div className="card-head">
+                  <LazyLoadImage
+                    width={40}
+                    height={40}
+                    effect="blur"
+                    src="/unem.png"
+                    placeholderSrc={"/image_loaders.gif"}
+                    alt="logo"
+                  />
+                  <div className="card_logo_title">
+                    <p>الاتحاد الوطني لطلبة موريتانيا</p>
 
-                      <span className="card_time">{showTime(card.createdAt)}</span>
-                    </div>
+                    <span className="card_time">
+                      {showTime(card.createdAt)}
+                    </span>
                   </div>
-                  <div className="card_header">
-                    <h3
-                      className={`card_title ${
-                        card.title?.length < 55 ? "mb-2" : ""
-                      }`}
-                    >
-                      {card.title}
-                    </h3>
-                    {/* <p className="card_date">{showTime(card.createdAt)}</p> */}
-                  </div>
-                  <div className="card_footer">
+                </div>
+                <div className="card_header">
+                  <h3
+                    className={`card_title ${
+                      card.title?.length < 55 ? "mb-2" : ""
+                    }`}
+                  >
+                    {card.title}
+                  </h3>
+                </div>
+                {/* <div className="card_footer">
                     <SharePoste id={card.id} />
                     <button className="read_more" onClick={() => navigate(`poste/${card.id}`)}>
                       إقرأ المزيد
@@ -238,15 +151,15 @@ function CardsConatainer() {
                         <LiaLessThanSolid />
                       </div>
                     </button>
-                  </div>
-                </div>
+                  </div> */}
               </div>
-            );
-          })
-        )}
-        {isFetchingMore && <CardSkelton count={2} />}
-        <div ref={divRef} style={{ height: "10px" }}></div>
-      </section>
+            </div>
+          );
+        })
+      )}
+      {isFetchingMore && <CardSkelton count={2} />}
+      <div ref={divRef} style={{ height: "10px" }}></div>
+    </section>
   );
 }
 export default CardsConatainer;

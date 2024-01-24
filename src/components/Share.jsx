@@ -5,10 +5,10 @@ function SharePoste() {
   return (
     <>
     <FacebookShareButton url={url}>
-        <FacebookIcon size={28} round={true} />
+        <FacebookIcon size={35} round={true} />
     </FacebookShareButton>
     <WhatsappShareButton url={url}>
-        <WhatsappIcon size={28} round={true} />
+        <WhatsappIcon size={35} round={true} />
     </WhatsappShareButton>
     </>
   );

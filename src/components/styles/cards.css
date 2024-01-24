@@ -35,6 +35,7 @@
 }
 
 .card {
+  cursor: pointer;
   box-shadow: 0 0 15px 0px rgba(0,0,0,0.18);
   max-width: 400px;
   border-radius: 9px;
@@ -80,6 +81,12 @@
   -o-border-radius: inherit;
 }
 
+/* when hover to img the text should be text-decoration: underline */
+
+.card:hover .card_discription .card_title {
+  text-decoration: underline;
+}
+
 
 .card .card_discription {
   display: flex;
@@ -92,17 +99,29 @@
 }
 
 .card .card_discription .card_title {
+  font-family: "Al Jazeera" ,Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif ;
   margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.5;
   color: var(--black-color);
+  cursor: pointer;
+  transition: -webkit-text-decoration .15s linear;
+  transition: text-decoration .15s linear;
+  transition: text-decoration .15s linear,-webkit-text-decoration .15s linear;
+  word-wrap: break-word;
+  -webkit-transition: text-decoration .15s linear;
+  -moz-transition: text-decoration .15s linear;
+  -ms-transition: text-decoration .15s linear;
+  -o-transition: text-decoration .15s linear;
 }
 
-.card .card_discription , .card_date {
-  font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
-}
+
+
+
 
 .card .card_discription .card_date {
+  font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif ;
   font-size: 0.8rem;
   font-weight: 400;
   color: var(--icon-color);
@@ -243,6 +262,6 @@
     font-size: 0.8rem;
   }
   .card .card_footer .read_more {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 }

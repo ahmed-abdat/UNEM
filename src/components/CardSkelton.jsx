@@ -20,14 +20,14 @@ export default function CardSkeleton({ count = 1 }) {
           <Skeleton height={40} />
           {/* <Skeleton width={'50%'} height={20}/> */}
         </div>
-        <div className="skelton_footer">
+        {/* <div className="skelton_footer">
           <div className="share">
             <Skeleton count={2} circle={true} height={30} width={30} />
           </div>
           <div className="card-btns">
             <Skeleton height={30} width={90} />
           </div>
-        </div>
+        </div> */}
       </div>
     ));
 }

@@ -8,9 +8,9 @@ export default function Header() {
   const navigate  = useNavigate();
 
 
-  const goToHome = () => {
-    console.log("go to home");
-    navigate("/");
+  const goBack = () => {
+    console.log("go back");
+    navigate(-1);
   }
 
   return (
@@ -20,7 +20,7 @@ export default function Header() {
           className="logo"
           src="/unem.png"
           alt="unem logo"
-          onClick={goToHome}
+          onClick={goBack}
         />
       </div>
       <div className="right-side">
