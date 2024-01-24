@@ -95,7 +95,7 @@ function CardsConatainer() {
 
   return (
     <section className={`d-f cards`}>
-      <CardSkelton count={2} />
+      {/* <CardSkelton count={2} /> */}
       {isLoading ? (
         <CardSkelton count={8} />
       ) : (

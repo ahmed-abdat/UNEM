@@ -17,8 +17,8 @@ export default function CardSkeleton({ count = 1 }) {
           </div>
         </div>
         <div className="skelton-discription">
-          <Skeleton height={40} />
-          {/* <Skeleton width={'50%'} height={20}/> */}
+          <Skeleton count={2} height={20} />
+          <Skeleton width={'50%'} height={20}/>
         </div>
         {/* <div className="skelton_footer">
           <div className="share">

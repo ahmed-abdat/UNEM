@@ -1,0 +1,19 @@
+.skelton .poste-title {
+    margin-bottom: 1rem;
+}
+
+.skelton .poste-info {
+    border: none;
+    padding: 0;
+}
+
+.skelton .poste-times span , .skelton .poste-times {
+    width: 100%;
+}
+
+
+.skelton .poste-share  span{
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+  }

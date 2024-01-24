@@ -17,7 +17,7 @@ const Schedules = lazy(() => import("./pages/Schedules/Schedules"));
 const Remote = lazy(() => import("./pages/Remote/Remote"));
 const About = lazy(() => import("./pages/About"));
 const News = lazy(() => import("./pages/news"));
-const Poste = lazy(() => import('./pages/news/Poste'));
+const Poste = lazy(() => import('./components/Poste'));
 const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
 const Form = lazy(() => import("./pages/Form/Form"));
 const Institues = lazy(() => import("./components/Institues"));

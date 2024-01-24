@@ -2,12 +2,14 @@ import { doc, getDoc } from "firebase/firestore/lite";
 import { getFirestore } from "firebase/firestore/lite";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { app } from "../../config/firebase";
-import Header from "../../components/Header";
-import "./poste.css";
-import { showTime} from '../../utils/showTime'
+import { app } from "../config/firebase";
+import Header from "./Header";
+import "./styles/poste.css";
+
+import { showTime} from '../utils/showTime'
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import SharePoste from "../../components/SharePoste";
+import SharePoste from "./SharePoste";
+import PosteSkelton from "./PosteSkelton";
 function poste() {
   const { id } = useParams();
   const [poste, setPoste] = useState(null);
@@ -34,11 +36,17 @@ function poste() {
     getPoste(id);
   }, [id]);
 
+  // check if the is mobile or not
+  const isMobile = window.innerWidth <= 768;
+
+
 
   return (
     <>
       <Header />
-      <section className="poste">
+      {/* <PosteSkelton /> */}
+      {
+        isLoading ? <PosteSkelton /> : <section className="poste">
         <div className="poste-title">
           <h1>{poste?.title}</h1>
         </div>
@@ -46,7 +54,7 @@ function poste() {
           <LazyLoadImage
             src={poste?.images[0].url}
             alt={poste?.title}
-            // height={300}
+            height={isMobile ? 300 : 420}
             effect="blur"
             placeholderSrc="/image_loaders.gif"
             width={`100%`}
@@ -63,13 +71,14 @@ function poste() {
             </span>
           </div>
           <div className="poste-share">
-            <SharePoste />
+            <SharePoste id={id}/>
           </div>
         </div>
         <div className="poste-content">
           <p>{poste?.description}</p>
         </div>
       </section>
+      }
     </>
   );
 }
