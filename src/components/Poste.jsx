@@ -15,6 +15,7 @@ import ViewFullImage from "./ViewImage";
 function poste() {
   const { id } = useParams();
   const [poste, setPoste] = useState(null);
+  const [images, setImages] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [image, setImage] = useState(null);
@@ -24,6 +25,8 @@ function poste() {
     try {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
+        const images = docSnap.data().images.slice(1);
+        setImages(images)
         setPoste(docSnap.data());
         localStorage.setItem("poste", JSON.stringify(docSnap.data()));
       } else {
@@ -114,7 +117,7 @@ function poste() {
                 <p>{poste?.description}</p>
               </div>
               <div className="poste-images">
-                {poste?.images.map((image) => (
+                {images.map((image) => (
                   <LazyLoadImage
                     key={image.url}
                     src={image.url}
