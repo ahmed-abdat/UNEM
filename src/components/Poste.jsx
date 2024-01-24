@@ -107,7 +107,7 @@ function poste() {
                     {showTime(poste?.createdAt)}
                   </span>
                   <span className="bar">|</span>
-                  <span className="update-time">آخر تحديث: 24/1/2024</span>
+                  <span className="update-time">آخر تحديث : {showTime(poste?.lasteUpdate)}</span>
                 </div>
                 <div className="poste-share">
                   <SharePoste handelCopy={handelCopy} url={url} />
