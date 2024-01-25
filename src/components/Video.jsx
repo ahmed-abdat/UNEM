@@ -7,7 +7,17 @@ function Video({ url }) {
 
   return (
     <section className="video">
-      <ReactPlayer url={url} controls onReady={() => setIsReady(true)} width={'100%'} height={'100%'} />
+      <ReactPlayer
+        url={url}
+        controls
+        onReady={() => setIsReady(true)}
+        width={"100%"}
+        height={"100%"}
+        onError={(e) => {
+          console.log(e);
+          setIsReady(true);
+        }}
+      />
       {!isReady && (
         <div className="poste-thumbnail">
           <Skeleton height={350} width={`100%`} />

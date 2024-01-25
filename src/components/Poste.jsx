@@ -8,7 +8,7 @@ import Video from "./Video";
 import "./styles/poste.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { showTime , showTimeDate } from "../utils/showTime";
+import { showTime, showTimeDate } from "../utils/showTime";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import SharePoste from "./SharePoste";
 import PosteSkelton from "./PosteSkelton";
@@ -16,7 +16,7 @@ import ViewFullImage from "./ViewImage";
 function poste() {
   const { id } = useParams();
   const [poste, setPoste] = useState(null);
-  const [images, setImages] = useState([]); 
+  const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [isvideoReady, setIsvideoReady] = useState(false);
@@ -28,7 +28,7 @@ function poste() {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         const images = docSnap.data().images.slice(1);
-        setImages(images)
+        setImages(images);
         setPoste(docSnap.data());
         localStorage.setItem("poste", JSON.stringify(docSnap.data()));
       } else {
@@ -54,7 +54,6 @@ function poste() {
     toast.success("تم نسخ الرابط بنجاح");
   };
 
-  const VideoUrl='https://fb.watch/pOfS8ltcWZ/?mibextid=Nif5oz'
 
   // handel selected image
   const selectedImage = (media) => {
@@ -95,24 +94,29 @@ function poste() {
               <div className="poste-title">
                 <h1>{poste?.title}</h1>
               </div>
-              <div className="poste-thumbnail">
-                <LazyLoadImage
-                  src={poste?.images[0].url}
-                  alt={poste?.title}
-                  height={isMobile ? 300 : 420}
-                  effect="blur"
-                  placeholderSrc="/image_loaders.gif"
-                  width={`100%`}
-                />
-              </div>
-              {/* <Video  url={VideoUrl} /> */}
+              {poste?.videoUrl ? (
+                <Video url={poste.videoUrl} />
+              ) : (
+                <div className="poste-thumbnail">
+                  <LazyLoadImage
+                    src={poste?.images[0].url}
+                    alt={poste?.title}
+                    height={isMobile ? 300 : 420}
+                    effect="blur"
+                    placeholderSrc="/image_loaders.gif"
+                    width={`100%`}
+                  />
+                </div>
+              )}
               <div className="poste-info">
                 <div className="poste-times">
                   <span className="create-time">
                     {showTime(poste?.createdAt)}
                   </span>
                   <span className="bar">|</span>
-                  <span className="update-time">آخر تحديث : {showTimeDate(poste?.lasteUpdate)}</span>
+                  <span className="update-time">
+                    آخر تحديث : {showTimeDate(poste?.lasteUpdate)}
+                  </span>
                 </div>
                 <div className="poste-share">
                   <SharePoste handelCopy={handelCopy} url={url} />
@@ -122,7 +126,7 @@ function poste() {
                 <p>{poste?.description}</p>
               </div>
               <div className="poste-images">
-                {images.map((image) => (
+                {poste?.images.map((image) => (
                   <LazyLoadImage
                     key={image.url}
                     src={image.url}
@@ -130,7 +134,7 @@ function poste() {
                     effect="blur"
                     placeholderSrc="/image_loaders.gif"
                     width={`100%`}
-                    height={isMobile ? 150 : 200}
+                    height={isMobile ? 200 : 250}
                     onClick={() => selectedImage(image)}
                     // height={isMobile ? 300 : 420}
                   />
