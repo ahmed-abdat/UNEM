@@ -38,6 +38,14 @@ export   const showTime = (date) => {
     );
   };
 
+export const showTimeDate = (date) => {
+    if(!date) return null;
+    const time = date.seconds * 1000;
+    const momentTime = moment(time);
+    const dateFormate = momentTime.format("DD/MM/YYYY");
+    return dateFormate;
+  }
+
 
   const currentDate = (
     momentTime,

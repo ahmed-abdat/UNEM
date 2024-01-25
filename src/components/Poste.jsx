@@ -7,7 +7,7 @@ import Header from "./Header";
 import "./styles/poste.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { showTime } from "../utils/showTime";
+import { showTime , showTimeDate } from "../utils/showTime";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import SharePoste from "./SharePoste";
 import PosteSkelton from "./PosteSkelton";
@@ -107,7 +107,7 @@ function poste() {
                     {showTime(poste?.createdAt)}
                   </span>
                   <span className="bar">|</span>
-                  <span className="update-time">آخر تحديث : {showTime(poste?.lasteUpdate)}</span>
+                  <span className="update-time">آخر تحديث : {showTimeDate(poste?.lasteUpdate)}</span>
                 </div>
                 <div className="poste-share">
                   <SharePoste handelCopy={handelCopy} url={url} />
