@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { app } from "../config/firebase";
 import Header from "./Header";
+import Video from "./Video";
 import "./styles/poste.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +19,7 @@ function poste() {
   const [images, setImages] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
   const [isImageSelected, setIsImageSelected] = useState(false);
+  const [isvideoReady, setIsvideoReady] = useState(false);
   const [image, setImage] = useState(null);
   const firestore = getFirestore(app);
   const getPoste = async (id) => {
@@ -51,6 +53,8 @@ function poste() {
     navigator.clipboard.writeText(url);
     toast.success("تم نسخ الرابط بنجاح");
   };
+
+  const VideoUrl='https://fb.watch/pOfS8ltcWZ/?mibextid=Nif5oz'
 
   // handel selected image
   const selectedImage = (media) => {
@@ -101,6 +105,7 @@ function poste() {
                   width={`100%`}
                 />
               </div>
+              {/* <Video  url={VideoUrl} /> */}
               <div className="poste-info">
                 <div className="poste-times">
                   <span className="create-time">
