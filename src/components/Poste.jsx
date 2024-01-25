@@ -125,6 +125,7 @@ function poste() {
                     effect="blur"
                     placeholderSrc="/image_loaders.gif"
                     width={`100%`}
+                    height={isMobile ? 150 : 200}
                     onClick={() => selectedImage(image)}
                     // height={isMobile ? 300 : 420}
                   />

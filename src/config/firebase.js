@@ -1,17 +1,16 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getStorage, ref } from "firebase/storage";
+import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDpR9R5L6xuFPuwf7JQkjEnXLGF64qodew",
-  authDomain: "mahdara-e8299.firebaseapp.com",
-  projectId: "mahdara-e8299",
-  storageBucket: "mahdara-e8299.appspot.com",
-  messagingSenderId: "7712837976",
-  appId: "1:7712837976:web:aace9912481e18d00b152d",
-  measurementId: "G-NFHNGNZH9Z",
-  // databaseURL: "https://unem-c7666-default-rtdb.firebaseio.com/",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
