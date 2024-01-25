@@ -19,7 +19,7 @@ export default function ViewFullImage({
   };
 
   const selectedImageIndex = images.findIndex(
-    (image) => image.src === selectedImage.src
+    (image) => image.url === selectedImage.url
   );
 
   // track the inedx of the selected image
@@ -57,7 +57,7 @@ export default function ViewFullImage({
   // handel download image
   const downloadImage = () => {
     const imageURL = images[imageIndex].url;
-    const imageName = imageURL?.split("?")[0].split("/")[7];
+    const imageName = images[imageIndex].name;
     saveAs(imageURL, imageName);
   };
 

@@ -30,11 +30,11 @@
 }
 
 .swiper--container .arrow--container {
-    background: rgb(0 0 0 / 20%) !important;
+    background: rgb(0 0 0 / 15%) !important;
     font-size: 1.8rem;
     cursor: pointer;
     position: absolute;
-    width: 10%;
+    width: 13%;
     height: 100%;
     background: transparent;
     top: 0;
@@ -75,4 +75,11 @@
     bottom: -8rem;
     left: 50%;
     transform: translateX(-50%);
+}
+
+
+@media screen and (min-width : 768px) {
+    .swiper--container .arrow--container {
+        width: 10%;
+    }
 }
