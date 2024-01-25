@@ -57,7 +57,7 @@ export default function ViewFullImage({
   // handel download image
   const downloadImage = () => {
     const imageURL = images[imageIndex].url;
-    const imageName = images[imageIndex].name;
+    const imageName = imageURL?.split('?')[0].split('/')[7];
     saveAs(imageURL, imageName);
   };
 
