@@ -16,10 +16,8 @@ import ViewFullImage from "./ViewImage";
 function poste() {
   const { id } = useParams();
   const [poste, setPoste] = useState(null);
-  const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isImageSelected, setIsImageSelected] = useState(false);
-  const [isvideoReady, setIsvideoReady] = useState(false);
   const [image, setImage] = useState(null);
   const firestore = getFirestore(app);
   const getPoste = async (id) => {
@@ -27,8 +25,6 @@ function poste() {
     try {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        const images = docSnap.data().images.slice(1);
-        setImages(images);
         setPoste(docSnap.data());
         localStorage.setItem("poste", JSON.stringify(docSnap.data()));
       } else {
