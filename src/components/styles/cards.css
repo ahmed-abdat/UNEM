@@ -99,9 +99,9 @@
 }
 
 .card .card_discription .card_title {
-  font-family: "Al Jazeera" ,Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif ;
+  font-family: "RB" ,Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif ;
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.5rem;
   line-height: 1.5;
   color: var(--black-color);
@@ -121,7 +121,7 @@
 
 
 .card .card_discription .card_date {
-  font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif ;
+  font-family:"RB", Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif ;
   font-size: 0.8rem;
   font-weight: 400;
   color: var(--icon-color);
@@ -134,7 +134,7 @@
   justify-content: space-between;
   padding-block: 0.5rem;
 }
-.card .card_footer .read_more {
+/* .card .card_footer .read_more {
   font-family: 'Vazirmatn' , 'Amiri' , sans-serif;
   display: flex;
   align-items: center;
@@ -149,7 +149,7 @@
   background: transparent;
   padding: 0;
   font-size: inherit;
-}
+} */
 
 .card .card_footer .icon {
   display: flex;

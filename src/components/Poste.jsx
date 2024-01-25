@@ -130,7 +130,7 @@ function poste() {
                     effect="blur"
                     placeholderSrc="/image_loaders.gif"
                     width={`100%`}
-                    height={isMobile ? 200 : 250}
+                    height={isMobile ? 250 : 350}
                     onClick={() => selectedImage(image)}
                     // height={isMobile ? 300 : 420}
                   />

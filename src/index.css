@@ -8,12 +8,21 @@
 
 /* Aj jazira */
 @font-face {
-  font-family: 'Al Jazeera';
-  src: url('./assets//font/Aljazeera.ttf');
+  font-family: 'RB';
+  src: url('./assets//font/RB\ Regular.ttf');
 }
+/* @font-face {
+  font-family: 'Al jazeera';
+  src: url('./assets//font//Aljazeera.ttf');
+} */
 @font-face {
   font-family: "Helvetica Neue";
   src: url('./assets//font/alfont_com.ttf');
+}
+
+@font-face {
+  font-family: 'Rb';
+  src: url('./assets/font/4_F5.ttf');
 }
 
 
@@ -47,7 +56,7 @@
 }
 
 body {
-  font-family: 'Changa', sans-serif;
+  font-family: 'RB', sans-serif;
   background-color: var(--main-bgc);
   /* background-image: linear-gradient(180deg,var(--app-background),var(--app-background-deeper)); */
 
