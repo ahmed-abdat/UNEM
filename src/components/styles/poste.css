@@ -59,10 +59,11 @@
 .poste .poste-content {
   padding: 10px;
   display: block;
-  font-family: "RB", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: RB,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 20px;
-  line-height: 1.9;
-  color: rgb(0, 0, 0);
+  line-height: 2.3;
+  color: #000;
 }
 
 .poste .poste-times {
