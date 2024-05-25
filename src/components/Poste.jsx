@@ -119,7 +119,7 @@ function poste() {
                 </div>
               </div>
               <div className="poste-content">
-                <p>{poste?.description}</p>
+                <p>{poste?.discribtion || poste?.summary}</p>
               </div>
               <div className="poste-images">
                 {poste?.images.map((image) => (
