@@ -64,14 +64,6 @@ body {
 
 a {
   all: unset;
-  cursor: pointer;
-  color: #3b82f6;
-  transition: all 0.3s ease-in-out;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #1e40af;
 }
 
 .d-f {
@@ -136,4 +128,16 @@ a:hover {
   justify-content: stretch;
   min-height: 250px;
   gap: 2px;
+}
+
+.tip-tap-link {
+  color: #3b82f6;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.tip-tap-link:hover {
+  text-decoration: underline;
+  color: #1e40af;
 }
