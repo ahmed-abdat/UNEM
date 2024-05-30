@@ -13,6 +13,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import SharePoste from "./SharePoste";
 import PosteSkelton from "./PosteSkelton";
 import ViewFullImage from "./ViewImage";
+import TipTap from "./TipTap";
+import { isValidJSON } from "../utils/valide-json";
 function poste() {
   const { id } = useParams();
   const [poste, setPoste] = useState(null);
@@ -119,7 +121,9 @@ function poste() {
                 </div>
               </div>
               <div className="poste-content">
-                <p>{poste?.description}</p>
+              {
+                isValidJSON(poste?.discribtion) ? <TipTap description={JSON.parse(poste?.discribtion || '')} /> : <p>{poste?.discribtion || poste?.summary}</p>
+              }
               </div>
               <div className="poste-images">
                 {poste?.images.map((image) => (

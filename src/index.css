@@ -64,6 +64,14 @@ body {
 
 a {
   all: unset;
+  cursor: pointer;
+  color: #3b82f6;
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1e40af;
 }
 
 .d-f {
@@ -118,4 +126,14 @@ a {
   opacity: 0.7;
   pointer-events: none;
   cursor: not-allowed;
+}
+
+
+/* tiptap  */
+.tip-tap {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 250px;
+  gap: 2px;
 }
