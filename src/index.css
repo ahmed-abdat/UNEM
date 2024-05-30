@@ -141,3 +141,8 @@ a {
   text-decoration: underline;
   color: #1e40af;
 }
+
+.tip-tap-header {
+  font-size: 1.25rem; 
+  font-weight: bold;
+}

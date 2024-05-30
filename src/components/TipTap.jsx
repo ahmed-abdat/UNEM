@@ -21,7 +21,7 @@ export default function TipTap({ description }) {
       Heading.configure({
         levels: [1],
         HTMLAttributes: {
-          class: "text-xl font-bold",
+          class: "tip-tap-header",
         },
       }),
       Typography.configure(),
@@ -31,7 +31,7 @@ export default function TipTap({ description }) {
       }),
       Link.configure({
         HTMLAttributes: {
-          class: "text-blue-500 hover:text-blue-700 hover:underline",
+          class: "tip-tap-link",
         },
         autolink: true,
         linkOnPaste : true,
