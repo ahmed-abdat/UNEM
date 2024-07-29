@@ -158,7 +158,7 @@ export default function WhatsappForm() {
               <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
                 القرار
               </span>
-              <div className="flex items-center text-2xl font-bold text-gray-800 dark:text-gray-200 animate__animated animate__fadeIn">
+              <div className="flex items-center text-2xl font-bold text-gray-800 dark:text-gray-200 animate__animated animate__fadeIn gap-x-2">
                 {studentData.Decision === "Admis" ? (
                   <>
                     <span className="ml-2">🎉</span>
@@ -170,12 +170,12 @@ export default function WhatsappForm() {
                 ) : (
                   <span>غير ناجح</span>
                 )}
-              </div>
               |
               <div>
                 <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
-                  {studentData.Decision}
+                  {studentData.Decision} 
                 </span>
+              </div>
               </div>
             </div>
             <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300 leading-normal text-sm">
