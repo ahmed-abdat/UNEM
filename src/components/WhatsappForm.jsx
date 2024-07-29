@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils";
 import Bac2024 from "@/data/Bac2024.json";
 import { Loader2 } from "lucide-react";
 
-console.log(Bac2024);
 
 // Validation schema using Zod
 const BacNumber = z.object({
