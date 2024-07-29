@@ -108,6 +108,7 @@ const fakeStudents = [
     LieuNaiss: 'Néma',
     DateNaiss: '26/02/96',
     NomAr: 'محمد غلام',
+    Decision : 'Sessionnaire',
     LieuAr: 'النعمة',
     TypeCandidat: 'CL',
     SERIE: 'SN',
@@ -182,7 +183,7 @@ export default function WhatsappForm() {
   };
 
   return (
-    <div className="w-full min-h-screen dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">
+    <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">
       <Confetti ref={confettiRef} className="absolute inset-0 -z-20" />
       <div className="w-full max-w-xl mt-2 p-4 bg-[#f8f8f8] dark:bg-gray-800 rounded-lg shadow-sm md:shadow-md">
         <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -213,7 +214,7 @@ export default function WhatsappForm() {
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           </Button>
         </form>
-        {studentData && (
+        {studentData ? (
           <div className="mt-6">
             <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-2">{studentData.NomAr}</h1>
             <div className="flex items-baseline justify-center text-sm text-gray-600 dark:text-gray-400 mb-4">
@@ -283,7 +284,21 @@ export default function WhatsappForm() {
                   </a>
                 </div>
               )}
+              {/* unem wich you good luck */}
+              {
+                studentData.Decision === 'Ajourné' || studentData.MoyBac >= 9 ? (
+                  <p className='mt-4 text-base text-center'>مبروك النجاح و نتمنى لك النجاح في المرحلة القادمة</p>
+                ) : (
+                  <p className='mt-4 text-base text-center'> نتمنى لك التوفيق في المرحلة القادمة</p>
+                )
+              }
             </div>
+          </div>
+        ) : (
+          <div className="mt-6 flex justify-center items-center min-h-[40dvh]">
+            <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200">
+              لم يتم العثور على الطالب
+            </h1>
           </div>
         )}
       </div>
