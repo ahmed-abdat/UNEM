@@ -54,7 +54,7 @@ export default function WhatsappForm() {
     setLoading(true);
     try {
       const student = Bac2024.find((student) => {
-        return student.Num_Bac === data.bacNumber || student.Num_Bac === +data.bacNumber; 
+        return student.Num_Bac == data.bacNumber || student.Num_Bac == +data.bacNumber; 
       });
       // blur the input
       console.log(student);
