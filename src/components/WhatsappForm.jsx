@@ -58,6 +58,8 @@ export default function WhatsappForm() {
           return student.Num_Bac === data.bacNumber
         }
       );
+      // blur the input
+      numBacRef.current.blur();
       console.log(student);
       if (student) {
         setStudentData(student);
