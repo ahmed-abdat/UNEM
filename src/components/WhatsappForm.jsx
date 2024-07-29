@@ -59,7 +59,7 @@ export default function WhatsappForm() {
       console.log(student);
       if (student) {
         setStudentData(student);
-        const isAdmin = student.Decision === 'Admis' || student.MOYBAC >= 9;
+        const isAdmin = student.Decision === "Admis" || student.MOYBAC >= 9;
         if (isAdmin) {
           toast.success("مبروك النجاح  🎉🎊🎈 !!!", {
             style: { fontSize: "0.85rem", textAlign: "center" },
@@ -159,18 +159,23 @@ export default function WhatsappForm() {
                 القرار
               </span>
               <div className="flex items-center text-2xl font-bold text-gray-800 dark:text-gray-200 animate__animated animate__fadeIn">
-                {studentData.Decision === 'Admis' ? (
+                {studentData.Decision === "Admis" ? (
                   <>
                     <span className="ml-2">🎉</span>
                     <span>ناجح</span>
                     <span className="mr-2">🎉</span>
                   </>
-                ) : studentData.Decision === 'Sessionnaire' ?  (
+                ) : studentData.Decision === "Sessionnaire" ? (
                   <span> الدورة التكميلية </span>
                 ) : (
-                  
                   <span>غير ناجح</span>
                 )}
+              </div>
+              |
+              <div>
+                <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
+                  {studentData.Decision}
+                </span>
               </div>
             </div>
             <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300 leading-normal text-sm">
