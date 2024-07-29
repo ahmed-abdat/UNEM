@@ -153,7 +153,12 @@ export default function WhatsappForm() {
             </div>
             <div
               id="decision-bar"
-              className="h-1 rounded w-2/3 mx-auto bg-green-500 mb-4"
+              className={cn("h-1 rounded w-2/3 mx-auto  mb-4", {
+                "bg-green-500": studentData.Decision.startsWith("Admis"),
+                "bg-red-500": studentData.Decision.startsWith("Ajourné"),
+                "bg-yellow-500": studentData.Decision === "Sessionnaire",
+                "bg-gray-500": studentData.Decision === "Abscent",
+              })}
             ></div>
             <div className="flex flex-col items-center mb-6">
               <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
