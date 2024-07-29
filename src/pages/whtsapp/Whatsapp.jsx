@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
-import data from "../../data/BAC2023VALID.json";
+import data from "../../data/Bac2024.json";
 import { useRef, useState } from "react";
 
 export default function Whatsapp() {
