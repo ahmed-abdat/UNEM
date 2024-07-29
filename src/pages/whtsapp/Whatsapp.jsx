@@ -12,15 +12,17 @@ export default function Whatsapp() {
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = data.find((student) => student.NODOSS === numBac) ;
+    const isValid = data.find((student) => student.NODOSS === Number(numBac)); ;
+
+    console.log(isValid);
     
     if (isValid) {
       const whtspUrl = {
-        SN: "https://chat.whatsapp.com/ItJtE08IIwg8lSTrqOjf8e",
-        M: "https://chat.whatsapp.com/KFwkj9xNM5mLlkIisqlMra",
-        LO: "https://chat.whatsapp.com/E66wEjpS8gm3ZXDfqPTQUr",
-        LM: "https://chat.whatsapp.com/CVlHmIUkkNvFC6eJExfLHl",
-        TM: "https://chat.whatsapp.com/IC9MwzhTKiU8psKhMz1tpP",
+        SN: "https://chat.whatsapp.com/JkioU681VEwLVkGPM9JJr9",
+        M: "https://chat.whatsapp.com/GP0UOtpuaGTGhCS4eE7rGO",
+        LO: "https://chat.whatsapp.com/F8HZQowYICx7ysWSJxq1bX",
+        LM: "https://chat.whatsapp.com/GQ30pScmnTOLJkgl2YoUAi",
+        TM: "https://chat.whatsapp.com/DbSUMgDMjbD2YOyOCrzZxN",
       };
 
       window.open(whtspUrl[isValid.SERIE])
@@ -33,7 +35,7 @@ export default function Whatsapp() {
 
   const handleNumBacChange = (e) => {
     const inputValue = e.target.value;
-    const numBacValue = inputValue.slice(0, 5); // Restrict to 5 digits
+    const numBacValue = inputValue.slice(0, 6); // Restrict to 5 digits
     setNumBac(numBacValue);
   };
 
@@ -50,14 +52,14 @@ export default function Whatsapp() {
                 type="number"
                 value={numBac}
                 ref={numBacRef}
-                onKeyDown={(e) => e.key === 'Enter' && handelValideStudent(e)}
+                onKeyDown={(e) => (e.key === 'Enter' && numBac) && handelValideStudent(e)}
                 onChange={handleNumBacChange}
                 placeholder="أدخل رقم الباكلوريا"
               />
             </div>
           </div>
-          <div className="btn">
-            <button onClick={handelValideStudent}>إنضمام</button>
+          <div className="btn" disabled={!numBac}>
+            <button onClick={handelValideStudent} disabled={!numBac}>إنضمام</button>
           </div>     
         </form>
       </section>

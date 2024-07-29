@@ -34,6 +34,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/News/poste/:id" element={<Poste />} />
           <Route path="/calculation" element={<Calculation />} />
+          <Route path="/whatsapp" element={<Whatsapp />} />
           <Route path="/resulta" element={<Resulta />} />
           <Route path="/revision" element={<Revision />} />
           <Route path="/revision/:id" element={<Archives />} />

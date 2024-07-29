@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@tiptap/extension-heading": "^2.4.0",
     "@tiptap/extension-link": "^2.4.0",
     "@tiptap/extension-text-align": "^2.4.0",
@@ -22,7 +23,8 @@
     "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1",
+    "react-hook-form": "^7.52.1",
+    "react-icons": "^4.12.0",
     "react-intersection-observer": "^9.5.3",
     "react-lazy-load-image-component": "^1.6.0",
     "react-loading-skeleton": "^3.3.1",
@@ -30,7 +32,8 @@
     "react-router-dom": "^6.14.1",
     "react-select": "^5.7.3",
     "react-share": "^5.0.3",
-    "react-toastify": "^9.1.3"
+    "react-toastify": "^9.1.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
@@ -41,6 +44,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
+    "tailwindcss": "^3.4.7",
     "vite": "^4.4.0"
   }
 }

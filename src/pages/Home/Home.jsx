@@ -18,7 +18,11 @@ export default function home() {
     window.open("https://wa.me/+22242049074?text=");
   };
 
-  const options = [
+  const options = [{
+    content : 'نتائج الباكلوريا 2024',  
+    url : '/resulta'
+
+  },
     {
       content: "الأخبار",
       url: "/news",
