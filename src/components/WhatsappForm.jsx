@@ -53,11 +53,9 @@ export default function WhatsappForm() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const student = Bac2024.find(
-        (student) => {
-          return student.Num_Bac === data.bacNumber
-        }
-      );
+      const student = Bac2024.find((student) => {
+        return student.Num_Bac === data.bacNumber;
+      });
       // blur the input
       numBacRef.current.blur();
       console.log(student);
@@ -151,7 +149,7 @@ export default function WhatsappForm() {
               </h3>
               <span className="mx-1">|</span>
               <a href="#" className="text-blue-700 dark:text-blue-300">
-                 مسابقة الباكلوريا 2024  {studentData.Serie_AR}
+                مسابقة الباكلوريا 2024 {studentData.Serie_AR}
               </a>
             </div>
             <div
@@ -171,6 +169,8 @@ export default function WhatsappForm() {
                   </>
                 ) : studentData.Decision === "Sessionnaire" ? (
                   <span> الدورة التكميلية </span>
+                ) : studentData.Decision === "Abscent" ? (
+                  <span>👀 غائب 👀</span>
                 ) : (
                   <span>غير ناجح</span>
                 )}
