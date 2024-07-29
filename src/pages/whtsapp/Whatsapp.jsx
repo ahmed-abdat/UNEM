@@ -12,7 +12,7 @@ export default function Whatsapp() {
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = data.find((student) => student.NODOSS === Number(numBac)); ;
+    const isValid = data.find((student) => student.NODOSS === numBac)?.Decision === "Admis";   ;
 
     console.log(isValid);
     
