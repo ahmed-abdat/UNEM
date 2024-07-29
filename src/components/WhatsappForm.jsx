@@ -12,6 +12,7 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import Bac2024 from "@/data/Bac2024.json";
+import { Loader2 } from "lucide-react";
 
 console.log(Bac2024);
 
@@ -54,10 +55,9 @@ export default function WhatsappForm() {
     setLoading(true);
     try {
       const student = Bac2024.find((student) => {
-        return student.Num_Bac === data.bacNumber;
+        return student.Num_Bac === data.bacNumber || student.Num_Bac === +data.bacNumber; 
       });
       // blur the input
-      numBacRef.current.blur();
       console.log(student);
       if (student) {
         setStudentData(student);
