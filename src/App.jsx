@@ -21,6 +21,7 @@ const Poste = lazy(() => import('./components/Poste'));
 const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
 const Form = lazy(() => import("./pages/Form/Form"));
 const Institues = lazy(() => import("./components/Institues"));
+const Bac2024 = lazy(() => import("./pages/Bac2024/Bac2024"));
 
 import Archives from './pages/archives/Archives'
 import Loader from "./components/Loader";
@@ -45,6 +46,7 @@ function App() {
           <Route path="/schedule" element={<Schedules />} />
           <Route path="/remote" element={<Remote />} />
           <Route path="/about" element={<About />} />
+          <Route path="/bac2024" element={<Bac2024 />} />
 
           {/* all revision archive */}
 

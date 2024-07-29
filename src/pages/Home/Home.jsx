@@ -20,26 +20,26 @@ export default function home() {
 
   const options = [{
     content : 'نتائج الباكلوريا 2024',  
-    url : '/resulta'
+    url : '/bac2024'
 
   },
-    {
-      content: "الأخبار",
-      url: "/news",
-    },
-    {
-      content: "حساب المعدل التوجيهي",
-      url: "/calculation",
-    },
-    {
-      content: "الإستمارة و التوجيه",
-      url: "/form",
-    },
-    {
-      content: " المجموعات الواتسابية (باكلوريا) ",
-      url: "/whatsapp",
-    },
-    {
+  {
+    content: "حساب المعدل التوجيهي",
+    url: "/calculation",
+  },
+  {
+    content: " المجموعات الواتسابية (باكلوريا) ",
+    url: "/whatsapp",
+  },
+  {
+    content: "الإستمارة و التوجيه",
+    url: "/form",
+  },
+  {
+    content: "الأخبار",
+    url: "/news",
+  },
+  {
       content: "مؤسسات التعليم العالي",
       url: "/institutions",
     },

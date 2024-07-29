@@ -72,7 +72,7 @@ export default function Calculation() {
 
   return (
     <>
-    <HeaderImg picture={'/01.png'} />
+    <HeaderImg picture={'/01.png'} bgColor={'#ebebeb'} />
     
       <section className="calculation">
         <div className={`calculation--form`}>

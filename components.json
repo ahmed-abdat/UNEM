@@ -5,13 +5,15 @@
   "tsx": false,
   "tailwind": {
     "config": "tailwind.config.js",
-    "css": "index.css",
+    "css": "src/index.css",
     "baseColor": "slate",
     "cssVariables": true,
     "prefix": ""
   },
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils"
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "magicui": "@/components/magicui"
   }
 }

@@ -1,11 +1,12 @@
-const config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
+  ],
   prefix: "",
   theme: {
     container: {
@@ -65,23 +66,15 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-      }, 
-      gridTemplateColumns : {
-        'mobile' : 'repeat(1, minmax(250px, 1fr))',
-        'tablet' : 'repeat(2, minmax(300px, 1fr))',
-        'desktop' : 'repeat(3, minmax(400px, 1fr))',
-      },
-      lineHeight: {
-        'poste-text' : '2.3'
-      },
-      backgroundImage: {
-        'gradient-main': 'linear-gradient(272deg, .var(--tw-gradient-stops))',
-        'gradient-footer': 'linear-gradient(350deg, var(--tw-gradient-stops))',
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        'gradient-main': 'linear-gradient(272deg, .var(--tw-gradient-stops))',
+        'gradient-footer': 'linear-gradient(350deg, var(--tw-gradient-stops))',
       },
       boxShadow: {
         'option' : '0 8px 17px #0000000f',
@@ -110,6 +103,4 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} 
-
-export default config
+}

@@ -41,7 +41,7 @@ export default function Whatsapp() {
 
   return (
     <>
-      <HeaderImg picture={"/04.jpeg"} />
+      <HeaderImg picture={"/04.jpeg"} bgColor={'#f8f8f8'} />
       <section className="whatsapp">
         <form className="form">
           <p> للانضمام إلى المجموعة الخاصة بشعبتكم يرجى إدخال رقم الباكلوريا</p>
