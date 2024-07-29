@@ -243,7 +243,7 @@ export default function WhatsappForm() {
                   </a>
                 </div>
               </div>
-              {studentData.Num_Bac >= 10 && (
+              {studentData.Decision?.startsWith("Admis") && (
                 <div className="flex justify-center mt-4">
                   <a
                     href={whatsAppGroups[studentData.SERIE]}
@@ -256,7 +256,7 @@ export default function WhatsappForm() {
                 </div>
               )}
               {/* unem wich you good luck */}
-              {studentData.Decision === "Admis" || studentData.Num_Bac >= 9 ? (
+              {studentData.Decision?.startsWith("Admis") ? (
                 <p className="mt-4 text-base text-center">
                   مبروك النجاح و نتمنى لك النجاح في المرحلة القادمة
                 </p>
