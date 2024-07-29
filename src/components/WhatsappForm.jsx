@@ -54,12 +54,14 @@ export default function WhatsappForm() {
     setLoading(true);
     try {
       const student = Bac2024.find(
-        (student) => student.NODOSS === data.bacNumber
+        (student) => {
+          return student.Num_Bac === data.bacNumber
+        }
       );
       console.log(student);
       if (student) {
         setStudentData(student);
-        const isAdmin = student.Decision === "Admis" || student.MOYBAC >= 9;
+        const isAdmin = student.Decision === "Admis" || student.Moy_Bac >= 9;
         if (isAdmin) {
           toast.success("مبروك النجاح  🎉🎊🎈 !!!", {
             style: { fontSize: "0.85rem", textAlign: "center" },
@@ -139,15 +141,15 @@ export default function WhatsappForm() {
         {studentData ? (
           <div className="mt-6">
             <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-2">
-              {studentData.NOMPA}
+              {studentData.NOM_AR}
             </h1>
             <div className="flex items-baseline justify-center text-sm text-gray-600 dark:text-gray-400 mb-4">
               <h3 className="text-gray-700 dark:text-gray-300 font-mono">
-                {studentData.NODOSS}
+                {studentData.Num_Bac}
               </h3>
               <span className="mx-1">|</span>
               <a href="#" className="text-blue-700 dark:text-blue-300">
-                مسابقة الباكلوريا 2024
+                 مسابقة الباكلوريا 2024  {studentData.Serie_AR}
               </a>
             </div>
             <div
@@ -170,12 +172,12 @@ export default function WhatsappForm() {
                 ) : (
                   <span>غير ناجح</span>
                 )}
-              |
-              <div>
-                <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
-                  {studentData.Decision} 
-                </span>
-              </div>
+                |
+                <div>
+                  <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
+                    {studentData.Decision}
+                  </span>
+                </div>
               </div>
             </div>
             <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300 leading-normal text-sm">
@@ -185,7 +187,7 @@ export default function WhatsappForm() {
                     المعدل
                   </div>
                   <div className="font-bold text-gray-700 dark:text-gray-300">
-                    {studentData?.MOYBAC?.toFixed(2)}
+                    {Number(studentData?.Moy_Bac)?.toFixed(2)}
                   </div>
                 </div>
               </div>
@@ -198,7 +200,7 @@ export default function WhatsappForm() {
                     href="#"
                     className="font-bold text-blue-700 dark:text-blue-300"
                   >
-                    {studentData.LibnoetsAR}
+                    {studentData.Etablissement_AR}
                   </a>
                 </div>
                 <div className="w-1/2 pr-2 mb-4">
@@ -209,7 +211,7 @@ export default function WhatsappForm() {
                     href="#"
                     className="font-bold text-blue-700 dark:text-blue-300"
                   >
-                    {studentData.LIEUNA}
+                    {studentData.Lieun_AR}
                   </a>
                 </div>
                 <div className="w-1/2 pr-2 mb-4">
@@ -220,7 +222,7 @@ export default function WhatsappForm() {
                     href="#"
                     className="font-bold text-blue-700 dark:text-blue-300"
                   >
-                    {studentData.WILAYA_AR}
+                    {studentData.Wilaya_AR}
                   </a>
                 </div>
                 <div className="w-1/2 pr-2 mb-4">
@@ -231,11 +233,11 @@ export default function WhatsappForm() {
                     href="#"
                     className="font-bold text-blue-700 dark:text-blue-300"
                   >
-                    {studentData.LibnoetsAR}
+                    {studentData.Etablissement_AR}
                   </a>
                 </div>
               </div>
-              {studentData.MOYBAC >= 10 && (
+              {studentData.Num_Bac >= 10 && (
                 <div className="flex justify-center mt-4">
                   <a
                     href={whatsAppGroups[studentData.SERIE]}
@@ -248,7 +250,7 @@ export default function WhatsappForm() {
                 </div>
               )}
               {/* unem wich you good luck */}
-              {studentData.Decision === "Admis" || studentData.MOYBAC >= 9 ? (
+              {studentData.Decision === "Admis" || studentData.Num_Bac >= 9 ? (
                 <p className="mt-4 text-base text-center">
                   مبروك النجاح و نتمنى لك النجاح في المرحلة القادمة
                 </p>
