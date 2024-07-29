@@ -161,7 +161,7 @@ export default function WhatsappForm() {
                 القرار
               </span>
               <div className="flex items-center text-2xl font-bold text-gray-800 dark:text-gray-200 animate__animated animate__fadeIn gap-x-2">
-                {studentData.Decision === "Admis" ? (
+                {studentData?.Decision?.startsWith("Admis") ? (
                   <>
                     <span className="ml-2">🎉</span>
                     <span>ناجح</span>

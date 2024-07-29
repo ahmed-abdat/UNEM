@@ -15,6 +15,8 @@ export default function Whatsapp() {
     const isValid = data.find((student) => student.NODOSS === numBac)?.Decision === "Admis";   ;
 
     console.log(isValid);
+
+    a = 's'.startsWith()
     
     if (isValid) {
       const whtspUrl = {
