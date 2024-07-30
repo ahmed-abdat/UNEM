@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
-import data from "../../data/Bac2024.json";
+import Bac2024 from "../../data/Bac2024.json";
 import { useRef, useState } from "react";
 
 export default function Whatsapp() {
@@ -12,22 +12,30 @@ export default function Whatsapp() {
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = data.find((student) => student.NODOSS === numBac)?.Decision === "Admis";   ;
+    const isValid = Bac2024.find((student) => {
+      return (
+        student.Num_Bac == numBac ||
+        student.Num_Bac == +numBac
+      );
+    })?.Decision.startsWith("Admis");
 
-    console.log(isValid);
+    const student = Bac2024.find((student) => {
+      return (
+        student.Num_Bac == numBac ||
+        student.Num_Bac == +numBac
+      );
+    });
 
-    a = 's'.startsWith()
-    
     if (isValid) {
       const whtspUrl = {
-        SN: "https://chat.whatsapp.com/JkioU681VEwLVkGPM9JJr9",
+        SN: "https://chat.whatsapp.com/EIbKmwQQFzv5ga514Evx4l",
         M: "https://chat.whatsapp.com/GP0UOtpuaGTGhCS4eE7rGO",
         LO: "https://chat.whatsapp.com/F8HZQowYICx7ysWSJxq1bX",
         LM: "https://chat.whatsapp.com/GQ30pScmnTOLJkgl2YoUAi",
         TM: "https://chat.whatsapp.com/DbSUMgDMjbD2YOyOCrzZxN",
       };
 
-      window.open(whtspUrl[isValid.SERIE])
+      window.open(whtspUrl[student.SERIE])
       return;
     }
 

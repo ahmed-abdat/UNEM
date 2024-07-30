@@ -24,7 +24,7 @@ const BacNumber = z.object({
 
 // WhatsApp group links
 const whatsAppGroups = {
-  SN: "https://chat.whatsapp.com/JkioU681VEwLVkGPM9JJr9",
+  SN: "https://chat.whatsapp.com/EIbKmwQQFzv5ga514Evx4l",
   M: "https://chat.whatsapp.com/GP0UOtpuaGTGhCS4eE7rGO",
   LO: "https://chat.whatsapp.com/F8HZQowYICx7ysWSJxq1bX",
   LM: "https://chat.whatsapp.com/GQ30pScmnTOLJkgl2YoUAi",
@@ -62,7 +62,7 @@ export default function WhatsappForm() {
       console.log(student);
       if (student) {
         setStudentData(student);
-        const isAdmin = student.Decision === "Admis" || student.Moy_Bac >= 9;
+        const isAdmin = student.Decision.startsWith("Admis");
         if (isAdmin) {
           toast.success("مبروك النجاح  🎉🎊🎈 !!!", {
             style: { fontSize: "0.85rem", textAlign: "center" },
@@ -191,32 +191,19 @@ export default function WhatsappForm() {
             <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300 leading-normal text-sm">
               <div class="flex items-start flex-wrap w-full border-b border-b-gray-200 dark:border-b-gray-800 mb-4 hide-no-gpa">
                 <div
-                  className="flex
-flex-col
-mb-4 pr-2 w-1/2"
+                  className="flex flex-col mb-4 pr-2 w-1/2"
                   data-blur-toggle=""
                   role="button"
                 >
-                  <div
-                    className="mb-1
-text-gray-600 dark:text-gray-400"
-                  >
+                  <div className="mb-1text-gray-600 dark:text-gray-400">
                     المعدل
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-bold text-xs">
                     {Number(studentData.Moy_Bac).toFixed(2)}
                   </div>
                 </div>
-                <div
-                  className="flex
-flex-col
-mb-4 pr-2 w-1/2"
-                  target="_blank"
-                >
-                  <div
-                    className="mb-1
-text-gray-600 dark:text-gray-400"
-                  >
+                <div className="flex flex-col mb-4 pr-2 w-1/2" target="_blank">
+                  <div className="mb-1text-gray-600 dark:text-gray-400">
                     النتائج التفصيلية
                   </div>
                   <a
