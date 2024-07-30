@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils";
 import Bac2024 from "@/data/Bac2024.json";
 import { Loader2 } from "lucide-react";
 
-
 // Validation schema using Zod
 const BacNumber = z.object({
   bacNumber: z
@@ -54,7 +53,10 @@ export default function WhatsappForm() {
     setLoading(true);
     try {
       const student = Bac2024.find((student) => {
-        return student.Num_Bac == data.bacNumber || student.Num_Bac == +data.bacNumber; 
+        return (
+          student.Num_Bac == data.bacNumber ||
+          student.Num_Bac == +data.bacNumber
+        );
       });
       // blur the input
       console.log(student);
@@ -187,14 +189,43 @@ export default function WhatsappForm() {
               </div>
             </div>
             <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300 leading-normal text-sm">
-              <div className="flex items-centet flex-wrap w-full border-b border-gray-200 dark:border-gray-800 mb-4">
-                <div className="w-full pr-2 mb-4">
-                  <div className="text-gray-600 dark:text-gray-400 mb-1">
+              <div class="flex items-start flex-wrap w-full border-b border-b-gray-200 dark:border-b-gray-800 mb-4 hide-no-gpa">
+                <div
+                  className="flex
+flex-col
+mb-4 pr-2 w-1/2"
+                  data-blur-toggle=""
+                  role="button"
+                >
+                  <div
+                    className="mb-1
+text-gray-600 dark:text-gray-400"
+                  >
                     المعدل
                   </div>
-                  <div className="font-bold text-gray-700 dark:text-gray-300">
-                    {Number(studentData?.Moy_Bac)?.toFixed(2)}
+                  <div className="text-gray-700 dark:text-gray-300 font-bold text-xs">
+                    17.81
                   </div>
+                </div>
+                <div
+                  className="flex
+flex-col
+mb-4 pr-2 w-1/2"
+                  target="_blank"
+                >
+                  <div
+                    className="mb-1
+text-gray-600 dark:text-gray-400"
+                  >
+                    النتائج التفصيلية
+                  </div>
+                  <a
+                    className="text-blue-700 dark:text-blue-300 font-bold text-xs cursor-pointer"
+                    href={`http://dec.education.gov.mr/bac-21/${studentData.Num_Bac}/info`}
+                    target="_blank"
+                  >
+                    🔗 عبر موقع الوزارة
+                  </a>
                 </div>
               </div>
               <div className="flex items-start flex-wrap w-full">
