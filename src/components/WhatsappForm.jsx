@@ -204,7 +204,7 @@ text-gray-600 dark:text-gray-400"
                     المعدل
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-bold text-xs">
-                    17.81
+                    {Number(studentData.Moy_Bac).toFixed(2)}
                   </div>
                 </div>
                 <div
