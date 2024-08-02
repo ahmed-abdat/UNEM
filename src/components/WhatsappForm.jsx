@@ -24,7 +24,7 @@ const BacNumber = z.object({
 
 // WhatsApp group links
 const whatsAppGroups = {
-  SN: "https://chat.whatsapp.com/EIbKmwQQFzv5ga514Evx4l",
+  SN: "https://chat.whatsapp.com/JtHkh4p018cJWpLDCGlZTl",
   M: "https://chat.whatsapp.com/GP0UOtpuaGTGhCS4eE7rGO",
   LO: "https://chat.whatsapp.com/F8HZQowYICx7ysWSJxq1bX",
   LM: "https://chat.whatsapp.com/GQ30pScmnTOLJkgl2YoUAi",
