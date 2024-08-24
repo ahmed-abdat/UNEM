@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Whatsapp.css";
 import Bac2024 from "../../data/Bac2024.json";
+import Session2024 from "../../data/Session2024.json";
 import { useRef, useState } from "react";
 
 export default function Whatsapp() {
@@ -12,21 +13,27 @@ export default function Whatsapp() {
 
   const handelValideStudent = (e) => {
     e.preventDefault();
-    const isValid = Bac2024.find((student) => {
-      return (
-        student.Num_Bac == numBac ||
-        student.Num_Bac == +numBac
-      );
-    })?.Decision.startsWith("Admis");
 
-    const student = Bac2024.find((student) => {
-      return (
-        student.Num_Bac == numBac ||
-        student.Num_Bac == +numBac
-      );
-    });
+    const studente = Bac2024.find((student) => {
+        return (
+          student.Num_Bac == numBac ||
+          student.Num_Bac == +numBac
+        );
+      })?.Decision.startsWith("Admis") ? Bac2024.find((student) => {
+        return (
+          student.Num_Bac == numBac ||
+          student.Num_Bac == +numBac
+        );
+      }) : Session2024.find((student) => {
+        return (
+          student.NODOSS == numBac ||
+          student.NODOSS == +numBac
+        );
+      });
 
-    if (isValid) {
+      console.log(studente);
+      
+    if (studente.Decision) {
       const whtspUrl = {
         SN: "https://chat.whatsapp.com/EIbKmwQQFzv5ga514Evx4l",
         M: "https://chat.whatsapp.com/GP0UOtpuaGTGhCS4eE7rGO",
@@ -35,7 +42,7 @@ export default function Whatsapp() {
         TM: "https://chat.whatsapp.com/DbSUMgDMjbD2YOyOCrzZxN",
       };
 
-      window.open(whtspUrl[student.SERIE])
+      window.open(whtspUrl[studente.SERIE])
       return;
     }
 
