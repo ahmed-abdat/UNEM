@@ -31,7 +31,7 @@ export default function Whatsapp() {
         );
       });
 
-      console.log(studente);
+      console.log(studente , numBac);
       
     if (studente.Decision) {
       const whtspUrl = {
