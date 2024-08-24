@@ -12,7 +12,9 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import Bac2024 from "@/data/Bac2024.json";
+import Session2024 from "@/data/Session2024.json";
 import { Loader2 } from "lucide-react";
+import ShowStudentResult from "./ShowStudentResult";
 
 // Validation schema using Zod
 const BacNumber = z.object({
@@ -22,14 +24,6 @@ const BacNumber = z.object({
     .max(7, { message: "رقم الباكلوريا يجب أن يكون 7 أرقام على الأكثر" }),
 });
 
-// WhatsApp group links
-const whatsAppGroups = {
-  SN: "https://chat.whatsapp.com/JtHkh4p018cJWpLDCGlZTl",
-  M: "https://chat.whatsapp.com/GP0UOtpuaGTGhCS4eE7rGO",
-  LO: "https://chat.whatsapp.com/F8HZQowYICx7ysWSJxq1bX",
-  LM: "https://chat.whatsapp.com/GQ30pScmnTOLJkgl2YoUAi",
-  TM: "https://chat.whatsapp.com/DbSUMgDMjbD2YOyOCrzZxN",
-};
 
 export default function WhatsappForm() {
   const [loading, setLoading] = useState(false);
@@ -52,12 +46,16 @@ export default function WhatsappForm() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const student = Bac2024.find((student) => {
-        return (
-          student.Num_Bac == data.bacNumber ||
-          student.Num_Bac == +data.bacNumber
-        );
-      });
+      const bacStudent = Bac2024.find(student => 
+        student.Num_Bac == data.bacNumber || student.Num_Bac == +data.bacNumber
+      );
+      
+      const student = bacStudent && bacStudent.Decision.startsWith("Admis")
+        ? bacStudent
+        : Session2024.find(student => 
+            student.NODOSS == data.bacNumber || student.NODOSS == +data.bacNumber
+          ) || bacStudent;
+
       // blur the input
       console.log(student);
       if (student) {
@@ -139,160 +137,35 @@ export default function WhatsappForm() {
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           </Button>
         </form>
-        {studentData ? (
-          <div className="mt-6">
-            <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-2">
-              {studentData.NOM_AR}
-            </h1>
-            <div className="flex items-baseline justify-center text-sm text-gray-600 dark:text-gray-400 mb-4">
-              <h3 className="text-gray-700 dark:text-gray-300 font-mono">
-                {studentData.Num_Bac}
-              </h3>
-              <span className="mx-1">|</span>
-              <a href="#" className="text-blue-700 dark:text-blue-300">
-                مسابقة الباكلوريا 2024 {studentData.Serie_AR}
-              </a>
-            </div>
-            <div
-              id="decision-bar"
-              className={cn("h-1 rounded w-2/3 mx-auto  mb-4", {
-                "bg-green-500": studentData.Decision.startsWith("Admis"),
-                "bg-red-500": studentData.Decision.startsWith("Ajourné"),
-                "bg-yellow-500": studentData.Decision === "Sessionnaire",
-                "bg-gray-500": studentData.Decision === "Abscent",
-              })}
-            ></div>
-            <div className="flex flex-col items-center mb-6">
-              <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
-                القرار
-              </span>
-              <div className="flex items-center text-2xl font-bold text-gray-800 dark:text-gray-200 animate__animated animate__fadeIn gap-x-2">
-                {studentData?.Decision?.startsWith("Admis") ? (
-                  <>
-                    <span className="ml-2">🎉</span>
-                    <span>ناجح</span>
-                    <span className="mr-2">🎉</span>
-                  </>
-                ) : studentData.Decision === "Sessionnaire" ? (
-                  <span> الدورة التكميلية </span>
-                ) : studentData.Decision === "Abscent" ? (
-                  <span>👀 غائب 👀</span>
-                ) : (
-                  <span>غير ناجح</span>
-                )}
-                |
-                <div>
-                  <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
-                    {studentData.Decision}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300 leading-normal text-sm">
-              <div class="flex items-start flex-wrap w-full border-b border-b-gray-200 dark:border-b-gray-800 mb-4 hide-no-gpa">
-                <div
-                  className="flex flex-col mb-4 pr-2 w-1/2"
-                  data-blur-toggle=""
-                  role="button"
-                >
-                  <div className="mb-1text-gray-600 dark:text-gray-400">
-                    المعدل
-                  </div>
-                  <div className="text-gray-700 dark:text-gray-300 font-bold text-xs">
-                    {Number(studentData.Moy_Bac).toFixed(2)}
-                  </div>
-                </div>
-                <div className="flex flex-col mb-4 pr-2 w-1/2" target="_blank">
-                  <div className="mb-1text-gray-600 dark:text-gray-400">
-                    النتائج التفصيلية
-                  </div>
-                  <a
-                    className="text-blue-700 dark:text-blue-300 font-bold text-xs cursor-pointer"
-                    href={`http://dec.education.gov.mr/bac-21/${studentData.Num_Bac}/info`}
-                    target="_blank"
-                  >
-                    🔗 عبر موقع الوزارة
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start flex-wrap w-full">
-                <div className="w-1/2 pr-2 mb-4">
-                  <div className="text-gray-600 dark:text-gray-400 mb-1">
-                    المدرسة
-                  </div>
-                  <a
-                    href="#"
-                    className="font-bold text-blue-700 dark:text-blue-300"
-                  >
-                    {studentData.Etablissement_AR}
-                  </a>
-                </div>
-                <div className="w-1/2 pr-2 mb-4">
-                  <div className="text-gray-600 dark:text-gray-400 mb-1">
-                    المقاطعة
-                  </div>
-                  <a
-                    href="#"
-                    className="font-bold text-blue-700 dark:text-blue-300"
-                  >
-                    {studentData.Lieun_AR}
-                  </a>
-                </div>
-                <div className="w-1/2 pr-2 mb-4">
-                  <div className="text-gray-600 dark:text-gray-400 mb-1">
-                    الولاية
-                  </div>
-                  <a
-                    href="#"
-                    className="font-bold text-blue-700 dark:text-blue-300"
-                  >
-                    {studentData.Wilaya_AR}
-                  </a>
-                </div>
-                <div className="w-1/2 pr-2 mb-4">
-                  <div className="text-gray-600 dark:text-gray-400 mb-1">
-                    المركز
-                  </div>
-                  <a
-                    href="#"
-                    className="font-bold text-blue-700 dark:text-blue-300"
-                  >
-                    {studentData.Etablissement_AR}
-                  </a>
-                </div>
-              </div>
-              {studentData.Decision?.startsWith("Admis") && (
-                <div className="flex justify-center mt-4">
-                  <a
-                    href={whatsAppGroups[studentData.SERIE]}
-                    target="_blank"
-                    className="px-4  justify-center cursor-pointer w-[90%] md:text-lg text-base py-2 flex items-center text-white bg-green-500 rounded-lg hover:bg-green-600"
-                  >
-                    إنضم لمجموعة الواتساب الخاصة بشعبتك
-                    <FaWhatsapp className="mr-2" size={25} />
-                  </a>
-                </div>
-              )}
-              {/* unem wich you good luck */}
-              {studentData.Decision?.startsWith("Admis") ? (
-                <p className="mt-4 text-base text-center">
-                  مبروك النجاح و نتمنى لك النجاح في المرحلة القادمة
-                </p>
-              ) : (
-                <p className="mt-4 text-base text-center">
-                  {" "}
-                  نتمنى لك التوفيق في المرحلة القادمة
-                </p>
-              )}
-            </div>
-          </div>
-        ) : (
-          <div className="mt-6 flex justify-center items-center min-h-[40dvh]">
-            <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200">
-              لم يتم العثور على الطالب
-            </h1>
-          </div>
-        )}
+        {studentData && studentData.Num_Bac ? (
+          <ShowStudentResult
+            Decision={studentData.Decision}
+            Etablissement={studentData.Etablissement_AR}
+            Lieu={studentData.Lieun_AR}
+            Wilaya={studentData.Wilaya_AR}
+            Num_Bac={studentData.Num_Bac}
+            Moyenne={studentData.Moy_Bac}
+            Name={studentData.NOM_AR}
+            Serie={studentData.Serie_AR}
+            SERIE={studentData.SERIE}
+          />
+        ) : studentData && studentData.NODOSS ? (
+          <ShowStudentResult 
+          Decision={studentData.Decision}
+          Etablissement={studentData.Centre_AR}
+          Lieu={studentData.LIEUNA}
+          Wilaya={studentData.LregA}
+          Num_Bac={studentData.NODOSS}
+          Moyenne={studentData.Moybac}
+          Name={studentData.NOMPA}
+          Serie={studentData.SERIE}
+          SERIE={studentData.SERIE}
+          />
+        ) : <div className="mt-6 flex justify-center items-center min-h-[40dvh]">
+        <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200">
+          لم يتم العثور على الطالب
+        </h1>
+      </div>}
       </div>
       <ToastContainer
         position="top-center"
