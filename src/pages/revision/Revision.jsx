@@ -63,7 +63,7 @@ export default function Resulta() {
     <>
       <HeaderImg picture={"/03.png"} />
       <section className="resula">
-        <PageElements options={options} />
+        <PageElements options={options}  />
       </section>
       <Footer />
     </>

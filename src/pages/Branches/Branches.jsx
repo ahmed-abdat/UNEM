@@ -57,7 +57,7 @@ export default function Resulta() {
 
   return (
     <>
-      <HeaderImg picture={"/07.png"} />
+      <HeaderImg picture={"/07.png"}/>
       <section className="resula">
         <PageElements options={options} />
       </section>

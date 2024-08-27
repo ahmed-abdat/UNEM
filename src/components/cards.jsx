@@ -53,7 +53,7 @@ function CardsConatainer() {
       setPostes(postes);
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching postes:", error);
       setIsLoading(false);
     }
   };
@@ -89,7 +89,8 @@ function CardsConatainer() {
       setLastePoste(laste);
       setIsFetchingMore(false);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching more postes:", error);
+      setIsFetchingMore(false);
     }
   };
 
