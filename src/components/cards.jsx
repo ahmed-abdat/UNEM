@@ -51,7 +51,9 @@ function CardsConatainer() {
       setPostes(postes);
       setIsLoading(false);
     } catch (error) {
-      console.error("Error fetching postes:", error);
+      if (import.meta.env.DEV) {
+        console.error("Error fetching postes:", error);
+      }
       setIsLoading(false);
     }
   };
@@ -64,9 +66,6 @@ function CardsConatainer() {
 
   const fetchMorePostes = async () => {
     if (!lastePoste || postes.length < 10) return;
-    if (import.meta.env.DEV) {
-      console.log('Fetching more posts, current count:', postes.length);
-    }
     setIsFetchingMore(true);
     const q = query(
       collection(db, "postes"),
@@ -89,7 +88,9 @@ function CardsConatainer() {
       setLastePoste(laste);
       setIsFetchingMore(false);
     } catch (error) {
-      console.error("Error fetching more postes:", error);
+      if (import.meta.env.DEV) {
+        console.error("Error fetching more postes:", error);
+      }
       setIsFetchingMore(false);
     }
   };

@@ -56,7 +56,6 @@ export default function TipTap({ description }) {
     },
     // onUpdate: ({ editor }) => {
     //     onChange(JSON.stringify(editor.getJSON()));
-    //     console.log(editor.getJSON());
     // },
   });
 

@@ -1,70 +1,38 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "react-toastify";
-import Confetti from "./Confetti"; // Ensure the import path is correct
+import Confetti from "./Confetti";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import useStudentData from "../hooks/useStudentData";
-import useSearchStudents from "../hooks/useSearchStudents";
-import StudentAutocomplete from "./StudentAutocomplete";
-import { Loader2, Search, User, ToggleLeft, ToggleRight } from "lucide-react";
-import ShowStudentResult from "./ShowStudentResult";
+import { Loader2, Search } from "lucide-react";
+import { whatsAppGroups } from "../constants/whatsapp-links";
 
 // Validation schema using Zod
 const SearchSchema = z.object({
-  searchTerm: z
+  studentId: z
     .string()
-    .min(1, { message: "يرجى إدخال رقم الطالب أو الاسم للبحث" })
-    .max(50, { message: "النص المدخل طويل جداً" }),
+    .min(1, { message: "يرجى إدخال رقم الطالب" })
+    .max(10, { message: "رقم الطالب طويل جداً" }),
 });
 
 export default function WhatsappForm() {
   const [loading, setLoading] = useState(false);
-  const [studentData, setStudentData] = useState(null);
-  const [searchType, setSearchType] = useState('id'); // 'id' or 'name'
-  const [searchValue, setSearchValue] = useState('');
   const confettiRef = useRef(null);
   
   const { findStudentByBacNumber } = useStudentData();
-  const { searchStudent, searchNameSuggestions, searchSuggestions, isLoadingSuggestions, clearSuggestions } = useSearchStudents();
   
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(SearchSchema),
   });
-
-  // Handle search suggestions for name search
-  useEffect(() => {
-    if (import.meta.env.DEV) {
-      console.log('🔄 Search effect triggered:', { searchType, searchValue, length: searchValue.length });
-    }
-    
-    if (searchType === 'name' && searchValue.length >= 2) {
-      if (import.meta.env.DEV) {
-        console.log('⏱️ Starting search for:', searchValue);
-      }
-      searchNameSuggestions(searchValue);
-    } else {
-      clearSuggestions();
-    }
-  }, [searchValue, searchType, searchNameSuggestions, clearSuggestions]);
-
-  // Handle search type toggle
-  const toggleSearchType = () => {
-    setSearchType(prev => prev === 'id' ? 'name' : 'id');
-    setSearchValue('');
-    setValue('searchTerm', '');
-    setStudentData(null);
-    clearSuggestions();
-  };
 
   const handleClick = () => {
     if (confettiRef.current) {
@@ -75,37 +43,39 @@ export default function WhatsappForm() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      // Use the new search function that handles both ID and name
-      const student = await searchStudent(data.searchTerm, searchType);
+      // Find student by ID
+      const student = await findStudentByBacNumber(data.studentId);
 
-      // blur the input
-      if (import.meta.env.DEV) {
-        console.log("Student validation result:", {
-          found: !!student,
-          hasDecision: !!student?.Decision,
-        });
-      }
       if (student) {
-        setStudentData(student);
-        const isAdmin = student.Decision.startsWith("Admis");
+        const isAdmin = student.Decision?.startsWith("Admis");
         if (isAdmin) {
-          toast.success("مبروك النجاح  🎉🎊🎈 !!!", {
-            style: { fontSize: "0.85rem", textAlign: "center" },
-          });
-          handleClick();
-          return;
+          // Get the serie for WhatsApp group based on student's SERIE
+          const serie = student.SERIE || student.Serie || student.Serie_AR;
+          
+          if (serie && whatsAppGroups[serie]) {
+            toast.success("مبروك النجاح! سيتم توجيهك إلى مجموعة الواتساب الخاصة بشعبتك 🎉", {
+              style: { fontSize: "0.85rem", textAlign: "center" },
+            });
+            handleClick();
+            
+            // Small delay to show the success message before redirect
+            setTimeout(() => {
+              window.open(whatsAppGroups[serie], '_blank');
+            }, 1500);
+          } else {
+            toast.info("مبروك النجاح! لكن مجموعة الواتساب غير متوفرة لهذه الشعبة حالياً.");
+          }
         } else {
           toast.info(
-            "للأسف لايمكنكم الإنضمام يتمنى لكم الإتحاد الوظني حظا موفقا في القادم",
+            "للأسف، الانضمام لمجموعات الواتساب متاح فقط للطلاب الناجحين. نتمنى لك التوفيق في المرحلة القادمة 🤲",
             {
               style: { fontSize: "0.85rem" },
             }
           );
         }
       } else {
-        setStudentData(null);
         toast.error(
-          "عذراً، لم يتم العثور على الطالب. يرجى التأكد من الرقم والمحاولة مرة أخرى.",
+          "عذراً، لم يتم العثور على الطالب. يرجى التأكد من رقم الطالب والمحاولة مرة أخرى.",
           {
             style: { fontSize: "0.85rem" },
           }
@@ -118,7 +88,6 @@ export default function WhatsappForm() {
           style: { fontSize: "0.85rem" },
         }
       );
-      setStudentData(null);
     } finally {
       setLoading(false);
     }
@@ -128,94 +97,34 @@ export default function WhatsappForm() {
     <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">
       <Confetti ref={confettiRef} className="absolute inset-0 -z-20" />
       <div className="w-full max-w-xl mt-2 p-4 bg-[#f8f8f8] dark:bg-gray-800 rounded-lg shadow-sm md:shadow-md">
-        {/* Search Type Toggle */}
-        <div className="flex items-center justify-center mb-4">
-          <div className="flex items-center bg-gray-100 rounded-lg p-1">
-            <button
-              type="button"
-              onClick={toggleSearchType}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                searchType === 'id' 
-                  ? "bg-white text-gray-900 shadow-sm" 
-                  : "text-gray-600 hover:text-gray-900"
-              )}
-            >
-              <Search className="h-4 w-4" />
-              رقم الطالب
-            </button>
-            <button
-              type="button"
-              onClick={toggleSearchType}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                searchType === 'name' 
-                  ? "bg-white text-gray-900 shadow-sm" 
-                  : "text-gray-600 hover:text-gray-900"
-              )}
-            >
-              <User className="h-4 w-4" />
-              الاسم
-            </button>
-          </div>
-        </div>
-
         <form
           className="w-full flex flex-col gap-4"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="w-full flex flex-col gap-2">
             <Label
-              htmlFor="search"
+              htmlFor="studentId"
               className="text-[1.3rem] font-medium font-tajawal text-gray-600"
             >
-              نتائج مسابقة الباكلوريا 2025
+              للانضمام إلى مجموعة الواتساب الخاصة بشعبتك
             </Label>
             
-            {searchType === 'name' ? (
-              <StudentAutocomplete
-                value={searchValue}
-                onChange={(value) => {
-                  setSearchValue(value);
-                  setValue('searchTerm', value);
-                }}
-                onSelect={(suggestion) => {
-                  if (import.meta.env.DEV) {
-                    console.log('🎯 Selected suggestion:', suggestion);
-                  }
-                  setSearchValue(suggestion.nameAr);
-                  setValue('searchTerm', suggestion.nameAr);
-                  setStudentData(suggestion.student);
-                  clearSuggestions();
-                }}
-                suggestions={searchSuggestions}
-                isLoading={isLoadingSuggestions}
-                placeholder="أدخل اسم الطالب للبحث"
-                className={cn(
-                  { "focus-visible:ring-red-500": errors.searchTerm },
-                  "bg-white"
-                )}
-              />
-            ) : (
+            <div className="relative">
               <Input
-                id="search"
-                type={searchType === 'id' ? 'number' : 'text'}
-                placeholder="أدخل رقم الطالب للحصول على النتيجة"
-                {...register("searchTerm")}
-                onChange={(e) => {
-                  setSearchValue(e.target.value);
-                  register("searchTerm").onChange(e);
-                }}
+                id="studentId"
+                type="number"
+                placeholder="أدخل رقم الطالب للانضمام للمجموعة"
+                {...register("studentId")}
                 className={cn(
-                  { "focus-visible:ring-red-500": errors.searchTerm },
+                  { "focus-visible:ring-red-500": errors.studentId },
                   "bg-white font-rubik font-medium text-[1.4rem] placeholder:text-[1.1rem] placeholder:font-rb py-5 placeholder-gray-400"
                 )}
               />
-            )}
+            </div>
             
-            {errors.searchTerm?.message && (
+            {errors.studentId?.message && (
               <p className="text-red-500 text-base font-medium font-rb">
-                {errors.searchTerm.message}
+                {errors.studentId.message}
               </p>
             )}
           </div>
@@ -224,44 +133,28 @@ export default function WhatsappForm() {
             type="submit"
             className="font-tajawal font-medium shadow-btne cursor-pointer text-white text-lg bg-btn hover:bg-btn px-[15px] py-[1.65rem] rounded-lg disabled:opacity-[0.7] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-disabeld-btn active:shadow-none active:transform active:translate-x-0 active:translate-y-1 transition-all"
           >
-            ابحث
+            انضم للمجموعة
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           </Button>
         </form>
-        {studentData && studentData.Num_Bac ? (
-          <ShowStudentResult
-            Decision={studentData.Decision}
-            Etablissement={studentData.Etablissement_AR}
-            Lieu={studentData.Lieun_AR}
-            Wilaya={studentData.Wilaya_AR}
-            Num_Bac={studentData.Num_Bac}
-            Moyenne={studentData.Moy_Bac}
-            Name={studentData.NOM_AR}
-            Serie={studentData.Serie_AR}
-            SERIE={studentData.SERIE}
-          />
-        ) : studentData && studentData.NODOSS ? (
-          <ShowStudentResult
-            Decision={studentData.Decision}
-            Etablissement={
-              studentData.Etablissement_AR || studentData.Centre_AR
-            }
-            Lieu={studentData.LIEUNN_AR || studentData.LIEUNA}
-            Wilaya={studentData.Wilaya_AR || studentData.LregA}
-            Num_Bac={studentData.NODOSS}
-            Moyenne={studentData["Moy Bac"] || studentData.Moybac}
-            Name={studentData.NOM_AR || studentData.NOMPA}
-            Serie={studentData.SERIE}
-            SERIE={studentData.SERIE}
-            year="2025"
-          />
-        ) : (
-          <div className="mt-6 flex justify-center items-center min-h-[40dvh]">
-            <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200">
-              لم يتم العثور على الطالب
-            </h1>
+        
+        {/* Simple guidance */}
+        <div className="mt-6 flex flex-col justify-center items-center min-h-[30dvh] text-center px-4">
+          <div className="max-w-md">
+            <div className="text-primary-color mb-4">
+              <Search className="h-12 w-12 mx-auto" />
+            </div>
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">
+              للانضمام لمجموعة الواتساب
+            </h2>
+            <div className="text-gray-600 dark:text-gray-400 space-y-3 text-sm">
+              <p>أدخل رقم الطالب أعلاه وسيتم توجيهك تلقائياً إلى مجموعة الواتساب الخاصة بشعبتك</p>
+            </div>
+            <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+              💡 فقط الطلاب الناجحون يمكنهم الانضمام لمجموعات الواتساب
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

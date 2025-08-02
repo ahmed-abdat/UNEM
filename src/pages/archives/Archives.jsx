@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 export default function FST() {
   const { id } = useParams();
 
-  // console.log(archives[0]);
 
   const selectedFaculiter = archives.find((el) => el.faculiter === id);
 

@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import useStudentData from './useStudentData';
 
 /**
@@ -6,7 +6,7 @@ import useStudentData from './useStudentData';
  * Provides fuzzy search and autocomplete functionality
  */
 export const useSearchStudents = () => {
-  const { findStudentByBacNumber } = useStudentData();
+  const { findStudentByBacNumber, loadData, bac2025Data } = useStudentData();
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   
@@ -53,39 +53,28 @@ export const useSearchStudents = () => {
   const performSearch = useCallback(async (searchTerm) => {
     const normalizedTerm = normalizeArabicText(searchTerm);
     
-    if (import.meta.env.DEV) {
-      console.log('🔍 Searching for:', { searchTerm, normalizedTerm });
-    }
-    
     // Check cache first
     if (searchCacheRef.current.has(normalizedTerm)) {
-      const cached = searchCacheRef.current.get(normalizedTerm);
-      if (import.meta.env.DEV) {
-        console.log('📱 Using cached results:', cached.length, 'matches');
-      }
-      return cached;
+      return searchCacheRef.current.get(normalizedTerm);
     }
 
-    const { bac2025Data, sessionData } = await useStudentData().loadData();
-    const allStudents = [...(bac2025Data || []), ...(sessionData || [])];
-    
-    if (import.meta.env.DEV) {
-      console.log('📊 Total students to search:', allStudents.length);
-      console.log('📄 Sample student data:', allStudents[0]);
+    // Use cached data if available, otherwise load
+    let allStudentsData;
+    if (bac2025Data) {
+      allStudentsData = { bac2025Data };
+    } else {
+      allStudentsData = await loadData();
     }
     
+    const allStudents = allStudentsData.bac2025Data || [];
+    
     const matches = allStudents
-      .map((student, index) => {
+      .map((student) => {
         const nameAr = student.NOM_AR || student.NOMPA || '';
         const nameFr = student.NOM_FR || student.NOM || '';
         
         let score = 0;
         let matchType = '';
-        
-        // Debug first few students
-        if (import.meta.env.DEV && index < 3) {
-          console.log(`Student ${index}:`, { nameAr, nameFr, searchTerm, normalizedTerm });
-        }
         
         // Exact match gets highest score
         const normalizedNameAr = normalizeArabicText(nameAr);
@@ -94,27 +83,15 @@ export const useSearchStudents = () => {
         if (normalizedNameAr.includes(normalizedTerm)) {
           score = normalizedTerm.length / normalizedNameAr.length;
           matchType = 'exact-ar';
-          if (import.meta.env.DEV && score > 0) {
-            console.log('✅ Arabic exact match:', { nameAr, score });
-          }
         } else if (normalizedNameFr.includes(normalizedTerm)) {
           score = normalizedTerm.length / normalizedNameFr.length;
           matchType = 'exact-fr';
-          if (import.meta.env.DEV && score > 0) {
-            console.log('✅ French exact match:', { nameFr, score });
-          }
         } else if (fuzzyMatch(searchTerm, nameAr)) {
           score = 0.6;
           matchType = 'fuzzy-ar';
-          if (import.meta.env.DEV) {
-            console.log('🔍 Arabic fuzzy match:', { nameAr, score });
-          }
         } else if (fuzzyMatch(searchTerm, nameFr)) {
           score = 0.5;
           matchType = 'fuzzy-fr';
-          if (import.meta.env.DEV) {
-            console.log('🔍 French fuzzy match:', { nameFr, score });
-          }
         }
         
         if (score === 0) return null;
@@ -140,10 +117,6 @@ export const useSearchStudents = () => {
       })
       .slice(0, 8); // Limit to 8 for better performance
 
-    if (import.meta.env.DEV) {
-      console.log('🎯 Search results:', matches.length, 'matches found');
-      console.log('📋 Results:', matches.map(m => ({ name: m.nameAr, score: m.score, type: m.matchType })));
-    }
 
     // Cache the result
     searchCacheRef.current.set(normalizedTerm, matches);
@@ -155,7 +128,7 @@ export const useSearchStudents = () => {
     }
     
     return matches;
-  }, [normalizeArabicText, fuzzyMatch]);
+  }, [normalizeArabicText, fuzzyMatch, loadData, bac2025Data]);
 
   // Debounced search for name suggestions
   const searchNameSuggestions = useCallback((searchTerm) => {
@@ -187,7 +160,6 @@ export const useSearchStudents = () => {
           setSearchSuggestions(matches);
         }
       } catch (error) {
-        console.error('Error searching names:', error);
         if (lastSearchTermRef.current === searchTerm) {
           setSearchSuggestions([]);
         }
@@ -202,8 +174,15 @@ export const useSearchStudents = () => {
   // Search by exact name match
   const findStudentByName = useCallback(async (studentName) => {
     try {
-      const { bac2025Data, sessionData } = await useStudentData().loadData();
-      const allStudents = [...(bac2025Data || []), ...(sessionData || [])];
+      // Use cached data if available, otherwise load
+      let allStudentsData;
+      if (bac2025Data) {
+        allStudentsData = { bac2025Data };
+      } else {
+        allStudentsData = await loadData();
+      }
+      
+      const allStudents = allStudentsData.bac2025Data || [];
       
       // First try exact match
       let student = allStudents.find(student => {
@@ -227,10 +206,9 @@ export const useSearchStudents = () => {
 
       return student;
     } catch (error) {
-      console.error('Error finding student by name:', error);
       return null;
     }
-  }, [normalizeArabicText, fuzzyMatch]);
+  }, [loadData, normalizeArabicText, fuzzyMatch, bac2025Data]);
 
   // Combined search function
   const searchStudent = useCallback(async (searchTerm, searchType = 'id') => {
@@ -253,12 +231,18 @@ export const useSearchStudents = () => {
     setIsLoadingSuggestions(false);
   }, []);
 
+  // Stable clearSuggestions function
+  const clearSuggestions = useCallback(() => {
+    setSearchSuggestions([]);
+    setIsLoadingSuggestions(false);
+  }, []);
+
   return {
     searchStudent,
     searchNameSuggestions,
     searchSuggestions,
     isLoadingSuggestions,
-    clearSuggestions: () => setSearchSuggestions([]),
+    clearSuggestions,
     cleanup
   };
 };
