@@ -53,15 +53,39 @@ export default function WhatsappForm() {
           const serie = student.SERIE || student.Serie || student.Serie_AR;
           
           if (serie && whatsAppGroups[serie]) {
-            toast.success("مبروك النجاح! سيتم توجيهك إلى مجموعة الواتساب الخاصة بشعبتك 🎉", {
-              style: { fontSize: "0.85rem", textAlign: "center" },
-            });
+            const whatsappLink = whatsAppGroups[serie];
+            
+            // Show success message with the link as fallback
+            toast.success(
+              <div style={{ textAlign: "center" }}>
+                <p>مبروك النجاح! 🎉</p>
+                <p style={{ fontSize: "0.75rem", marginTop: "8px" }}>
+                  سيتم توجيهك إلى مجموعة الواتساب الخاصة بشعبتك
+                </p>
+                <p style={{ fontSize: "0.7rem", marginTop: "8px", opacity: 0.8 }}>
+                  إذا لم يتم التوجيه تلقائياً، 
+                  <a 
+                    href={whatsappLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ color: "#25D366", textDecoration: "underline" }}
+                  >
+                    اضغط هنا
+                  </a>
+                </p>
+              </div>,
+              {
+                duration: 5000, // Show for 5 seconds
+                style: { fontSize: "0.85rem" },
+              }
+            );
             handleClick();
             
-            // Small delay to show the success message before redirect
+            // Use direct navigation after a delay
+            // This works best for WhatsApp group links on all devices
             setTimeout(() => {
-              window.open(whatsAppGroups[serie], '_blank');
-            }, 1500);
+              window.location.href = whatsappLink;
+            }, 2000);
           } else {
             toast.info("مبروك النجاح! لكن مجموعة الواتساب غير متوفرة لهذه الشعبة حالياً.");
           }
