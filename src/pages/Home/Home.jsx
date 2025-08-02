@@ -24,10 +24,6 @@ export default function home() {
       url: "/bac2025",
     },
     {
-      content: "حساب المعدل التوجيهي",
-      url: "/calculation",
-    },
-    {
       content: " المجموعات الواتسابية (باكلوريا) ",
       url: "/whatsapp",
     },
