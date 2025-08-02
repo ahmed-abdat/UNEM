@@ -14,8 +14,6 @@ import CardSkelton from "./CardSkelton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useInView } from "react-intersection-observer";
 import { showTime } from "../utils/showTime";
-import SharePoste from "./SharePoste";
-import { LiaLessThanSolid } from "react-icons/lia";
 
 function CardsConatainer() {
   const [isLoading, setIsLoading] = useState(true);
@@ -66,7 +64,9 @@ function CardsConatainer() {
 
   const fetchMorePostes = async () => {
     if (!lastePoste || postes.length < 10) return;
-    console.log("fetchMorePostes");
+    if (import.meta.env.DEV) {
+      console.log('Fetching more posts, current count:', postes.length);
+    }
     setIsFetchingMore(true);
     const q = query(
       collection(db, "postes"),

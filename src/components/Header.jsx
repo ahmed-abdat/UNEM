@@ -9,7 +9,9 @@ export default function Header() {
 
 
   const goBack = () => {
-    console.log("go back");
+    if (import.meta.env.DEV) {
+      console.log('Navigation: going back');
+    }
     navigate(-1);
   }
 

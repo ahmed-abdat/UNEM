@@ -18,28 +18,24 @@ export default function home() {
     window.open("https://wa.me/+22242049074?text=");
   };
 
-  const options = [{
-    content : 'نتائج الباكلوريا 2025',  
-    url : '/bac2025'
-
-  },
-  {
-    content: "حساب المعدل التوجيهي",
-    url: "/calculation",
-  },
-  {
-    content: " المجموعات الواتسابية (باكلوريا) ",
-    url: "/whatsapp",
-  },
-  {
-    content: "الإستمارة و التوجيه",
-    url: "/form",
-  },
-  {
-    content: "الأخبار",
-    url: "/news",
-  },
-  {
+  const options = [
+    {
+      content: "نتائج الباكلوريا 2025",
+      url: "/bac2025",
+    },
+    {
+      content: "حساب المعدل التوجيهي",
+      url: "/calculation",
+    },
+    {
+      content: " المجموعات الواتسابية (باكلوريا) ",
+      url: "/whatsapp",
+    },
+    {
+      content: "الإستمارة و التوجيه",
+      url: "/form",
+    },
+    {
       content: "مؤسسات التعليم العالي",
       url: "/institutions",
     },
@@ -51,7 +47,6 @@ export default function home() {
       content: "مراجع و دروس",
       url: "/revision",
     },
-    ,
     // {
     //   content : 'الخدمات الجامعية',
     //   url : '/service'
@@ -79,7 +74,7 @@ export default function home() {
       <section className="main">
         <header className="main-header">
           <div className="img">
-            <LazyLoadImage src={'/texture.png'} alt="background" />
+            <LazyLoadImage src={"/texture.png"} alt="background" />
           </div>
           <div className="logo">
             <LazyLoadImage src="/unem.png" alt="logo" />

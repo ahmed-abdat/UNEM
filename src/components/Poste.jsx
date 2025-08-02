@@ -6,8 +6,7 @@ import { app } from "../config/firebase";
 import Header from "./Header";
 import Video from "./Video";
 import "./styles/poste.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { showTime, showTimeDate } from "../utils/showTime";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import SharePoste from "./SharePoste";
@@ -15,7 +14,7 @@ import PosteSkelton from "./PosteSkelton";
 import ViewFullImage from "./ViewImage";
 import TipTap from "./TipTap";
 import { isValidJSON } from "../utils/valide-json";
-function poste() {
+function Poste() {
   const { id } = useParams();
   const [poste, setPoste] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,12 +29,16 @@ function poste() {
         setPoste(docSnap.data());
         localStorage.setItem("poste", JSON.stringify(docSnap.data()));
       } else {
-        console.log("No such document!");
+        if (import.meta.env.DEV) {
+          console.log('Document not found for ID:', id);
+        }
       }
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
+      if (import.meta.env.DEV) {
+        console.error('Error fetching post:', error.message);
+      }
     }
   };
 
@@ -72,19 +75,6 @@ function poste() {
       ) : (
         <>
           <Header />
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            newestOnTop={false}
-            closeOnClick
-            rtl
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            hideProgressBar
-            theme="light"
-            transition:Zoom
-          />
           {isLoading ? (
             <PosteSkelton />
           ) : (
@@ -147,4 +137,4 @@ function poste() {
     </>
   );
 }
-export default poste;
+export default Poste;

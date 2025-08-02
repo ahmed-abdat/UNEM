@@ -1,5 +1,3 @@
-import { BiHomeAlt2 } from "react-icons/bi";
-import { TbMathGreater } from "react-icons/tb";
 import Chevron from "../assets/icon/Chevron";
 import { Link } from "react-router-dom";
 import "./styles/Menu.css";

@@ -1,18 +1,14 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { ToastContainer, toast } from "react-toastify";
-import { FaWhatsapp } from "react-icons/fa";
-import "react-toastify/dist/ReactToastify.css";
-import "tailwindcss/tailwind.css";
+import { toast } from "react-toastify";
 import Confetti from "./Confetti"; // Ensure the import path is correct
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import Bac2024 from "@/data/Bac2024.json";
-import Session2024 from "@/data/Session2024.json";
+import useStudentData from "../hooks/useStudentData";
 import { Loader2 } from "lucide-react";
 import ShowStudentResult from "./ShowStudentResult";
 
@@ -29,6 +25,7 @@ export default function WhatsappForm() {
   const [loading, setLoading] = useState(false);
   const [studentData, setStudentData] = useState(null);
   const confettiRef = useRef(null);
+  const { findStudentByBacNumber } = useStudentData();
   const {
     register,
     handleSubmit,
@@ -46,18 +43,16 @@ export default function WhatsappForm() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const bacStudent = Bac2024.find(student => 
-        student.Num_Bac == data.bacNumber || student.Num_Bac == +data.bacNumber
-      );
-      
-      const student = bacStudent && bacStudent.Decision.startsWith("Admis")
-        ? bacStudent
-        : Session2024.find(student => 
-            student.NODOSS == data.bacNumber || student.NODOSS == +data.bacNumber
-          ) || bacStudent;
+      // Use lazy loading hook to find student
+      const student = await findStudentByBacNumber(data.bacNumber);
 
       // blur the input
-      console.log(student);
+      if (import.meta.env.DEV) {
+        console.log('Student validation result:', {
+          found: !!student,
+          hasDecision: !!student?.Decision
+        });
+      }
       if (student) {
         setStudentData(student);
         const isAdmin = student.Decision.startsWith("Admis");
@@ -151,15 +146,15 @@ export default function WhatsappForm() {
           />
         ) : studentData && studentData.NODOSS ? (
           <ShowStudentResult 
-          Decision={studentData.Decision}
-          Etablissement={studentData.Centre_AR}
-          Lieu={studentData.LIEUNA}
-          Wilaya={studentData.LregA}
-          Num_Bac={studentData.NODOSS}
-          Moyenne={studentData.Moybac}
-          Name={studentData.NOMPA}
-          Serie={studentData.SERIE}
-          SERIE={studentData.SERIE}
+            Decision={studentData.Decision}
+            Etablissement={studentData.Etablissement_AR || studentData.Centre_AR}
+            Lieu={studentData.LIEUNN_AR || studentData.LIEUNA}
+            Wilaya={studentData.Wilaya_AR || studentData.LregA}
+            Num_Bac={studentData.NODOSS}
+            Moyenne={studentData["Moy Bac"] || studentData.Moybac}
+            Name={studentData.NOM_AR || studentData.NOMPA}
+            Serie={studentData.SERIE}
+            SERIE={studentData.SERIE}
           />
         ) : <div className="mt-6 flex justify-center items-center min-h-[40dvh]">
         <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200">
@@ -167,19 +162,6 @@ export default function WhatsappForm() {
         </h1>
       </div>}
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        limit={3}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={true}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </div>
   );
 }

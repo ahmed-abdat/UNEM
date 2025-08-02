@@ -6,7 +6,7 @@ import { whatsAppGroups } from '../constants/whatsapp-links';
 
 
 
-export default function ShowStudentResult({ Name , Num_Bac , Serie ,  SERIE , Decision , Moyenne , Etablissement , Lieu , Wilaya }) {
+export default function ShowStudentResult({ Name , Num_Bac , Serie ,  SERIE , Decision , Moyenne , Etablissement , Lieu , Wilaya , year = "2025" }) {
   return (
     <div className="mt-6">
     <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-2">
@@ -18,7 +18,7 @@ export default function ShowStudentResult({ Name , Num_Bac , Serie ,  SERIE , De
       </h3>
       <span className="mx-1">|</span>
       <a href="#" className="text-blue-700 dark:text-blue-300">
-        مسابقة الباكلوريا 2024 {Serie}
+        مسابقة الباكلوريا {year} {Serie}
       </a>
     </div>
     <div

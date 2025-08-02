@@ -14,7 +14,9 @@ function Video({ url }) {
         width={"100%"}
         height={"100%"}
         onError={(e) => {
-          console.log(e);
+          if (import.meta.env.DEV) {
+            console.error('Video loading error:', e.message);
+          }
           setIsReady(true);
         }}
       />

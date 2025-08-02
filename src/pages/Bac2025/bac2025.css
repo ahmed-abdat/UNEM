@@ -6,30 +6,26 @@
   padding: 2rem;
 }
 
-.empty-state {
+.bac2025-content {
+  width: 100%;
+  max-width: 600px;
   text-align: center;
   direction: rtl;
 }
 
-.empty-state h1 {
+.bac2025-content h1 {
   font-size: 2rem;
   color: #166534;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: bold;
 }
 
-.empty-state p {
-  font-size: 1.2rem;
-  color: #16a34a;
-  margin: 0;
-}
-
 @media (max-width: 768px) {
-  .empty-state h1 {
+  .bac2025-content h1 {
     font-size: 1.5rem;
   }
   
-  .empty-state p {
-    font-size: 1rem;
+  .bac2025-container {
+    padding: 1rem;
   }
 }

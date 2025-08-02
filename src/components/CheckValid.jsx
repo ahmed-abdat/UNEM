@@ -36,7 +36,12 @@ export default function CheckValid() {
     const starCountRef = ref(db, "/");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      console.log(data);
+      if (import.meta.env.DEV) {
+        console.log('Database data received:', {
+          hasData: !!data,
+          keys: data ? Object.keys(data) : []
+        });
+      }
       setData(data)
     });
   }, []);

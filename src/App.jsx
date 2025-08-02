@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense, useState, useEffect } from "react";
-// import NoteFound from "./components/NoteFound";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const NoteFound = lazy(() => import("./components/NoteFound"));
 
 import Home from "./pages/Home";
 
 // Lazy-loaded pages
-// const Home = lazy(() => import("./pages/Home"));
 const Calculation = lazy(() => import("./pages/calculation"));
 const Resulta = lazy(() => import("./pages/resulta/Resulat"));
 const Revision = lazy(() => import("./pages/revision/Revision"));
@@ -28,13 +28,13 @@ import Loader from "./components/Loader";
 
 // Development-only imports
 const DevelopmentTools = () => {
-  if (!import.meta.env.DEV) return null;
-  
-  // Dynamic imports to prevent bundling in production
+  // Always call hooks at the top level
   const [StagewiseToolbar, setStagewiseToolbar] = useState(null);
   const [ReactPlugin, setReactPlugin] = useState(null);
   
   useEffect(() => {
+    // Check environment inside useEffect instead
+    if (!import.meta.env.DEV) return;
     const loadStagewise = async () => {
       try {
         const [toolbarModule, pluginModule] = await Promise.all([
@@ -50,6 +50,9 @@ const DevelopmentTools = () => {
     
     loadStagewise();
   }, []);
+  
+  // Return null for production after hooks are called
+  if (!import.meta.env.DEV) return null;
   
   if (!StagewiseToolbar || !ReactPlugin) return null;
   
@@ -76,7 +79,6 @@ function App() {
           <Route path="/resulta" element={<Resulta />} />
           <Route path="/revision" element={<Revision />} />
           <Route path="/revision/:id" element={<Archives />} />
-          <Route path="/whatsapp" element={<Whatsapp />} />
           <Route path="/institutions" element={<Institutions />} />
           <Route path='/institutions/:id' element={<Institues />} />
           <Route path="/branches" element={<Branches />} />
@@ -95,6 +97,17 @@ function App() {
           <Route path="*" element={<NoteFound />} />
         </Routes>
       </Suspense>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Router>
   );
 }

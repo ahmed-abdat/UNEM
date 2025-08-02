@@ -1,5 +1,4 @@
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 export default function Inputes({
   option,
@@ -174,19 +173,6 @@ export default function Inputes({
           />
         </div>
       ))}
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        limit={2}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={isArabic}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </div>
   );
 }

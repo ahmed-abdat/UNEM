@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+
+bac-data-pipeline/*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

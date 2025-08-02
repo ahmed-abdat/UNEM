@@ -1,5 +1,4 @@
 import HeaderImg from '../../components/HeaderImg'
-import PageElements from '../../components/PageElements';
 import Footer from '../../components/Footer';
 import PageResulta from '../../components/PageResulta';
 
