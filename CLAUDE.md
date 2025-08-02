@@ -147,6 +147,16 @@ Firebase credentials are stored in environment variables (Vite format):
 
 The project is configured for Vercel deployment with SPA routing support (see `vercel.json`).
 
+## Git Commit Guidelines
+
+When creating commit messages:
+- **NEVER** mention Claude Code, claude.ai/code, or any AI assistance in commit messages
+- **NEVER** include "Generated with Claude Code" or similar AI attribution
+- **NEVER** add "Co-Authored-By: Claude" in commits
+- Use clear, professional commit messages that focus on the actual changes made
+- Follow conventional commit format: `feat:`, `fix:`, `refactor:`, `docs:`, etc.
+- Keep commit messages focused on the technical changes and business value
+
 ---
 
 ## Design System Migration Guide
