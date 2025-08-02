@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo, useMemo, useCallback } from 'react';
 import { Input } from './ui/input';
 import { cn } from '@/lib/utils';
 import { Search, User, GraduationCap, Loader2 } from 'lucide-react';
 
-export default function StudentAutocomplete({
+const StudentAutocomplete = memo(({
   value,
   onChange,
   onSelect,
@@ -17,6 +17,43 @@ export default function StudentAutocomplete({
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const inputRef = useRef(null);
   const listRef = useRef(null);
+
+  // Memoize utility functions for better performance
+  const getDecisionColor = useCallback((decision) => {
+    if (decision?.startsWith('Admis')) return 'text-green-600';
+    if (decision?.startsWith('Ajourné')) return 'text-red-600';
+    if (decision === 'Sessionnaire') return 'text-yellow-600';
+    return 'text-gray-600';
+  }, []);
+
+  const getDecisionIcon = useCallback((decision) => {
+    if (decision?.startsWith('Admis')) return '🎉';
+    if (decision?.startsWith('Ajourné')) return '❌';
+    if (decision === 'Sessionnaire') return '📝';
+    return '👤';
+  }, []);
+
+  const handleSelect = useCallback((suggestion) => {
+    onSelect(suggestion);
+    setIsOpen(false);
+    setHighlightedIndex(-1);
+  }, [onSelect]);
+
+  const handleInputChange = useCallback((e) => {
+    const newValue = e.target.value;
+    onChange(newValue);
+    setIsOpen(true);
+    setHighlightedIndex(-1);
+  }, [onChange]);
+
+  // Memoize computed values
+  const shouldShowSuggestions = useMemo(() => {
+    return isOpen && suggestions.length > 0;
+  }, [isOpen, suggestions.length]);
+
+  const shouldShowNoResults = useMemo(() => {
+    return isOpen && !isLoading && suggestions.length === 0 && value.length > 1;
+  }, [isOpen, isLoading, suggestions.length, value.length]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -68,33 +105,6 @@ export default function StudentAutocomplete({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleInputChange = (e) => {
-    const newValue = e.target.value;
-    onChange(newValue);
-    setIsOpen(true);
-    setHighlightedIndex(-1);
-  };
-
-  const handleSelect = (suggestion) => {
-    onSelect(suggestion);
-    setIsOpen(false);
-    setHighlightedIndex(-1);
-  };
-
-  const getDecisionColor = (decision) => {
-    if (decision?.startsWith('Admis')) return 'text-green-600';
-    if (decision?.startsWith('Ajourné')) return 'text-red-600';
-    if (decision === 'Sessionnaire') return 'text-yellow-600';
-    return 'text-gray-600';
-  };
-
-  const getDecisionIcon = (decision) => {
-    if (decision?.startsWith('Admis')) return '🎉';
-    if (decision?.startsWith('Ajourné')) return '❌';
-    if (decision === 'Sessionnaire') return '📝';
-    return '👤';
-  };
-
   return (
     <div className="relative w-full">
       <div className="relative">
@@ -119,7 +129,7 @@ export default function StudentAutocomplete({
         </div>
       </div>
 
-      {isOpen && suggestions.length > 0 && (
+      {shouldShowSuggestions && (
         <div 
           ref={listRef}
           className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto"
@@ -167,7 +177,7 @@ export default function StudentAutocomplete({
         </div>
       )}
 
-      {isOpen && !isLoading && suggestions.length === 0 && value.length > 1 && (
+      {shouldShowNoResults && (
         <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-4">
           <div className="text-center text-gray-500">
             <Search className="h-8 w-8 mx-auto mb-2 text-gray-300" />
@@ -178,4 +188,8 @@ export default function StudentAutocomplete({
       )}
     </div>
   );
-}
+});
+
+StudentAutocomplete.displayName = 'StudentAutocomplete';
+
+export default StudentAutocomplete;

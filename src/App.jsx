@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense, useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ErrorBoundary from "./components/ErrorBoundary";
+import DataErrorBoundary from "./components/DataErrorBoundary";
 const NoteFound = lazy(() => import("./components/NoteFound"));
 
 import Home from "./pages/Home";
@@ -69,48 +71,57 @@ const DevelopmentTools = () => {
 
 function App() {
   return (
-    <Router>
-      <DevelopmentTools />
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/News/poste/:id" element={<Poste />} />
-          <Route path="/calculation" element={<Calculation />} />
-          <Route path="/whatsapp" element={<Whatsapp />} />
-          <Route path="/resulta" element={<Resulta />} />
-          <Route path="/revision" element={<Revision />} />
-          <Route path="/revision/:id" element={<Archives />} />
-          <Route path="/institutions" element={<Institutions />} />
-          <Route path='/institutions/:id' element={<Institues />} />
-          <Route path="/branches" element={<Branches />} />
-          <Route path="/schedule" element={<Schedules />} />
-          <Route path="/remote" element={<Remote />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/bac2025" element={<Bac2025 />} />
+    <ErrorBoundary>
+      <Router>
+        <DevelopmentTools />
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/News/poste/:id" element={<Poste />} />
+            <Route path="/calculation" element={<Calculation />} />
+            <Route path="/whatsapp" element={
+              <DataErrorBoundary>
+                <Whatsapp />
+              </DataErrorBoundary>
+            } />
+            <Route path="/resulta" element={<Resulta />} />
+            <Route path="/revision" element={<Revision />} />
+            <Route path="/revision/:id" element={<Archives />} />
+            <Route path="/institutions" element={<Institutions />} />
+            <Route path='/institutions/:id' element={<Institues />} />
+            <Route path="/branches" element={<Branches />} />
+            <Route path="/schedule" element={<Schedules />} />
+            <Route path="/remote" element={<Remote />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/bac2025" element={
+              <DataErrorBoundary>
+                <Bac2025 />
+              </DataErrorBoundary>
+            } />
 
-          {/* all revision archive */}
+            {/* all revision archive */}
+            
+            <Route path="/remote-fm" element={<RemoteIframe />} />
+            <Route path="/form" element={<Form />} />
 
-          
-          <Route path="/remote-fm" element={<RemoteIframe />} />
-          <Route path="/form" element={<Form />} />
-
-          {/* note found */}
-          <Route path="*" element={<NoteFound />} />
-        </Routes>
-      </Suspense>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </Router>
+            {/* note found */}
+            <Route path="*" element={<NoteFound />} />
+          </Routes>
+        </Suspense>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </Router>
+    </ErrorBoundary>
   );
 }
 

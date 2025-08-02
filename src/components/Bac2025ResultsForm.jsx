@@ -13,6 +13,7 @@ import useSearchStudents from "../hooks/useSearchStudents";
 import StudentAutocomplete from "./StudentAutocomplete";
 import { Loader2, Search, User, X } from "lucide-react";
 import ShowStudentResult from "./ShowStudentResult";
+import DataLoadingSkeleton from "./DataLoadingSkeleton";
 
 // Validation schema using Zod
 const SearchSchema = z.object({
@@ -30,7 +31,14 @@ export default function Bac2025ResultsForm() {
   const confettiRef = useRef(null);
   const debounceTimeoutRef = useRef(null);
   
-  const { findStudentByBacNumber } = useStudentData();
+  const { 
+    findStudentByBacNumber, 
+    loading: dataLoading, 
+    loadingProgress, 
+    dataMetrics, 
+    isDataLoaded,
+    loadData 
+  } = useStudentData();
   const { searchStudent, searchNameSuggestions, searchSuggestions, isLoadingSuggestions, clearSuggestions } = useSearchStudents();
   
   const {
@@ -41,6 +49,22 @@ export default function Bac2025ResultsForm() {
   } = useForm({
     resolver: zodResolver(SearchSchema),
   });
+
+  // Initial data loading with progress tracking
+  useEffect(() => {
+    if (!isDataLoaded) {
+      loadData({
+        progressCallback: (progress, message) => {
+          // Progress is handled by the hook's internal state
+          if (import.meta.env.DEV) {
+            console.log(`Loading progress: ${progress}% - ${message}`);
+          }
+        }
+      }).catch(error => {
+        console.error('Failed to load initial data:', error);
+      });
+    }
+  }, [isDataLoaded, loadData]);
 
   // Manual search trigger - optimized for performance
   const triggerSearch = useCallback(async (searchTerm) => {
@@ -161,6 +185,22 @@ export default function Bac2025ResultsForm() {
       setLoading(false);
     }
   };
+
+  // Show loading skeleton when data is initially loading
+  if (dataLoading && !isDataLoaded) {
+    return (
+      <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">
+        <div className="w-full max-w-xl mt-2 p-4">
+          <DataLoadingSkeleton 
+            progress={loadingProgress}
+            message="جاري تحميل بيانات الباكلوريا 2025..."
+            showMetrics={true}
+            metrics={dataMetrics}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">

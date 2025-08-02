@@ -1,12 +1,60 @@
-import React from 'react'
+import React, { memo, useMemo } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 import { cn } from "@/lib/utils";
 import { whatsAppGroups } from '../constants/whatsapp-links'; 
 
+const ShowStudentResult = memo(({ Name, Num_Bac, Serie, SERIE, Decision, Moyenne, Etablissement, Lieu, Wilaya, year = "2025" }) => {
+  // Memoize expensive calculations and derived values
+  const decisionStatus = useMemo(() => {
+    if (Decision?.startsWith("Admis")) return "admitted";
+    if (Decision === "Sessionnaire") return "supplementary";
+    if (Decision === "Abscent") return "absent";
+    return "failed";
+  }, [Decision]);
 
+  const decisionBarColor = useMemo(() => {
+    switch (decisionStatus) {
+      case "admitted": return "bg-green-500";
+      case "failed": return "bg-red-500";
+      case "supplementary": return "bg-yellow-500";
+      case "absent": return "bg-gray-500";
+      default: return "bg-gray-500";
+    }
+  }, [decisionStatus]);
 
+  const decisionText = useMemo(() => {
+    switch (decisionStatus) {
+      case "admitted":
+        return (
+          <>
+            <span className="ml-2">🎉</span>
+            <span>ناجح</span>
+            <span className="mr-2">🎉</span>
+          </>
+        );
+      case "supplementary":
+        return <span>الدورة التكميلية</span>;
+      case "absent":
+        return <span>👀 غائب 👀</span>;
+      default:
+        return <span>غير ناجح</span>;
+    }
+  }, [decisionStatus]);
 
-export default function ShowStudentResult({ Name , Num_Bac , Serie ,  SERIE , Decision , Moyenne , Etablissement , Lieu , Wilaya , year = "2025" }) {
+  const formattedAverage = useMemo(() => {
+    return Number(Moyenne).toFixed(2);
+  }, [Moyenne]);
+
+  const whatsappLink = useMemo(() => {
+    return whatsAppGroups[SERIE];
+  }, [SERIE]);
+
+  const successMessage = useMemo(() => {
+    return decisionStatus === "admitted" 
+      ? "مبروك النجاح و نتمنى لك النجاح في المرحلة القادمة"
+      : "نتمنى لك التوفيق في المرحلة القادمة";
+  }, [decisionStatus]);
+
   return (
     <div className="mt-6">
     <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-2">
@@ -23,31 +71,14 @@ export default function ShowStudentResult({ Name , Num_Bac , Serie ,  SERIE , De
     </div>
     <div
       id="decision-bar"
-      className={cn("h-1 rounded w-2/3 mx-auto  mb-4", {
-        "bg-green-500": Decision.startsWith("Admis"),
-        "bg-red-500": Decision.startsWith("Ajourné"),
-        "bg-yellow-500": Decision === "Sessionnaire",
-        "bg-gray-500": Decision === "Abscent",
-      })}
+      className={cn("h-1 rounded w-2/3 mx-auto mb-4", decisionBarColor)}
     ></div>
     <div className="flex flex-col items-center mb-6">
       <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
         القرار
       </span>
       <div className="flex items-center text-2xl font-bold text-gray-800 dark:text-gray-200 animate__animated animate__fadeIn gap-x-2">
-        {Decision?.startsWith("Admis") ? (
-          <>
-            <span className="ml-2">🎉</span>
-            <span>ناجح</span>
-            <span className="mr-2">🎉</span>
-          </>
-        ) : Decision === "Sessionnaire" ? (
-          <span> الدورة التكميلية </span>
-        ) : Decision === "Abscent" ? (
-          <span>👀 غائب 👀</span>
-        ) : (
-          <span>غير ناجح</span>
-        )}
+        {decisionText}
         |
         <div>
           <span className="text-gray-600 dark:text-gray-400 mb-2 text-sm">
@@ -67,7 +98,7 @@ export default function ShowStudentResult({ Name , Num_Bac , Serie ,  SERIE , De
             المعدل
           </div>
           <div className="text-gray-700 dark:text-gray-300 font-bold text-xs">
-            {Number(Moyenne).toFixed(2)}
+            {formattedAverage}
           </div>
         </div>
         {/* Commented out until we have the correct link
@@ -132,30 +163,27 @@ export default function ShowStudentResult({ Name , Num_Bac , Serie ,  SERIE , De
           </a>
         </div>
       </div>
-      {Decision?.startsWith("Admis") && (
+      {decisionStatus === "admitted" && (
         <div className="flex justify-center mt-4">
           <a
-            href={whatsAppGroups[SERIE]}
+            href={whatsappLink}
             target="_blank"
-            className="px-4  justify-center cursor-pointer w-[90%] md:text-lg text-base py-2 flex items-center text-white bg-green-500 rounded-lg hover:bg-green-600"
+            className="px-4 justify-center cursor-pointer w-[90%] md:text-lg text-base py-2 flex items-center text-white bg-green-500 rounded-lg hover:bg-green-600"
           >
             إنضم لمجموعة الواتساب الخاصة بشعبتك
             <FaWhatsapp className="mr-2" size={25} />
           </a>
         </div>
       )}
-      {/* unem wich you good luck */}
-      {Decision?.startsWith("Admis") ? (
-        <p className="mt-4 text-base text-center">
-          مبروك النجاح و نتمنى لك النجاح في المرحلة القادمة
-        </p>
-      ) : (
-        <p className="mt-4 text-base text-center">
-          {" "}
-          نتمنى لك التوفيق في المرحلة القادمة
-        </p>
-      )}
+      {/* unem wishes you good luck */}
+      <p className="mt-4 text-base text-center">
+        {successMessage}
+      </p>
     </div>
   </div>
   )
-}
+});
+
+ShowStudentResult.displayName = 'ShowStudentResult';
+
+export default ShowStudentResult;

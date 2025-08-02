@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, memo, useCallback, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -12,7 +12,7 @@ import useStudentData from "../hooks/useStudentData";
 import { Loader2, Search } from "lucide-react";
 import { whatsAppGroups } from "../constants/whatsapp-links";
 
-// Validation schema using Zod
+// Validation schema using Zod - memoized to prevent recreation
 const SearchSchema = z.object({
   studentId: z
     .string()
@@ -20,27 +20,57 @@ const SearchSchema = z.object({
     .max(10, { message: "رقم الطالب طويل جداً" }),
 });
 
-export default function WhatsappForm() {
+const WhatsappForm = memo(() => {
   const [loading, setLoading] = useState(false);
   const confettiRef = useRef(null);
   
   const { findStudentByBacNumber } = useStudentData();
+  
+  // Memoize form resolver to prevent recreation
+  const formResolver = useMemo(() => zodResolver(SearchSchema), []);
   
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(SearchSchema),
+    resolver: formResolver,
   });
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (confettiRef.current) {
       confettiRef.current.fire();
     }
-  };
+  }, []);
 
-  const onSubmit = async (data) => {
+  // Memoize toast messages to prevent recreation
+  const toastMessages = useMemo(() => ({
+    success: (whatsappLink) => (
+      <div style={{ textAlign: "center" }}>
+        <p>مبروك النجاح! 🎉</p>
+        <p style={{ fontSize: "0.75rem", marginTop: "8px" }}>
+          سيتم توجيهك إلى مجموعة الواتساب الخاصة بشعبتك
+        </p>
+        <p style={{ fontSize: "0.7rem", marginTop: "8px", opacity: 0.8 }}>
+          إذا لم يتم التوجيه تلقائياً، 
+          <a 
+            href={whatsappLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ color: "#25D366", textDecoration: "underline" }}
+          >
+            اضغط هنا
+          </a>
+        </p>
+      </div>
+    ),
+    noGroup: "مبروك النجاح! لكن مجموعة الواتساب غير متوفرة لهذه الشعبة حالياً.",
+    notAdmitted: "للأسف، الانضمام لمجموعات الواتساب متاح فقط للطلاب الناجحين. نتمنى لك التوفيق في المرحلة القادمة 🤲",
+    notFound: "عذراً، لم يتم العثور على الطالب. يرجى التأكد من رقم الطالب والمحاولة مرة أخرى.",
+    error: "حدث خطأ أثناء محاولة التحقق من الرقم. حاول مرة أخرى لاحقاً."
+  }), []);
+
+  const onSubmit = useCallback(async (data) => {
     setLoading(true);
     try {
       // Find student by ID
@@ -56,29 +86,10 @@ export default function WhatsappForm() {
             const whatsappLink = whatsAppGroups[serie];
             
             // Show success message with the link as fallback
-            toast.success(
-              <div style={{ textAlign: "center" }}>
-                <p>مبروك النجاح! 🎉</p>
-                <p style={{ fontSize: "0.75rem", marginTop: "8px" }}>
-                  سيتم توجيهك إلى مجموعة الواتساب الخاصة بشعبتك
-                </p>
-                <p style={{ fontSize: "0.7rem", marginTop: "8px", opacity: 0.8 }}>
-                  إذا لم يتم التوجيه تلقائياً، 
-                  <a 
-                    href={whatsappLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{ color: "#25D366", textDecoration: "underline" }}
-                  >
-                    اضغط هنا
-                  </a>
-                </p>
-              </div>,
-              {
-                duration: 5000, // Show for 5 seconds
-                style: { fontSize: "0.85rem" },
-              }
-            );
+            toast.success(toastMessages.success(whatsappLink), {
+              duration: 5000, // Show for 5 seconds
+              style: { fontSize: "0.85rem" },
+            });
             handleClick();
             
             // Use direct navigation after a delay
@@ -87,35 +98,26 @@ export default function WhatsappForm() {
               window.location.href = whatsappLink;
             }, 2000);
           } else {
-            toast.info("مبروك النجاح! لكن مجموعة الواتساب غير متوفرة لهذه الشعبة حالياً.");
+            toast.info(toastMessages.noGroup);
           }
         } else {
-          toast.info(
-            "للأسف، الانضمام لمجموعات الواتساب متاح فقط للطلاب الناجحين. نتمنى لك التوفيق في المرحلة القادمة 🤲",
-            {
-              style: { fontSize: "0.85rem" },
-            }
-          );
+          toast.info(toastMessages.notAdmitted, {
+            style: { fontSize: "0.85rem" },
+          });
         }
       } else {
-        toast.error(
-          "عذراً، لم يتم العثور على الطالب. يرجى التأكد من رقم الطالب والمحاولة مرة أخرى.",
-          {
-            style: { fontSize: "0.85rem" },
-          }
-        );
+        toast.error(toastMessages.notFound, {
+          style: { fontSize: "0.85rem" },
+        });
       }
     } catch (error) {
-      toast.error(
-        "حدث خطأ أثناء محاولة التحقق من الرقم. حاول مرة أخرى لاحقاً.",
-        {
-          style: { fontSize: "0.85rem" },
-        }
-      );
+      toast.error(toastMessages.error, {
+        style: { fontSize: "0.85rem" },
+      });
     } finally {
       setLoading(false);
     }
-  };
+  }, [findStudentByBacNumber, toastMessages, handleClick]);
 
   return (
     <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">
@@ -182,4 +184,8 @@ export default function WhatsappForm() {
       </div>
     </div>
   );
-}
+});
+
+WhatsappForm.displayName = 'WhatsappForm';
+
+export default WhatsappForm;
