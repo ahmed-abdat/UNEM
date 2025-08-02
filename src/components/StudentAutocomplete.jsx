@@ -3,7 +3,7 @@ import { Input } from './ui/input';
 import { cn } from '../lib/utils';
 import { Search, User, GraduationCap, Loader2 } from 'lucide-react';
 
-const StudentAutocomplete = memo(({
+const StudentAutocomplete = memo(function StudentAutocomplete({
   value,
   onChange,
   onSelect,
@@ -12,7 +12,7 @@ const StudentAutocomplete = memo(({
   isLoading = false,
   className,
   ...props
-}) => {
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const inputRef = useRef(null);
