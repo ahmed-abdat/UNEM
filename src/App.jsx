@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 // import NoteFound from "./components/NoteFound";
 const NoteFound = lazy(() => import("./components/NoteFound"));
 
@@ -26,9 +26,46 @@ const Bac2025 = lazy(() => import("./pages/Bac2025"));
 import Archives from './pages/archives/Archives'
 import Loader from "./components/Loader";
 
+// Development-only imports
+const DevelopmentTools = () => {
+  if (!import.meta.env.DEV) return null;
+  
+  // Dynamic imports to prevent bundling in production
+  const [StagewiseToolbar, setStagewiseToolbar] = useState(null);
+  const [ReactPlugin, setReactPlugin] = useState(null);
+  
+  useEffect(() => {
+    const loadStagewise = async () => {
+      try {
+        const [toolbarModule, pluginModule] = await Promise.all([
+          import("@stagewise/toolbar-react"),
+          import("@stagewise-plugins/react")
+        ]);
+        setStagewiseToolbar(() => toolbarModule.StagewiseToolbar);
+        setReactPlugin(pluginModule.default);
+      } catch (error) {
+        console.warn('Stagewise not available in development:', error);
+      }
+    };
+    
+    loadStagewise();
+  }, []);
+  
+  if (!StagewiseToolbar || !ReactPlugin) return null;
+  
+  return (
+    <StagewiseToolbar 
+      config={{
+        plugins: [ReactPlugin]
+      }}
+    />
+  );
+};
+
 function App() {
   return (
     <Router>
+      <DevelopmentTools />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
