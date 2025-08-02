@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.unem2000.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Disallow admin areas (if any in the future)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important pages
+Allow: /bac2025
+Allow: /news
+Allow: /institutions
+Allow: /revision
+Allow: /about
+Allow: /whatsapp
+Allow: /form

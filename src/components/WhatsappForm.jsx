@@ -8,9 +8,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import useStudentData from "../hooks/useStudentData";
+import useOptimizedStudentData from "../hooks/useOptimizedStudentData";
 import { Loader2, Search } from "lucide-react";
 import { whatsAppGroups } from "../constants/whatsapp-links";
+import "./WhatsappToast.css";
 
 // Validation schema using Zod - memoized to prevent recreation
 const SearchSchema = z.object({
@@ -24,7 +25,7 @@ const WhatsappForm = memo(() => {
   const [loading, setLoading] = useState(false);
   const confettiRef = useRef(null);
   
-  const { findStudentByBacNumber } = useStudentData();
+  const { findStudentByBacNumber, loading: dataLoading, searchProgress } = useOptimizedStudentData();
   
   // Memoize form resolver to prevent recreation
   const formResolver = useMemo(() => zodResolver(SearchSchema), []);
@@ -43,21 +44,21 @@ const WhatsappForm = memo(() => {
     }
   }, []);
 
-  // Memoize toast messages to prevent recreation
+  // Enhanced toast messages with mobile-friendly error handling using CSS classes
   const toastMessages = useMemo(() => ({
     success: (whatsappLink) => (
-      <div style={{ textAlign: "center" }}>
-        <p>مبروك النجاح! 🎉</p>
-        <p style={{ fontSize: "0.75rem", marginTop: "8px" }}>
+      <div className="whatsapp-toast-success">
+        <h3>مبروك النجاح! 🎉</h3>
+        <p className="whatsapp-toast-subtitle">
           سيتم توجيهك إلى مجموعة الواتساب الخاصة بشعبتك
         </p>
-        <p style={{ fontSize: "0.7rem", marginTop: "8px", opacity: 0.8 }}>
+        <p className="whatsapp-toast-link-container">
           إذا لم يتم التوجيه تلقائياً، 
           <a 
             href={whatsappLink} 
             target="_blank" 
             rel="noopener noreferrer"
-            style={{ color: "#25D366", textDecoration: "underline" }}
+            className="whatsapp-toast-link"
           >
             اضغط هنا
           </a>
@@ -67,14 +68,51 @@ const WhatsappForm = memo(() => {
     noGroup: "مبروك النجاح! لكن مجموعة الواتساب غير متوفرة لهذه الشعبة حالياً.",
     notAdmitted: "للأسف، الانضمام لمجموعات الواتساب متاح فقط للطلاب الناجحين. نتمنى لك التوفيق في المرحلة القادمة 🤲",
     notFound: "عذراً، لم يتم العثور على الطالب. يرجى التأكد من رقم الطالب والمحاولة مرة أخرى.",
-    error: "حدث خطأ أثناء محاولة التحقق من الرقم. حاول مرة أخرى لاحقاً."
+    searching: (progress) => (
+      <div className="whatsapp-search-progress">
+        <h4>جاري البحث... {Math.round(progress)}%</h4>
+        <div className="whatsapp-progress-bar">
+          <div 
+            className="whatsapp-progress-fill"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+      </div>
+    )
   }), []);
 
   const onSubmit = useCallback(async (data) => {
     setLoading(true);
+    
+    // Show progress toast for mobile users
+    let progressToastId = null;
+    
     try {
-      // Find student by ID
+      // Show search progress for better mobile UX
+      progressToastId = toast.loading(toastMessages.searching(0), {
+        style: { fontSize: "0.85rem" },
+      });
+      
+      // Update progress during search
+      const progressInterval = setInterval(() => {
+        if (searchProgress > 0) {
+          toast.update(progressToastId, {
+            render: toastMessages.searching(searchProgress),
+            type: "loading"
+          });
+        }
+      }, 100);
+      
+      // Find student by ID using optimized search
       const student = await findStudentByBacNumber(data.studentId);
+      
+      // Clear progress interval
+      clearInterval(progressInterval);
+      
+      // Dismiss progress toast
+      if (progressToastId) {
+        toast.dismiss(progressToastId);
+      }
 
       if (student) {
         const isAdmin = student.Decision?.startsWith("Admis");
@@ -98,7 +136,9 @@ const WhatsappForm = memo(() => {
               window.location.href = whatsappLink;
             }, 2000);
           } else {
-            toast.info(toastMessages.noGroup);
+            toast.info(toastMessages.noGroup, {
+              style: { fontSize: "0.85rem" },
+            });
           }
         } else {
           toast.info(toastMessages.notAdmitted, {
@@ -111,13 +151,23 @@ const WhatsappForm = memo(() => {
         });
       }
     } catch (error) {
-      toast.error(toastMessages.error, {
+      // Dismiss progress toast on error
+      if (progressToastId) {
+        toast.dismiss(progressToastId);
+      }
+      
+      // Show the specific error message from optimized hook
+      toast.error(error.message, {
         style: { fontSize: "0.85rem" },
+        duration: 4000,
       });
+      
+      // Log error for debugging
+      console.error('WhatsApp form submission error:', error);
     } finally {
       setLoading(false);
     }
-  }, [findStudentByBacNumber, toastMessages, handleClick]);
+  }, [findStudentByBacNumber, toastMessages, handleClick, searchProgress]);
 
   return (
     <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">
@@ -155,12 +205,12 @@ const WhatsappForm = memo(() => {
             )}
           </div>
           <Button
-            disabled={loading}
+            disabled={loading || dataLoading}
             type="submit"
             className="font-tajawal font-medium shadow-btne cursor-pointer text-white text-lg bg-btn hover:bg-btn px-[15px] py-[1.65rem] rounded-lg disabled:opacity-[0.7] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-disabeld-btn active:shadow-none active:transform active:translate-x-0 active:translate-y-1 transition-all"
           >
-            انضم للمجموعة
-            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {(loading || dataLoading) ? 'جاري البحث...' : 'انضم للمجموعة'}
+            {(loading || dataLoading) && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           </Button>
         </form>
         

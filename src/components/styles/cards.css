@@ -99,7 +99,7 @@
 }
 
 .card .card_discription .card_title {
-  font-family: "RB" ,Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif ;
+  font-family: "Tajawal", "Vazirmatn", sans-serif;
   margin-bottom: 0.5rem;
   font-weight: 700;
   font-size: 1.25rem;
@@ -121,7 +121,7 @@
 
 
 .card .card_discription .card_date {
-  font-family:"RB", Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif ;
+  font-family: "Tajawal", "Vazirmatn", sans-serif;
   font-size: 0.8rem;
   font-weight: 400;
   color: var(--icon-color);

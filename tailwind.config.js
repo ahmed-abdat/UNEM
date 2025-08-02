@@ -18,10 +18,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        tajawal: ['var(--font-tajawal)'],
-        aljazira: ['var(--font-aljazira)'],
-        roboto : ['var(--font-roboto)'],
-        rb : ['var(--font-rb)'],
+        tajawal: ['Tajawal', 'sans-serif'],
+        vazirmatn: ['Vazirmatn', 'sans-serif'],
+        arabic: ['Tajawal', 'Vazirmatn', 'sans-serif'],
       },
       colors: {
         'disabeld-btn' : '#58cc10',

@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "totalStudents": 53148,
+    "totalChunks": 27,
+    "chunkSize": 2000,
+    "createdAt": "2025-08-02T22:56:57.395Z",
+    "version": "1.0.0"
+  },
+  "chunks": [
+    {
+      "index": 0,
+      "file": "chunk-000.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "00001",
+        "max": "02014"
+      }
+    },
+    {
+      "index": 1,
+      "file": "chunk-001.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "02015",
+        "max": "04019"
+      }
+    },
+    {
+      "index": 2,
+      "file": "chunk-002.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "04020",
+        "max": "06023"
+      }
+    },
+    {
+      "index": 3,
+      "file": "chunk-003.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "06024",
+        "max": "08023"
+      }
+    },
+    {
+      "index": 4,
+      "file": "chunk-004.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "08024",
+        "max": "10028"
+      }
+    },
+    {
+      "index": 5,
+      "file": "chunk-005.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "10029",
+        "max": "12033"
+      }
+    },
+    {
+      "index": 6,
+      "file": "chunk-006.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "12034",
+        "max": "14036"
+      }
+    },
+    {
+      "index": 7,
+      "file": "chunk-007.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "14037",
+        "max": "16041"
+      }
+    },
+    {
+      "index": 8,
+      "file": "chunk-008.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "16042",
+        "max": "18042"
+      }
+    },
+    {
+      "index": 9,
+      "file": "chunk-009.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "18043",
+        "max": "20046"
+      }
+    },
+    {
+      "index": 10,
+      "file": "chunk-010.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "20047",
+        "max": "22050"
+      }
+    },
+    {
+      "index": 11,
+      "file": "chunk-011.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "22051",
+        "max": "24053"
+      }
+    },
+    {
+      "index": 12,
+      "file": "chunk-012.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "24054",
+        "max": "26054"
+      }
+    },
+    {
+      "index": 13,
+      "file": "chunk-013.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "26055",
+        "max": "28057"
+      }
+    },
+    {
+      "index": 14,
+      "file": "chunk-014.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "28058",
+        "max": "30059"
+      }
+    },
+    {
+      "index": 15,
+      "file": "chunk-015.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "30060",
+        "max": "32060"
+      }
+    },
+    {
+      "index": 16,
+      "file": "chunk-016.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "32061",
+        "max": "34066"
+      }
+    },
+    {
+      "index": 17,
+      "file": "chunk-017.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "34067",
+        "max": "36067"
+      }
+    },
+    {
+      "index": 18,
+      "file": "chunk-018.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "36068",
+        "max": "38069"
+      }
+    },
+    {
+      "index": 19,
+      "file": "chunk-019.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "38070",
+        "max": "40071"
+      }
+    },
+    {
+      "index": 20,
+      "file": "chunk-020.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "40072",
+        "max": "42074"
+      }
+    },
+    {
+      "index": 21,
+      "file": "chunk-021.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "42075",
+        "max": "44079"
+      }
+    },
+    {
+      "index": 22,
+      "file": "chunk-022.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "44080",
+        "max": "46084"
+      }
+    },
+    {
+      "index": 23,
+      "file": "chunk-023.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "46085",
+        "max": "48086"
+      }
+    },
+    {
+      "index": 24,
+      "file": "chunk-024.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "48087",
+        "max": "50094"
+      }
+    },
+    {
+      "index": 25,
+      "file": "chunk-025.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "50095",
+        "max": "52098"
+      }
+    },
+    {
+      "index": 26,
+      "file": "chunk-026.json",
+      "recordCount": 1148,
+      "nodeRange": {
+        "min": "52099",
+        "max": "53374"
+      }
+    }
+  ]
+}

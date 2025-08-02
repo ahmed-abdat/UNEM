@@ -30,7 +30,7 @@ export const useErrorHandler = () => {
 
     // Classify error and show appropriate toast
     const errorType = classifyError(error);
-    showErrorToast(errorType, error.message);
+    showErrorToast(errorType);
 
     // In production, send to error reporting service
     if (import.meta.env.PROD) {
@@ -125,7 +125,7 @@ function classifyError(error) {
 }
 
 // Show appropriate toast based on error type
-function showErrorToast(errorType, message) {
+function showErrorToast(errorType) {
   const toastOptions = {
     position: 'top-center',
     autoClose: 5000,

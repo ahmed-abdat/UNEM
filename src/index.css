@@ -1,9 +1,6 @@
 /*  ?font */
-/* Tajawal */
+/* Arabic Fonts Only */
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
-/* Roboto  */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-/* Vazirmatn */
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
@@ -69,24 +66,7 @@
 
 
 
-/* Aj jazira */
-@font-face {
-  font-family: 'RB';
-  src: url('./assets//font/RB\ Regular.ttf');
-}
-/* @font-face {
-  font-family: 'Al jazeera';
-  src: url('./assets//font//Aljazeera.ttf');
-} */
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url('./assets//font/alfont_com.ttf');
-}
-
-@font-face {
-  font-family: 'Rb';
-  src: url('./assets/font/4_F5.ttf');
-}
+/* Using Google Fonts for better performance and SEO */
 
 
 
@@ -121,7 +101,7 @@
 }
 
 body {
-  font-family: 'RB', sans-serif;
+  font-family: 'Tajawal', 'Vazirmatn', sans-serif;
   background-color: var(--main-bgc);
   /* background-image: linear-gradient(180deg,var(--app-background),var(--app-background-deeper)); */
 
@@ -142,12 +122,10 @@ a {
 }
 
 .f-ar {
-  font-family: 'Vazirmatn' , 'Tajawal' , 'Roboto' , sans-serif;
+  font-family: 'Vazirmatn', 'Tajawal', sans-serif;
 }
 
-.f-fr {
-  font-family: 'Roboto' , 'Tajawal' , 'Vazirmatn' , sans-serif;
-}
+/* Removed .f-fr since only using Arabic */
 
 ::selection {
   background-color: var(--primary-color);

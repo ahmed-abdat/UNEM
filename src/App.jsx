@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense, useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import { HelmetProvider } from "react-helmet-async";
 import "react-toastify/dist/ReactToastify.css";
 import ErrorBoundary from "./components/ErrorBoundary";
 import DataErrorBoundary from "./components/DataErrorBoundary";
@@ -24,6 +25,7 @@ const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
 const Form = lazy(() => import("./pages/Form/Form"));
 const Institues = lazy(() => import("./components/Institues"));
 const Bac2025 = lazy(() => import("./pages/Bac2025"));
+const TestSearch = lazy(() => import("./pages/TestSearch"));
 
 import Archives from './pages/archives/Archives'
 import Loader from "./components/Loader";
@@ -71,8 +73,9 @@ const DevelopmentTools = () => {
 
 function App() {
   return (
-    <ErrorBoundary>
-      <Router>
+    <HelmetProvider>
+      <ErrorBoundary>
+        <Router>
         <DevelopmentTools />
         <Suspense fallback={<Loader />}>
           <Routes>
@@ -99,6 +102,9 @@ function App() {
                 <Bac2025 />
               </DataErrorBoundary>
             } />
+            
+            {/* Performance Test Route - Development/Testing */}
+            <Route path="/test-search" element={<TestSearch />} />
 
             {/* all revision archive */}
             
@@ -120,8 +126,9 @@ function App() {
           draggable
           pauseOnHover
         />
-      </Router>
-    </ErrorBoundary>
+        </Router>
+      </ErrorBoundary>
+    </HelmetProvider>
   );
 }
 

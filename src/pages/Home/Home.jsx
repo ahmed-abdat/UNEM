@@ -1,9 +1,17 @@
 import HomeOption from "../../components/HomeOption";
+import SEO from "../../components/SEO";
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
 import "./home.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { getDefaultSEO } from "../../hooks/useSEO";
+import { generateOrganizationSchema, generateWebsiteSchema, combineSchemas } from "../../utils/structuredData";
 
 export default function home() {
+  const seoData = getDefaultSEO();
+  const structuredData = combineSchemas(
+    generateOrganizationSchema(),
+    generateWebsiteSchema()
+  );
   // handel whatsapp redirect
   const handelWhatsapp = () => {
     window.open("https://wa.me/+22236199323?text=");
@@ -66,7 +74,13 @@ export default function home() {
   ];
 
   return (
-    <main className="home">
+    <>
+      <SEO 
+        {...seoData}
+        image="/og_image.png"
+        structuredData={structuredData}
+      />
+      <main className="home">
       <section className="main">
         <header className="main-header">
           <div className="img">
@@ -97,5 +111,6 @@ export default function home() {
         </div>
       </section>
     </main>
+    </>
   );
 }

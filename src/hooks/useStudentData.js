@@ -84,7 +84,6 @@ export const useStudentData = () => {
         // Calculate metrics
         const loadTime = performance.now() - startTimeRef.current;
         const dataSize = JSON.stringify(bac2025DataLoaded).length;
-        const avgRecordSize = dataSize / bac2025DataLoaded.length;
 
         // Cache the data
         bac2025DataRef.current = bac2025DataLoaded;
@@ -152,8 +151,8 @@ export const useStudentData = () => {
     }
   }, [handleError]);
 
-  const findStudentByBacNumber = useCallback(
-    withErrorHandling(async (bacNumber) => {
+  const findStudentByBacNumber = useCallback(async (bacNumber) => {
+    try {
       // Use cached data if available, otherwise load
       let bac2025Students = bac2025DataRef.current;
       
@@ -172,9 +171,11 @@ export const useStudentData = () => {
       );
 
       return bac2025Student || null;
-    }, { operation: 'findStudent', studentId: 'bacNumber' }),
-    [loadData, withErrorHandling]
-  );
+    } catch (error) {
+      handleError(error, { operation: 'findStudent', studentId: bacNumber });
+      throw error;
+    }
+  }, [loadData, handleError]);
 
   // Cleanup function to clear cache if needed
   const clearCache = useCallback(() => {

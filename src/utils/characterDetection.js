@@ -196,11 +196,12 @@ export function smartNormalizeText(text) {
       return normalizeArabicText(text);
     case 'latin':
       return normalizeLatinText(text);
-    case 'mixed':
+    case 'mixed': {
       // For mixed text, apply both normalizations
       let normalized = normalizeArabicText(text);
       normalized = normalizeLatinText(normalized);
       return normalized;
+    }
     default:
       return text.toLowerCase().trim();
   }
