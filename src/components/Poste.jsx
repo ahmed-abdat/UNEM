@@ -29,9 +29,6 @@ function Poste() {
         setPoste(docSnap.data());
         localStorage.setItem("poste", JSON.stringify(docSnap.data()));
       } else {
-        if (import.meta.env.DEV) {
-          console.log('Document not found for ID:', id);
-        }
       }
       setIsLoading(false);
     } catch (error) {

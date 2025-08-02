@@ -44,7 +44,9 @@ const DevelopmentTools = () => {
         setStagewiseToolbar(() => toolbarModule.StagewiseToolbar);
         setReactPlugin(pluginModule.default);
       } catch (error) {
-        console.warn('Stagewise not available in development:', error);
+        if (import.meta.env.DEV) {
+          console.warn('Stagewise not available in development:', error);
+        }
       }
     };
     

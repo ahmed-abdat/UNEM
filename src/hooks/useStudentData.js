@@ -49,11 +49,6 @@ export const useStudentData = () => {
       // Update state
       setBac2025Data(bac2025DataLoaded);
 
-      if (import.meta.env.DEV) {
-        console.log('BAC 2025 data loaded successfully:', {
-          bac2025Students: bac2025DataLoaded?.length || 0
-        });
-      }
 
       return {
         bac2025Data: bac2025DataLoaded
@@ -62,10 +57,6 @@ export const useStudentData = () => {
     } catch (err) {
       const errorMessage = 'Failed to load BAC 2025 student data';
       setError(errorMessage);
-      
-      if (import.meta.env.DEV) {
-        console.error('Error loading BAC 2025 data:', err);
-      }
       
       throw new Error(errorMessage);
     } finally {
