@@ -10,9 +10,6 @@ export default function Whatsapp() {
       <div className="whatsapp-container">
         <div className="whatsapp-content">
           <h1>مجموعات الواتساب</h1>
-          <p className="whatsapp-description">
-            للانضمام إلى المجموعة الخاصة بشعبتكم، يرجى البحث عن نتيجتكم أولاً
-          </p>
           <WhatsappForm />
         </div>
       </div>
