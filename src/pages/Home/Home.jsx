@@ -19,8 +19,8 @@ export default function home() {
   };
 
   const options = [{
-    content : 'نتائج الباكلوريا 2024',  
-    url : '/bac2024'
+    content : 'نتائج الباكلوريا 2025',  
+    url : '/bac2025'
 
   },
   {

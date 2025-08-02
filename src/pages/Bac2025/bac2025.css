@@ -1,0 +1,35 @@
+.bac2025-container {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.empty-state {
+  text-align: center;
+  direction: rtl;
+}
+
+.empty-state h1 {
+  font-size: 2rem;
+  color: #166534;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.empty-state p {
+  font-size: 1.2rem;
+  color: #16a34a;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .empty-state h1 {
+    font-size: 1.5rem;
+  }
+  
+  .empty-state p {
+    font-size: 1rem;
+  }
+}
