@@ -1,6 +1,6 @@
 import HeaderImg from '@/components/HeaderImg';
 import Footer from '@/components/Footer';
-import WhatsappForm from '@/components/WhatsappForm';
+import Bac2025ResultsForm from '@/components/Bac2025ResultsForm';
 import './bac2025.css';
 
 export default function Bac2025() {
@@ -10,7 +10,7 @@ export default function Bac2025() {
       <div className="bac2025-container">
         <div className="bac2025-content">
           <h1>نتائج الباكلوريا 2025</h1>
-          <WhatsappForm />
+          <Bac2025ResultsForm />
         </div>
       </div>
       <Footer />
