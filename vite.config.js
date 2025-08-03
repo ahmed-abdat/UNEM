@@ -1,6 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path"
+import path from "path";
+import { fileURLToPath } from 'url';
+
+// ES module equivalent of __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,8 +19,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Separate large data files into their own chunks
-          'student-data-2025': ['./src/data/bac2025.json'],
           // Vendor libraries
           'vendor-react': ['react', 'react-dom'],
           'vendor-ui': ['lucide-react', 'react-icons'],

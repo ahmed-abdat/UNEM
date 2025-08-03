@@ -1,5 +1,4 @@
 import { useState, useCallback, useRef, useMemo } from 'react';
-import { useErrorHandler } from './useErrorHandler';
 
 /**
  * Optimized student data hook with chunked loading for mobile optimization
@@ -214,26 +213,35 @@ export const useOptimizedStudentData = () => {
       setSearchProgress(10);
       const index = await loadIndex();
       
-      // Step 2: Find appropriate chunk (30% progress)
+      // Step 2: Validate student ID format
+      const numericId = parseInt(bacNumber, 10);
+      if (isNaN(numericId) || numericId < 1) {
+        // Student ID is invalid format - return null instead of error
+        setSearchProgress(100);
+        return null;
+      }
+      
+      // Step 3: Find appropriate chunk (30% progress)
       setSearchProgress(30);
       const targetChunk = findChunkForStudentId(bacNumber, index.chunks);
       
       if (!targetChunk) {
-        // Student ID is outside valid range
+        // Student ID is outside valid range - return null instead of error
+        setSearchProgress(100);
         return null;
       }
       
-      // Step 3: Load specific chunk (70% progress)
+      // Step 4: Load specific chunk (70% progress)
       setSearchProgress(70);
       const chunkData = await loadChunk(targetChunk.file);
       
-      // Step 4: Search within chunk (90% progress)
+      // Step 5: Search within chunk (90% progress)
       setSearchProgress(90);
       const student = chunkData.students.find(student => 
         student.NODOSS == bacNumber || student.NODOSS == +bacNumber
       );
       
-      // Step 5: Complete (100% progress)
+      // Step 6: Complete (100% progress)
       setSearchProgress(100);
       
       // Log performance metrics in development
