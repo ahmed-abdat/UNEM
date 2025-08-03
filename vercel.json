@@ -1,4 +1,7 @@
 {
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
@@ -7,11 +10,15 @@
   ],
   "headers": [
     {
-      "source": "/data/chunks/chunk-*.json",
+      "source": "/data/chunks/chunk-:id(\\d+).json",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json"
         }
       ]
     },
@@ -21,11 +28,15 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=86400"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json"
         }
       ]
     },
     {
-      "source": "/data/chunks/name-index-*.json",
+      "source": "/(.*\\.(js|css|ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot))",
       "headers": [
         {
           "key": "Cache-Control",
