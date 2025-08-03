@@ -1,115 +1,115 @@
 import { useState, useCallback, useRef } from 'react';
-import useStudentData from './useStudentData';
-import useFuzzySearch from './useFuzzySearch';
+import { useOptimizedStudentData } from './useOptimizedStudentData';
 
 /**
  * Custom hook for searching students by ID or name with autocomplete
- * Provides fuzzy search and autocomplete functionality
+ * Uses the optimized chunked data system for mobile-friendly search
  */
 export const useSearchStudents = () => {
-  const { findStudentByBacNumber } = useStudentData();
-  const {
-    searchWithDebounce,
-    performSearch,
-    findStudentExact,
-    searchResults,
-    isSearching,
-    isReady,
-    searchMetrics,
-    clearSearch
-  } = useFuzzySearch();
+  const { findStudentByBacNumber } = useOptimizedStudentData();
   
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   
-  // Fallback cache for legacy search methods
+  // Cache for search results
   const searchCacheRef = useRef(new Map());
-  const lastSearchTermRef = useRef('');
+  // const lastSearchTermRef = useRef('');
   const debounceTimeoutRef = useRef(null);
 
-  // Note: All search functions are now imported from useFuzzySearch hook
+  // Main search function that handles both ID and name searches
+  const searchStudent = useCallback(async (searchTerm, searchType = 'id') => {
+    if (!searchTerm || searchTerm.trim().length === 0) {
+      return null;
+    }
 
-  // Enhanced debounced search using Fuse.js
+    const trimmedTerm = searchTerm.trim();
+
+    // For ID search, use the optimized chunk-based search
+    if (searchType === 'id') {
+      try {
+        const student = await findStudentByBacNumber(trimmedTerm);
+        return student;
+      } catch (error) {
+        console.error('Student search error:', error);
+        throw error;
+      }
+    }
+
+    // For name search, show a message that it's not supported in the optimized version
+    if (searchType === 'name') {
+      throw new Error('البحث بالاسم غير متوفر حالياً. يرجى استخدام رقم الطالب للبحث.');
+    }
+
+    return null;
+  }, [findStudentByBacNumber]);
+
+  // Simplified name suggestions (returns empty for optimized version)
   const searchNameSuggestions = useCallback((searchTerm) => {
     if (!searchTerm || searchTerm.length < 2) {
       setSearchSuggestions([]);
       setIsLoadingSuggestions(false);
-      clearSearch();
       return;
     }
 
     setIsLoadingSuggestions(true);
-    lastSearchTermRef.current = searchTerm;
-
-    // Use the optimized Fuse.js search with debouncing
-    searchWithDebounce(searchTerm, {
-      limit: 8,
-      scoreThreshold: 0.6
-    });
     
-    // Update suggestions when search results change
-    setSearchSuggestions(searchResults);
-    setIsLoadingSuggestions(isSearching);
-  }, [searchWithDebounce, searchResults, isSearching, clearSearch]);
-
-  // Enhanced search by name using Fuse.js
-  const findStudentByName = useCallback(async (studentName) => {
-    try {
-      // Use the optimized Fuse.js search for exact matches
-      return await findStudentExact(studentName);
-    } catch (error) {
-      console.error('Error finding student by name:', error);
-      return null;
-    }
-  }, [findStudentExact]);
-
-  // Combined search function
-  const searchStudent = useCallback(async (searchTerm, searchType = 'id') => {
-    if (!searchTerm) return null;
-
-    if (searchType === 'id') {
-      return await findStudentByBacNumber(searchTerm);
-    } else {
-      return await findStudentByName(searchTerm);
-    }
-  }, [findStudentByBacNumber, findStudentByName]);
-
-  // Enhanced cleanup function
-  const cleanup = useCallback(() => {
+    // Clear previous timeout
     if (debounceTimeoutRef.current) {
       clearTimeout(debounceTimeoutRef.current);
     }
-    searchCacheRef.current.clear();
-    setSearchSuggestions([]);
-    setIsLoadingSuggestions(false);
-    clearSearch();
-  }, [clearSearch]);
 
-  // Stable clearSuggestions function
+    // Show message that name search is not available in optimized mode
+    debounceTimeoutRef.current = setTimeout(() => {
+      setSearchSuggestions([]);
+      setIsLoadingSuggestions(false);
+      console.warn('Name search is not available in optimized mode. Use student ID instead.');
+    }, 300);
+  }, []);
+
+  // Clear suggestions
   const clearSuggestions = useCallback(() => {
     setSearchSuggestions([]);
     setIsLoadingSuggestions(false);
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
   }, []);
 
+  // Clear cache
+  const clearCache = useCallback(() => {
+    searchCacheRef.current.clear();
+    clearSuggestions();
+  }, [clearSuggestions]);
+
   return {
+    // Core search methods
     searchStudent,
+    findStudentByBacNumber,
+    
+    // Name search (simplified for optimized version)
     searchNameSuggestions,
     searchSuggestions,
     isLoadingSuggestions,
     clearSuggestions,
-    cleanup,
     
-    // Enhanced Fuse.js features
-    performAdvancedSearch: performSearch,
-    findStudentExact,
-    isSearchReady: isReady,
-    searchMetrics,
+    // Cache management
+    clearCache,
     
-    // Performance insights (dev only)
-    ...(import.meta.env.DEV && {
-      _searchMetrics: searchMetrics,
-      _fuseReady: isReady
-    })
+    // Status
+    isOptimized: true,
+    supportsNameSearch: false, // Disabled in optimized version
+    searchMode: 'id-only',
+    
+    // Legacy compatibility (empty implementations)
+    searchResults: [],
+    isSearching: false,
+    isReady: true,
+    searchMetrics: {
+      lastSearchTime: 0,
+      totalSearches: 0,
+      avgSearchTime: 0,
+      cacheHitRate: 0
+    }
   };
 };
 

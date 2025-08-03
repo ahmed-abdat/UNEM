@@ -13,12 +13,14 @@ export const useOptimizedStudentData = () => {
   const [error, setError] = useState(null);
   const [searchProgress, setSearchProgress] = useState(0);
   
-  const { withErrorHandling } = useErrorHandler();
+  // Error handler available if needed
+  // const { handleError } = useErrorHandler();
   
   // Cache for loaded chunks and index
   const indexRef = useRef(null);
   const chunkCacheRef = useRef(new Map());
   const loadingRef = useRef(false);
+  // const MAX_CACHED_CHUNKS = 5; // Limit cache size for mobile memory
 
   // Load the chunk index for efficient student lookup
   const loadIndex = useCallback(async () => {

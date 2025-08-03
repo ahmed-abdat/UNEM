@@ -8,10 +8,9 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import useStudentData from "../hooks/useStudentData";
+import { useOptimizedStudentData } from "../hooks/useOptimizedStudentData";
 import useSearchStudents from "../hooks/useSearchStudents";
-import StudentAutocomplete from "./StudentAutocomplete";
-import { Loader2, Search, User, X } from "lucide-react";
+import { Loader2, Search, X } from "lucide-react";
 import ShowStudentResult from "./ShowStudentResult";
 import DataLoadingSkeleton from "./DataLoadingSkeleton";
 
@@ -19,27 +18,24 @@ import DataLoadingSkeleton from "./DataLoadingSkeleton";
 const SearchSchema = z.object({
   searchTerm: z
     .string()
-    .min(1, { message: "يرجى إدخال رقم الطالب أو الاسم للبحث" })
+    .min(1, { message: "يرجى إدخال رقم الطالب للبحث" })
     .max(50, { message: "النص المدخل طويل جداً" }),
 });
 
 export default function Bac2025ResultsForm() {
   const [loading, setLoading] = useState(false);
   const [studentData, setStudentData] = useState(null);
-  const [searchType, setSearchType] = useState('id'); // 'id' or 'name'
   const [searchValue, setSearchValue] = useState('');
   const confettiRef = useRef(null);
   const debounceTimeoutRef = useRef(null);
   
   const { 
-    findStudentByBacNumber, 
     loading: dataLoading, 
-    loadingProgress, 
-    dataMetrics, 
-    isDataLoaded,
-    loadData 
-  } = useStudentData();
-  const { searchStudent, searchNameSuggestions, searchSuggestions, isLoadingSuggestions, clearSuggestions } = useSearchStudents();
+    searchProgress: loadingProgress,
+    isOptimized: isDataLoaded,
+    preloadIndex: loadData 
+  } = useOptimizedStudentData();
+  const { searchStudent } = useSearchStudents();
   
   const {
     register,
@@ -53,76 +49,30 @@ export default function Bac2025ResultsForm() {
   // Initial data loading with progress tracking
   useEffect(() => {
     if (!isDataLoaded) {
-      loadData({
-        progressCallback: (progress, message) => {
-          // Progress is handled by the hook's internal state
-          if (import.meta.env.DEV) {
-            console.log(`Loading progress: ${progress}% - ${message}`);
-          }
-        }
-      }).catch(error => {
+      loadData().catch(error => {
         console.error('Failed to load initial data:', error);
       });
     }
   }, [isDataLoaded, loadData]);
 
-  // Manual search trigger - optimized for performance
-  const triggerSearch = useCallback(async (searchTerm) => {
-    if (!searchTerm || searchTerm.length < 1) return;
-    
-    if (searchType === 'name' && searchTerm.length >= 2) {
-      await searchNameSuggestions(searchTerm);
-    }
-  }, [searchType, searchNameSuggestions]);
-
-  // Clear suggestions when switching search types
-  useEffect(() => {
-    clearSuggestions();
-  }, [searchType, clearSuggestions]);
 
   // Cleanup debounce timeout on unmount
   useEffect(() => {
+    const debounceRef = debounceTimeoutRef;
     return () => {
-      if (debounceTimeoutRef.current) {
-        clearTimeout(debounceTimeoutRef.current);
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
       }
     };
   }, []);
 
-  // Optimized handlers
-  const handleSearchValueChange = useCallback((value) => {
-    setSearchValue(value);
-    setValue('searchTerm', value);
-    
-    // Clear previous timeout
-    if (debounceTimeoutRef.current) {
-      clearTimeout(debounceTimeoutRef.current);
-    }
-    
-    // Trigger search for name type with debouncing
-    if (searchType === 'name' && value.length >= 2) {
-      debounceTimeoutRef.current = setTimeout(() => {
-        triggerSearch(value);
-      }, 300);
-    } else {
-      clearSuggestions();
-    }
-  }, [setValue, searchType, triggerSearch, clearSuggestions]);
-
-  const handleSuggestionSelect = useCallback((suggestion) => {
-    setSearchValue(suggestion.nameAr);
-    setValue('searchTerm', suggestion.nameAr);
-    setStudentData(suggestion.student);
-    clearSuggestions();
-  }, [setValue, clearSuggestions]);
 
   // Clear search input handler
   const handleClearSearch = useCallback(() => {
     setSearchValue('');
     setValue('searchTerm', '');
     setStudentData(null);
-    clearSuggestions();
-  }, [setValue, clearSuggestions]);
+  }, [setValue]);
 
   const handleInputChange = useCallback((e) => {
     const value = e.target.value;
@@ -130,14 +80,6 @@ export default function Bac2025ResultsForm() {
     register("searchTerm").onChange(e);
   }, [register]);
 
-  // Handle search type toggle
-  const toggleSearchType = useCallback(() => {
-    setSearchType(prev => prev === 'id' ? 'name' : 'id');
-    setSearchValue('');
-    setValue('searchTerm', '');
-    setStudentData(null);
-    clearSuggestions();
-  }, [setValue, clearSuggestions]);
 
   const handleClick = () => {
     if (confettiRef.current) {
@@ -148,8 +90,8 @@ export default function Bac2025ResultsForm() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      // Use the search function that handles both ID and name
-      const student = await searchStudent(data.searchTerm, searchType);
+      // Search by ID only in the optimized version
+      const student = await searchStudent(data.searchTerm, 'id');
 
       if (student) {
         setStudentData(student);
@@ -194,8 +136,7 @@ export default function Bac2025ResultsForm() {
           <DataLoadingSkeleton 
             progress={loadingProgress}
             message="جاري تحميل بيانات الباكلوريا 2025..."
-            showMetrics={true}
-            metrics={dataMetrics}
+            showMetrics={false}
           />
         </div>
       </div>
@@ -206,36 +147,12 @@ export default function Bac2025ResultsForm() {
     <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">
       <Confetti ref={confettiRef} className="absolute inset-0 -z-20" />
       <div className="w-full max-w-xl mt-2 p-4 bg-[#f8f8f8] dark:bg-gray-800 rounded-lg shadow-sm md:shadow-md">
-        {/* Search Type Toggle */}
-        <div className="flex items-center justify-center mb-4">
-          <div className="flex items-center bg-gray-100 rounded-lg p-1">
-            <button
-              type="button"
-              onClick={toggleSearchType}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                searchType === 'id' 
-                  ? "bg-white text-gray-900 shadow-sm" 
-                  : "text-gray-600 hover:text-gray-900"
-              )}
-            >
-              <Search className="h-4 w-4" />
-              رقم الطالب
-            </button>
-            <button
-              type="button"
-              onClick={toggleSearchType}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                searchType === 'name' 
-                  ? "bg-white text-gray-900 shadow-sm" 
-                  : "text-gray-600 hover:text-gray-900"
-              )}
-            >
-              <User className="h-4 w-4" />
-              الاسم
-            </button>
-          </div>
+        {/* Search instruction */}
+        <div className="text-center mb-4">
+          <p className="text-sm text-gray-600">
+            <Search className="inline h-4 w-4 mr-1" />
+            ابحث باستخدام رقم الطالب
+          </p>
         </div>
 
         <form
@@ -251,32 +168,17 @@ export default function Bac2025ResultsForm() {
             </Label>
             
             <div className="relative">
-              {searchType === 'name' ? (
-                <StudentAutocomplete
-                  value={searchValue}
-                  onChange={handleSearchValueChange}
-                  onSelect={handleSuggestionSelect}
-                  suggestions={searchSuggestions}
-                  isLoading={isLoadingSuggestions}
-                  placeholder="أدخل اسمك باللغة العربية للبحث"
-                  className={cn(
-                    { "focus-visible:ring-red-500": errors.searchTerm },
-                    "bg-white pr-12"
-                  )}
-                />
-              ) : (
-                <Input
-                  id="search"
-                  type={searchType === 'id' ? 'number' : 'text'}
-                  placeholder="أدخل رقم الطالب للحصول على النتيجة"
-                  {...register("searchTerm")}
-                  onChange={handleInputChange}
-                  className={cn(
-                    { "focus-visible:ring-red-500": errors.searchTerm },
-                    "bg-white font-rubik font-medium text-[1.4rem] placeholder:text-[1.1rem] placeholder:font-rb py-5 placeholder-gray-400 pr-12"
-                  )}
-                />
-              )}
+              <Input
+                id="search"
+                type="number"
+                placeholder="أدخل رقم الطالب للحصول على النتيجة"
+                {...register("searchTerm")}
+                onChange={handleInputChange}
+                className={cn(
+                  { "focus-visible:ring-red-500": errors.searchTerm },
+                  "bg-white font-rubik font-medium text-[1.4rem] placeholder:text-[1.1rem] placeholder:font-rb py-5 placeholder-gray-400 pr-12"
+                )}
+              />
               
               {/* Clear button */}
               {searchValue && (
@@ -349,13 +251,9 @@ export default function Bac2025ResultsForm() {
                   <span className="bg-primary-color/10 px-2 py-1 rounded text-primary-color font-medium text-xs">رقم الطالب</span>
                   <span>أدخل رقم الباكلوريا (مثال: 12345)</span>
                 </div>
-                <div className="flex items-center justify-center gap-2 flex-wrap">
-                  <span className="bg-green-1/10 px-2 py-1 rounded text-green-1 font-medium text-xs">الاسم</span>
-                  <span>أدخل اسمك باللغة العربية للبحث السريع</span>
-                </div>
               </div>
               <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                💡 يمكنك التبديل بين طرق البحث باستخدام الأزرار أعلاه
+                💡 البحث متاح حالياً برقم الطالب فقط
               </div>
             </div>
           </div>

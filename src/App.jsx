@@ -25,7 +25,6 @@ const RemoteIframe = lazy(() => import("./pages/Remote/RemoteIframe"));
 const Form = lazy(() => import("./pages/Form/Form"));
 const Institues = lazy(() => import("./components/Institues"));
 const Bac2025 = lazy(() => import("./pages/Bac2025"));
-const TestSearch = lazy(() => import("./pages/TestSearch"));
 
 import Archives from './pages/archives/Archives'
 import Loader from "./components/Loader";
@@ -104,7 +103,6 @@ function App() {
             } />
             
             {/* Performance Test Route - Development/Testing */}
-            <Route path="/test-search" element={<TestSearch />} />
 
             {/* all revision archive */}
             
