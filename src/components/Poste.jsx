@@ -1,6 +1,6 @@
 import { doc, getDoc } from "firebase/firestore/lite";
 import { getFirestore } from "firebase/firestore/lite";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { app } from "../config/firebase";
 import Header from "./Header";
@@ -21,7 +21,7 @@ function Poste() {
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [image, setImage] = useState(null);
   const firestore = getFirestore(app);
-  const getPoste = async (id) => {
+  const getPoste = useCallback(async (id) => {
     const docRef = doc(firestore, "postes", id);
     try {
       const docSnap = await getDoc(docRef);
@@ -29,6 +29,7 @@ function Poste() {
         setPoste(docSnap.data());
         localStorage.setItem("poste", JSON.stringify(docSnap.data()));
       } else {
+        console.warn('Post not found');
       }
       setIsLoading(false);
     } catch (error) {
@@ -37,11 +38,11 @@ function Poste() {
         console.error('Error fetching post:', error.message);
       }
     }
-  };
+  }, [firestore]);
 
   useEffect(() => {
     getPoste(id);
-  }, [id]);
+  }, [id, getPoste]);
 
   // check if the is mobile or not
   const isMobile = window.innerWidth <= 768;

@@ -168,6 +168,7 @@ const ShowStudentResult = memo(({ Name, Num_Bac, Serie, SERIE, Decision, Moyenne
           <a
             href={whatsappLink}
             target="_blank"
+            rel="noreferrer"
             className="px-4 justify-center cursor-pointer w-[90%] md:text-lg text-base py-2 flex items-center text-white bg-green-500 rounded-lg hover:bg-green-600"
           >
             إنضم لمجموعة الواتساب الخاصة بشعبتك

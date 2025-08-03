@@ -14,8 +14,6 @@ export default function Inputes({
 }) {
 
 
-  // is arabic
-  const isArabic = option.value === "SN" || option.value === "M" ? false : true;
   // place Horlders
   const placeHolders = {
     'العلوم الطبيعية' : [

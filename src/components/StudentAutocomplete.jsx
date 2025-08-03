@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, memo, useMemo, useCallback } from 'react';
 import { Input } from './ui/input';
 import { cn } from '../lib/utils';
-import { Search, User, GraduationCap, Loader2 } from 'lucide-react';
+import { Search, User, Loader2 } from 'lucide-react';
 
 const StudentAutocomplete = memo(function StudentAutocomplete({
   value,
@@ -90,7 +90,7 @@ const StudentAutocomplete = memo(function StudentAutocomplete({
       document.addEventListener('keydown', handleKeyDown);
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [isOpen, highlightedIndex, suggestions]);
+  }, [isOpen, highlightedIndex, suggestions, handleSelect]);
 
   // Close dropdown when clicking outside
   useEffect(() => {

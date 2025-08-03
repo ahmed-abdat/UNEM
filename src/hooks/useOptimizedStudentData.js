@@ -21,6 +21,27 @@ export const useOptimizedStudentData = () => {
   const loadingRef = useRef(false);
   // const MAX_CACHED_CHUNKS = 5; // Limit cache size for mobile memory
 
+  // Retry mechanism for network requests
+  const fetchWithRetry = useCallback(async (url, options = {}, retries = 3) => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch(url, options);
+        if (response.ok) {
+          return response;
+        }
+        // If not ok, throw to trigger retry
+        throw new Error(`HTTP ${response.status}`);
+      } catch (error) {
+        // If this is the last retry, throw the error
+        if (i === retries - 1) {
+          throw error;
+        }
+        // Wait before retrying (exponential backoff)
+        await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+      }
+    }
+  }, []);
+
   // Load the chunk index for efficient student lookup
   const loadIndex = useCallback(async () => {
     if (indexRef.current) {
@@ -30,7 +51,7 @@ export const useOptimizedStudentData = () => {
     try {
       // Use public directory path - works in both dev and production
       // Vite serves public assets from root in production builds
-      const response = await fetch('/data/chunks/index.json', {
+      const response = await fetchWithRetry('/data/chunks/index.json', {
         headers: {
           'Accept': 'application/json',
           'Cache-Control': 'max-age=3600' // Cache for 1 hour
@@ -82,7 +103,7 @@ export const useOptimizedStudentData = () => {
         throw new Error(`فشل تحميل فهرس البيانات: ${err.message}`);
       }
     }
-  }, []);
+  }, [fetchWithRetry]);
 
   // Binary search to find the appropriate chunk for a student ID
   const findChunkForStudentId = useCallback((studentId, chunks) => {
@@ -124,7 +145,7 @@ export const useOptimizedStudentData = () => {
 
     try {
       // Use public directory path - Vite handles this correctly in production
-      const response = await fetch(`/data/chunks/${chunkFile}`, {
+      const response = await fetchWithRetry(`/data/chunks/${chunkFile}`, {
         headers: {
           'Accept': 'application/json',
           'Cache-Control': 'max-age=1800' // Cache chunks for 30 minutes
@@ -195,7 +216,7 @@ export const useOptimizedStudentData = () => {
         throw new Error(`فشل تحميل ${chunkFile}: ${err.message}`);
       }
     }
-  }, []);
+  }, [fetchWithRetry]);
 
   // Enhanced student search with mobile-optimized error handling
   const findStudentByBacNumber = useCallback(async (bacNumber) => {
@@ -345,6 +366,7 @@ export const useOptimizedStudentData = () => {
     // Core methods
     findStudentByBacNumber,
     clearCache,
+    fetchWithRetry,
     
     // Preloading utilities
     preloadIndex,

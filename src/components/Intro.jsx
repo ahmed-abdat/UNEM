@@ -8,7 +8,7 @@ export default function Intro() {
       </div>
       <div className="intro-text">
         <h1>الاتحاد الوطني لطلبة موريتانيا</h1>
-        <h3>L'union Nationale des Etudiants Mauritaniens</h3>
+        <h3>L&apos;union Nationale des Etudiants Mauritaniens</h3>
       </div>
       <div className="info">
         <p> أكبر نقابة طلابية موريتانية تأسست 13 مايو 2000 م </p>

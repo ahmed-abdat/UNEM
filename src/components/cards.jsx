@@ -116,7 +116,7 @@ function CardsConatainer() {
     return posts.map((card, index) => (
       <div
         className="card"
-        key={card.id} // Use only ID for better performance
+        key={`${card.id}-${index}`} // Use ID with index for better performance
         onClick={() => navigate(`poste/${card.id}`)}
       >
         <LazyLoadImage

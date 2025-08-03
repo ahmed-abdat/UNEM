@@ -16,6 +16,11 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react/prop-types': 'off', // Disable prop-types validation
+    'no-unused-vars': ['error', { 'varsIgnorePattern': '^React$' }], // Allow React import
+    'react/no-unescaped-entities': 'warn', // Warn instead of error for unescaped entities
+    'react/jsx-no-target-blank': ['error', { allowReferrer: true }], // Allow referrer for target="_blank"
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }], // Allow warnings for UI components
   },
   overrides: [
     {

@@ -23,6 +23,8 @@ const SearchSchema = z.object({
 
 const WhatsappForm = memo(() => {
   const [loading, setLoading] = useState(false);
+  const [whatsappLink, setWhatsappLink] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const confettiRef = useRef(null);
   
   const { findStudentByBacNumber, loading: dataLoading, searchProgress } = useOptimizedStudentData();
@@ -115,16 +117,19 @@ const WhatsappForm = memo(() => {
       }
 
       if (student) {
-        const isAdmin = student.Decision?.startsWith("Admis");
-        if (isAdmin) {
+        const studentIsAdmin = student.Decision?.startsWith("Admis");
+        setIsAdmin(studentIsAdmin);
+        
+        if (studentIsAdmin) {
           // Get the serie for WhatsApp group based on student's SERIE
           const serie = student.SERIE || student.Serie || student.Serie_AR;
           
           if (serie && whatsAppGroups[serie]) {
-            const whatsappLink = whatsAppGroups[serie];
+            const groupLink = whatsAppGroups[serie];
+            setWhatsappLink(groupLink);
             
             // Show success message with the link as fallback
-            toast.success(toastMessages.success(whatsappLink), {
+            toast.success(toastMessages.success(groupLink), {
               duration: 5000, // Show for 5 seconds
               style: { fontSize: "0.85rem" },
             });
@@ -133,7 +138,7 @@ const WhatsappForm = memo(() => {
             // Use direct navigation after a delay
             // This works best for WhatsApp group links on all devices
             setTimeout(() => {
-              window.location.href = whatsappLink;
+              window.location.href = groupLink;
             }, 2000);
           } else {
             toast.info(toastMessages.noGroup, {
@@ -141,6 +146,7 @@ const WhatsappForm = memo(() => {
             });
           }
         } else {
+          setWhatsappLink(null);
           toast.info(toastMessages.notAdmitted, {
             style: { fontSize: "0.85rem" },
           });
@@ -214,6 +220,18 @@ const WhatsappForm = memo(() => {
           </Button>
         </form>
         
+        {/* Manual redirection button for admins */}
+        {isAdmin && whatsappLink && (
+          <div className="mt-4 flex justify-center">
+            <Button
+              onClick={() => window.open(whatsappLink, '_blank')}
+              className="font-tajawal font-medium text-white text-base bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+            >
+              انضم للمجموعة يدوياً
+            </Button>
+          </div>
+        )}
+
         {/* Simple guidance */}
         <div className="mt-6 flex flex-col justify-center items-center min-h-[30dvh] text-center px-4">
           <div className="max-w-md">
@@ -226,8 +244,12 @@ const WhatsappForm = memo(() => {
             <div className="text-gray-600 dark:text-gray-400 space-y-3 text-sm">
               <p>أدخل رقم الطالب أعلاه وسيتم توجيهك تلقائياً إلى مجموعة الواتساب الخاصة بشعبتك</p>
             </div>
-            <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-              💡 فقط الطلاب الناجحون يمكنهم الانضمام لمجموعات الواتساب
+            <div className="mt-4 text-xs text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+              {isAdmin && whatsappLink ? (
+                <>💡 فقط الطلاب الناجحون يمكنهم الانضمام لمجموعات الواتساب. إذا لم يتم التوجيه تلقائياً، استخدم الزر اليدوي أعلاه</>
+              ) : (
+                <>💡 فقط الطلاب الناجحون يمكنهم الانضمام لمجموعات الواتساب</>
+              )}
             </div>
           </div>
         </div>

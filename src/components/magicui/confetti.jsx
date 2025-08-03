@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 
 const ConfettiContext = createContext({});
 
-const Confetti = forwardRef((props, ref) => {
+const Confetti = forwardRef(function Confetti(props, ref) {
   const {
     options,
     globalOptions = { resize: true, useWorker: true },

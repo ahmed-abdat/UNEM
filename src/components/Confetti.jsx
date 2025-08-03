@@ -1,5 +1,5 @@
 // src/components/Confetti.jsx
-import React, { useRef, forwardRef, useImperativeHandle, memo, useMemo, useCallback } from "react";
+import React, { forwardRef, useImperativeHandle, memo, useMemo, useCallback } from "react";
 import confetti from "canvas-confetti";
 
 const Confetti = memo(forwardRef((props, ref) => {

@@ -12,10 +12,6 @@ export default function FST() {
   const selectedFaculiter = archives.find((el) => el.faculiter === id);
 
   const specialiter = selectedFaculiter.filieres;
-  const styles = {
-    direction: "rtl",
-    gridAutoColumns: "24%",
-  };
 
   const [choosenSpeciality, setChoosenSpeciality] = useState(specialiter[0].id);
 
