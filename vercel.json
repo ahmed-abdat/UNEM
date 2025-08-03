@@ -7,7 +7,7 @@
   ],
   "headers": [
     {
-      "source": "/assets/chunk-*.json",
+      "source": "/data/chunks/chunk-*.json",
       "headers": [
         {
           "key": "Cache-Control",
@@ -16,11 +16,20 @@
       ]
     },
     {
-      "source": "/assets/index-*.json", 
+      "source": "/data/chunks/index.json", 
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/data/chunks/name-index-*.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
