@@ -124,7 +124,7 @@ class ErrorBoundary extends React.Component {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 onClick={this.handleRetry}
-                className="flex-1 bg-primary-color hover:bg-primary-color/90 text-white"
+                className="flex-1 bg-brand-primary hover:bg-brand-primary/90 text-white"
                 disabled={this.state.retryCount >= 3}
               >
                 <RefreshCw className="h-4 w-4 ml-2" />

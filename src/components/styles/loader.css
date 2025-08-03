@@ -12,7 +12,7 @@
     display: grid;
     border: 3px solid #0000;
     border-radius: 50%;
-    border-right-color: var(--primary-color);
+    border-right-color: theme(colors.brand.primary);
     -webkit-animation: spinner-a4dj62 1s infinite linear;
             animation: spinner-a4dj62 1s infinite linear;
    }

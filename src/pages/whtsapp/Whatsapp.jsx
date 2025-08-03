@@ -27,7 +27,7 @@ export function ErrorBoundary() {
         <p className="text-gray-600 mb-6">حدث خطأ أثناء تحميل صفحة مجموعات الواتساب. يرجى إعادة تحديث الصفحة.</p>
         <button 
           onClick={() => window.location.reload()} 
-          className="bg-primary-color text-white px-6 py-3 rounded-lg hover:bg-primary-600"
+          className="bg-brand-primary text-white px-6 py-3 rounded-lg hover:bg-primary-600"
         >
           إعادة تحديث الصفحة
         </button>

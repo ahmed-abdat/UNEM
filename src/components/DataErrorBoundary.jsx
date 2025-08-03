@@ -137,7 +137,7 @@ class DataErrorBoundary extends React.Component {
           </p>
 
           {/* Suggestion */}
-          <p className="text-primary-color text-sm mb-6 text-center">
+          <p className="text-brand-primary text-sm mb-6 text-center">
             💡 {errorMessage.suggestion}
           </p>
 
@@ -165,7 +165,7 @@ class DataErrorBoundary extends React.Component {
             <Button
               onClick={this.handleRetry}
               disabled={this.state.isRetrying}
-              className="bg-primary-color hover:bg-primary-color/90 text-white"
+              className="bg-brand-primary hover:bg-brand-primary/90 text-white"
             >
               {this.state.isRetrying ? (
                 <>

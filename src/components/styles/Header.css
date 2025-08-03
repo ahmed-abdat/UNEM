@@ -50,7 +50,7 @@ header .right-side  {
 header .right-side .add {
   font-size: 1.4rem;
   display: flex;
-  background: var(--primary-color);
+  background: theme(colors.brand.primary);
   padding: 0.75rem;
   border-radius: 50%;
   color: var(--gray-color);
@@ -169,5 +169,5 @@ header .right-side .add {
 /* ? meu icon */
  
 .left-side {
-    color: var(--primary-color);
+    color: theme(colors.brand.primary);
 }

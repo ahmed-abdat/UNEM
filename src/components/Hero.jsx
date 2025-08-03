@@ -13,8 +13,8 @@ export default function Hero() {
                 <div className="hero--btns"> 
                     
                     
-                    <button className="btn btn--primary btn--outline">تعرف على المؤسسات</button>
-                    <Link to='/calculation'><button className="btn btn--secondary"> حساب المعدل التوجيهي </button></Link>
+                    <button className="bg-brand-success btn--primary btn--outline">تعرف على المؤسسات</button>
+                    <Link to='/calculation'><button className="bg-brand-success btn--secondary"> حساب المعدل التوجيهي </button></Link>
                 </div>
             </div>
             <div className="hero--img">

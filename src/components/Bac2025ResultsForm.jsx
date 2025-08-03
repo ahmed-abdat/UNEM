@@ -195,7 +195,7 @@ export default function Bac2025ResultsForm() {
           <Button
             disabled={loading}
             type="submit"
-            className="font-tajawal font-medium shadow-btne cursor-pointer text-white text-lg bg-btn hover:bg-btn px-[15px] py-[1.65rem] rounded-lg disabled:opacity-[0.7] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-disabeld-btn active:shadow-none active:transform active:translate-x-0 active:translate-y-1 transition-all"
+            className="font-tajawal font-medium shadow-btne cursor-pointer text-white text-lg bg-brand-success hover:bg-brand-success px-[15px] py-[1.65rem] rounded-lg disabled:opacity-[0.7] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-brand-success-disabled active:shadow-none active:transform active:translate-x-0 active:translate-y-1 transition-all"
           >
             ابحث
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -233,7 +233,7 @@ export default function Bac2025ResultsForm() {
         ) : (
           <div className="mt-6 flex flex-col justify-center items-center min-h-[40dvh] text-center px-4">
             <div className="max-w-md">
-              <div className="text-primary-color mb-4">
+              <div className="text-brand-primary mb-4">
                 <Search className="h-12 w-12 mx-auto" />
               </div>
               <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">
@@ -241,7 +241,7 @@ export default function Bac2025ResultsForm() {
               </h2>
               <div className="text-gray-600 dark:text-gray-400 space-y-3 text-sm">
                 <div className="flex items-center justify-center gap-2 flex-wrap">
-                  <span className="bg-primary-color/10 px-2 py-1 rounded text-primary-color font-medium text-xs">رقم الطالب</span>
+                  <span className="bg-brand-primary/10 px-2 py-1 rounded text-brand-primary font-medium text-xs">رقم الطالب</span>
                   <span>أدخل رقم الباكلوريا (مثال: 12345)</span>
                 </div>
               </div>

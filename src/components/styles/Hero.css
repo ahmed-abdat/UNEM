@@ -1,8 +1,8 @@
 .hero {
     height: calc(100dvh - 80px);
     overflow: hidden;
-    --primary-color : #0CB509;
-    --primary-color-dark : #0B5301;
+    --brand-primary : #26a306;
+    --brand-primary-dark : #186a02;
     --white-color : #f8f8f8;
 }
 
@@ -45,7 +45,7 @@
 .hero .hero--container .hero--content .hero--btns {
     display: flex;
 }
-.hero .hero--container .hero--content .btn {
+.hero .hero--container .hero--content .brand-success {
     font-family: 'Vazirmatn' , sans-serif;
     font-size: 1rem;
     font-weight: 500;
@@ -60,7 +60,7 @@
     -o-transition: all 0.3s ease-in-out;
 }
 
-.hero .hero--container .hero--content .btn:hover {
+.hero .hero--container .hero--content .brand-success:hover {
     transform: translateY(-4px);
     -webkit-transform: translateY(-4px);
     -moz-transform: translateY(-4px);
@@ -68,32 +68,32 @@
     -o-transform: translateY(-4px);
 }
 
-.hero .hero--container .hero--content .btn.btn--primary {
-    border: 1px solid var(--primary-color);
+.hero .hero--container .hero--content .brand-success.btn--primary {
+    border: 1px solid theme(colors.brand.primary);
     color: var(--white-color);
 }
 
-.hero .hero--container .hero--content .btn.btn--outline {
-    background-color: var(--primary-color);
+.hero .hero--container .hero--content .brand-success.btn--outline {
+    background-color: theme(colors.brand.primary);
 }
 
-.hero .hero--container .hero--content .btn.btn--outline:hover {
-    background-color: var(--primary-color-dark);
+.hero .hero--container .hero--content .brand-success.btn--outline:hover {
+    background-color: theme(colors.brand.primary-dark);
     color: var(--white-color);
 }
 
-.hero .hero--container .hero--content .btn.btn--primary:hover {
-    background-color: var(--primary-color-dark);
+.hero .hero--container .hero--content .brand-success.btn--primary:hover {
+    background-color: theme(colors.brand.primary-dark);
 }
 
-.hero .hero--container .hero--content .btn.btn--secondary {
+.hero .hero--container .hero--content .brand-success.btn--secondary {
     background-color: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid theme(colors.brand.primary);
+    color: theme(colors.brand.primary);
 }
 
-.hero .hero--container .hero--content .btn.btn--secondary:hover {
-    background-color: var(--primary-color);
+.hero .hero--container .hero--content .brand-success.btn--secondary:hover {
+    background-color: theme(colors.brand.primary);
     color: var(--white-color);
 }
 
@@ -143,7 +143,7 @@
         justify-content: center;
         width: 100%;
     }
-    .hero .hero--container .hero--content .btn {
+    .hero .hero--container .hero--content .brand-success {
         font-size: 0.9rem;
         padding: 0.8rem 0.7rem;
     }
@@ -190,7 +190,7 @@
         font-size: 0.85rem;
     }
 
-    .hero .hero--container .hero--content .btn {
+    .hero .hero--container .hero--content .brand-success {
         font-size: 0.55rem;
     }
 }
