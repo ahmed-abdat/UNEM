@@ -147,13 +147,6 @@ export default function Bac2025ResultsForm() {
     <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">
       <Confetti ref={confettiRef} className="absolute inset-0 -z-20" />
       <div className="w-full max-w-xl mt-2 p-4 bg-[#f8f8f8] dark:bg-gray-800 rounded-lg shadow-sm md:shadow-md">
-        {/* Search instruction */}
-        <div className="text-center mb-4">
-          <p className="text-sm text-gray-600">
-            <Search className="inline h-4 w-4 mr-1" />
-            ابحث باستخدام رقم الطالب
-          </p>
-        </div>
 
         <form
           className="w-full flex flex-col gap-4"
