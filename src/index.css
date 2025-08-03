@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    --primary-color: #26a306;
+    --brand-primary: #26a306;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -81,7 +81,7 @@
   --main-bgc : #f8f8f8;
   --text-color : #325871;
   --text-color-light : #3b4a54;
-  --primary-color: #26a306;
+  --brand-primary: #26a306;
   --primary-text : #050505;
   --secondary-text: #65676B;
   --app-background : #eae6df;
@@ -128,7 +128,7 @@ a {
 /* Removed .f-fr since only using Arabic */
 
 ::selection {
-  background-color: var(--primary-color);
+  background-color: theme(colors.brand.primary);
   color : var(--white-color-light);
 
 }
@@ -146,7 +146,7 @@ a {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.btn {
+.brand-success {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   outline: none;
@@ -157,7 +157,7 @@ a {
   -o-transition: all 0.3s ease-in-out;
 }
 
-.btn[disabled] , button[disabled]{
+.brand-success[disabled] , button[disabled]{
   opacity: 0.7;
   pointer-events: none;
   cursor: not-allowed;

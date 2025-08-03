@@ -98,7 +98,7 @@ export default function Calculation() {
             />
             <button
               disabled={isAnyInputEmpty()}
-              className={`calculate-btn`}
+              className={`bg-brand-success`}
               onClick={handelCalcule}
             >
               حساب المعدل

@@ -23,15 +23,23 @@ module.exports = {
         arabic: ['Tajawal', 'Vazirmatn', 'sans-serif'],
       },
       colors: {
-        'disabeld-btn' : '#58cc10',
-        'news-border' : '#13c867',
-        'whtssap-label' : '#077038',
-        'btn' : '#58cc02',
-        'btn-hover' : '#2fb30c',
-        'primary-color' : '#26a306',
-        'main' : '#f8f8f8',
-        'green-1': '#186a02',
-        'green-2': '#26a306',
+        // Brand Colors (consolidated and semantic)
+        brand: {
+          primary: '#26a306',           // was primary-color, green-2
+          'primary-hover': '#2fb30c',   // was btn-hover  
+          'primary-dark': '#186a02',    // was green-1
+          success: '#58cc02',           // was btn
+          'success-disabled': '#58cc10', // was disabeld-btn
+          accent: '#13c867',            // was news-border
+          whatsapp: '#077038',          // was whtssap-label
+        },
+        
+        // Layout
+        layout: {
+          main: '#f8f8f8',              // was main
+        },
+        
+        // Keep all existing shadcn/ui tokens
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

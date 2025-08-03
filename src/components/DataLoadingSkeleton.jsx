@@ -29,9 +29,9 @@ const DataLoadingSkeleton = ({
     <div className="flex flex-col items-center justify-center min-h-[40vh] p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-lg">
       {/* Loading Icon */}
       <div className="relative mb-6">
-        <div className="absolute inset-0 animate-ping rounded-full bg-primary-color/20 w-16 h-16"></div>
+        <div className="absolute inset-0 animate-ping rounded-full bg-brand-primary/20 w-16 h-16"></div>
         <div className="relative bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg">
-          <Database className="h-8 w-8 text-primary-color animate-pulse" />
+          <Database className="h-8 w-8 text-brand-primary animate-pulse" />
         </div>
       </div>
 
@@ -41,7 +41,7 @@ const DataLoadingSkeleton = ({
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
             {getProgressLabel()}
           </span>
-          <span className="text-sm font-bold text-primary-color">
+          <span className="text-sm font-bold text-brand-primary">
             {Math.round(progress)}%
           </span>
         </div>
@@ -103,9 +103,9 @@ const DataLoadingSkeleton = ({
 
       {/* Loading Dots Animation */}
       <div className="flex space-x-1 mt-4">
-        <div className="w-2 h-2 bg-primary-color rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-        <div className="w-2 h-2 bg-primary-color rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-        <div className="w-2 h-2 bg-primary-color rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+        <div className="w-2 h-2 bg-brand-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+        <div className="w-2 h-2 bg-brand-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+        <div className="w-2 h-2 bg-brand-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
       </div>
     </div>
   );

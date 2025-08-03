@@ -115,7 +115,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 /* button */
-.calculate-btn {
+.calculate-brand-success {
   width: 80%;
   font-family: "Vazirmatn", "Tajawal", "Roboto", sans-serif;
   color: #ffffff;
@@ -129,7 +129,7 @@ input[type="number"]::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-.calculate-btn:active {
+.calculate-brand-success:active {
   box-shadow: none;
   transform: translate(0, 4px);
 }
@@ -155,7 +155,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
   .calculation .calculation--form .select,
   .calculation .inputs,
-  .calculation .calculate-btn , .calculation .result{
+  .calculation .calculate-brand-success , .calculation .result{
     width: 100%;
   }
 }

@@ -90,7 +90,7 @@ const ShowStudentResult = memo(({ Name, Num_Bac, Serie, SERIE, Decision, Moyenne
     <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300 leading-normal text-sm">
       <div className="flex items-start flex-wrap w-full border-b border-b-gray-200 dark:border-b-gray-800 mb-4 hide-no-gpa">
         <div
-          className="flex flex-col mb-4 pr-2 w-full"
+          className="flex flex-col mb-4 pr-2 w-1/2"
           data-blur-toggle=""
           role="button"
         >
@@ -101,21 +101,19 @@ const ShowStudentResult = memo(({ Name, Num_Bac, Serie, SERIE, Decision, Moyenne
             {formattedAverage}
           </div>
         </div>
-        {/* Commented out until we have the correct link
-        NOTE: When uncommenting, also change the "المعدل" div above from w-full back to w-1/2
-        <div className="flex flex-col mb-4 pr-2 w-1/2" target="_blank">
+        <div className="flex flex-col mb-4 pr-2 w-1/2">
           <div className="mb-1text-gray-600 dark:text-gray-400">
             النتائج التفصيلية
           </div>
           <a
             className="text-blue-700 dark:text-blue-300 font-bold text-xs cursor-pointer"
-            href={`http://dec.education.gov.mr/bac-21/${Num_Bac}/info`}
+            href={`https://dec.education.gov.mr/bac-21/${Num_Bac}/info`}
             target="_blank"
+            rel="noopener noreferrer"
           >
             🔗 عبر موقع الوزارة
           </a>
         </div>
-        */}
       </div>
       <div className="flex items-start flex-wrap w-full">
         <div className="w-1/2 pr-2 mb-4">
