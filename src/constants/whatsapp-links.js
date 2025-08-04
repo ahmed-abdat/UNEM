@@ -1,5 +1,5 @@
 export const whatsAppGroups = {
-  SN: "https://chat.whatsapp.com/HEA93jjepI3KpyNviDjAdh",
+  SN: "https://chat.whatsapp.com/DvB0mrWpRev3r1KMqQGvjb",
   M: "https://chat.whatsapp.com/IlOCSN4SDWlB2qYE6xl62C",
   TMGM: "https://chat.whatsapp.com/IlOCSN4SDWlB2qYE6xl62C",
   TSGE: "https://chat.whatsapp.com/IlOCSN4SDWlB2qYE6xl62C",
