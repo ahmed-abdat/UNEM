@@ -8,7 +8,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import useOptimizedStudentData from "../hooks/useOptimizedStudentData";
+import useMultiSessionStudentData from "../hooks/useMultiSessionStudentData";
 import { Loader2, Search } from "lucide-react";
 import { whatsAppGroups } from "../constants/whatsapp-links";
 import "./WhatsappToast.css";
@@ -27,7 +27,7 @@ const WhatsappForm = memo(() => {
   const [isAdmin, setIsAdmin] = useState(false);
   const confettiRef = useRef(null);
   
-  const { findStudentByBacNumber, loading: dataLoading, searchProgress } = useOptimizedStudentData();
+  const { findStudentByBacNumber, findStudentInAllSessions, loading: dataLoading, searchProgress, currentSession } = useMultiSessionStudentData();
   
   // Memoize form resolver to prevent recreation
   const formResolver = useMemo(() => zodResolver(SearchSchema), []);
@@ -105,8 +105,8 @@ const WhatsappForm = memo(() => {
         }
       }, 100);
       
-      // Find student by ID using optimized search
-      const student = await findStudentByBacNumber(data.studentId);
+      // Find student in all sessions (prioritizes complementary session by default)
+      const allResults = await findStudentInAllSessions(data.studentId);
       
       // Clear progress interval
       clearInterval(progressInterval);
@@ -116,8 +116,15 @@ const WhatsappForm = memo(() => {
         toast.dismiss(progressToastId);
       }
 
-      if (student) {
+      if (allResults.length > 0) {
+        // Look for an admitted student in any session (prioritize complementary)
+        const complementaryResult = allResults.find(s => s._sessionInfo?.session === 'complementary');
+        const admittedStudent = allResults.find(student => student.Decision?.startsWith("Admis"));
+        
+        // Use complementary result if available, otherwise use any admitted student, otherwise use first result
+        const student = complementaryResult || admittedStudent || allResults[0];
         const studentIsAdmin = student.Decision?.startsWith("Admis");
+        
         setIsAdmin(studentIsAdmin);
         
         if (studentIsAdmin) {
@@ -128,8 +135,9 @@ const WhatsappForm = memo(() => {
             const groupLink = whatsAppGroups[serie];
             setWhatsappLink(groupLink);
             
-            // Show success message with the link as fallback
-            toast.success(toastMessages.success(groupLink), {
+            // Enhanced success message mentioning which session
+            const sessionInfo = student._sessionInfo ? ` (${student._sessionInfo.sessionName})` : '';
+            toast.success(`${toastMessages.success(groupLink)}${sessionInfo}`, {
               duration: 5000, // Show for 5 seconds
               style: { fontSize: "0.85rem" },
             });
@@ -147,7 +155,13 @@ const WhatsappForm = memo(() => {
           }
         } else {
           setWhatsappLink(null);
-          toast.info(toastMessages.notAdmitted, {
+          // Show which session(s) were checked
+          const sessionNames = allResults.map(s => s._sessionInfo?.sessionName).filter(Boolean).join(' و ');
+          const message = sessionNames ? 
+            `${toastMessages.notAdmitted} (تم البحث في: ${sessionNames})` : 
+            toastMessages.notAdmitted;
+          
+          toast.info(message, {
             style: { fontSize: "0.85rem" },
           });
         }
@@ -173,7 +187,7 @@ const WhatsappForm = memo(() => {
     } finally {
       setLoading(false);
     }
-  }, [findStudentByBacNumber, toastMessages, handleClick, searchProgress]);
+  }, [findStudentInAllSessions, toastMessages, handleClick, searchProgress]);
 
   return (
     <div className="w-full min-h-full mb-8 dark:bg-gray-900 text-gray-900 bg-[#f8f8f8] flex flex-col items-center">

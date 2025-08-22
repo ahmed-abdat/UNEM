@@ -10,6 +10,12 @@ export default function Whatsapp() {
       <div className="whatsapp-container">
         <div className="whatsapp-content">
           <h1>مجموعات الواتساب</h1>
+          <div className="mb-4 text-center">
+            <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-lg font-medium text-sm">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              الآن يدعم نتائج الدورة التكميلية أيضاً!
+            </div>
+          </div>
           <WhatsappForm />
         </div>
       </div>

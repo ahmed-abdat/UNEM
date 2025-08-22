@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "totalStudents": 7072,
+    "totalChunks": 4,
+    "chunkSize": 2000,
+    "createdAt": "2025-08-22T16:16:48.927Z",
+    "version": "1.0.0",
+    "session": "complementary",
+    "year": "2025",
+    "source": "RESULTATS_BAC_SC_2025_7072_Ap_CT.xlsx"
+  },
+  "chunks": [
+    {
+      "index": 0,
+      "file": "chunk-000.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "00002",
+        "max": "16540"
+      }
+    },
+    {
+      "index": 1,
+      "file": "chunk-001.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "16542",
+        "max": "29379"
+      }
+    },
+    {
+      "index": 2,
+      "file": "chunk-002.json",
+      "recordCount": 2000,
+      "nodeRange": {
+        "min": "29389",
+        "max": "43333"
+      }
+    },
+    {
+      "index": 3,
+      "file": "chunk-003.json",
+      "recordCount": 1072,
+      "nodeRange": {
+        "min": "43334",
+        "max": "53360"
+      }
+    }
+  ]
+}
